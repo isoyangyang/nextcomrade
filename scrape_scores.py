@@ -1,61 +1,57 @@
 """
 scrape_scores.py
 ----------------
-Fetches NewsAPI mention counts for each CCP member over the last 30 days,
-computes a recency-weighted score, and writes scores.json for the frontend.
+Fetches mention counts for each CCP member using Google News RSS,
+covering both Xinhua and People's Daily English editions.
+No API key required. No rate limits.
 
 Scoring pipeline per member:
-  1. Base score       — recency-weighted NewsAPI mention count across 4 weekly buckets
+  1. Base score       — recency-weighted mention count across 4 weekly buckets
   2. Xi boost         — articles co-mentioning Xi Jinping count 3x (base + 2x extra)
-  3. Age penalty      — members over 68 have score multiplied by AGE_PENALTY_FACTOR
-  4. Fixed scores     — certain members (Wang Huning) hardcoded regardless of media
-  5. Tier floor       — minimum score per tier so hierarchy is preserved
-  6. Position bonus   — top 30 members only: fetch recent articles and check whether
-                        the member appears in the headline or lead paragraph.
-                        Headline mention  → POSITION_HEADLINE_MULT  (default 1.6x)
-                        Lead para mention → POSITION_LEAD_MULT      (default 1.25x)
-                        Deeper mention    → no bonus (1.0x)
+  3. Age penalty      — members over 68 multiplied by AGE_PENALTY_FACTOR (0.15)
+  4. Fixed scores     — certain members (Wang Huning) hardcoded
+  5. Tier floor       — minimum score per tier preserves hierarchy
+  6. Position bonus   — top 30 members: headline mention = 1.6x, lead = 1.25x
 
-Data source: NewsAPI.org (free tier, requires NEWSAPI_KEY env variable)
-  Filters to Xinhua English source to keep data provenance consistent.
+Data source: Google News RSS (free, no auth, covers xinhuanet.com + en.people.cn)
 
-Run locally:  NEWSAPI_KEY=your_key python scrape_scores.py
+Run locally:  python scrape_scores.py
 Run via CI:   see .github/workflows/update_scores.yml
 
 Dependencies: pip install requests beautifulsoup4
 """
 
 import json
-import os
 import time
 import datetime
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import quote_plus
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
-LOOKBACK_DAYS           = 7     # 1 weekly bucket — keeps requests within NewsAPI free tier (100/day)
-RECENCY_HALFLIFE        = 7     # days — most recent week counts 2x vs week prior
-REQUEST_DELAY           = 1.0   # seconds between requests (NewsAPI is more tolerant)
+LOOKBACK_DAYS           = 30    # back to 30 days — no API limits now
+RECENCY_HALFLIFE        = 7     # most recent week counts 2x vs week prior
+REQUEST_DELAY           = 1.5   # seconds between requests
 OUTPUT_FILE             = "scores.json"
 
 XI_NAME                 = "Xi Jinping"
-XI_BOOST_MULTIPLIER     = 2     # co-occurrence articles added on top of base
-                                # net effect: those articles count (1 + 2) = 3x
+XI_BOOST_MULTIPLIER     = 2     # co-occurrence articles count (1 + 2) = 3x total
 
-RETIREMENT_AGE          = 68    # informal CCP norm — anyone older penalised
+RETIREMENT_AGE          = 68
 AGE_PENALTY_FACTOR      = 0.15  # over-68 score × this (85% reduction)
 
-POSITION_TOP_N          = 30    # only run article-position pass on top N members
-POSITION_ARTICLES       = 5     # how many recent articles to fetch per member
-POSITION_HEADLINE_MULT  = 1.6   # member named in headline → score × this
-POSITION_LEAD_MULT      = 1.25  # member named in first 2 paragraphs → score × this
-POSITION_REQUEST_DELAY  = 2.0   # delay for article page fetches
+POSITION_TOP_N          = 30    # article-position pass on top N only
+POSITION_ARTICLES       = 5     # recent articles to check per member
+POSITION_HEADLINE_MULT  = 1.6   # named in headline → score × this
+POSITION_LEAD_MULT      = 1.25  # named in lead paragraph → score × this
+POSITION_REQUEST_DELAY  = 2.0   # delay between article page fetches
 
-# NewsAPI config
-NEWSAPI_KEY     = os.environ.get("NEWSAPI_KEY", "")
-NEWSAPI_URL     = "https://newsapi.org/v2/everything"
-NEWSAPI_SOURCES = "xinhua"      # filter to Xinhua English
+# Sources to filter — Google News site: operator
+SOURCES = ["xinhuanet.com", "en.people.cn"]
+
+# Google News RSS base
+GNEWS_RSS = "https://news.google.com/rss/search"
 
 # ── MEMBERS ───────────────────────────────────────────────────────────────────
 
@@ -80,7 +76,7 @@ MEMBERS = [
     (("Zhang Guoqing",),           "pb",  "Vice Premier",                       1964),
     (("Wang Yi",),                 "pb",  "Director, Foreign Affairs Comm.",    1953),
     (("Li Hongzhong",),            "pb",  "Deputy Chair, NPC",                  1956),
-    (("Chen Min'er", "Chen Miner"),"pb",  "Party Secretary, Tianjin",           1960),
+    (("Chen Miner",),              "pb",  "Party Secretary, Tianjin",           1960),
     (("Yin Li",),                  "pb",  "Party Secretary, Shanghai",          1962),
     (("He Lifeng",),               "pb",  "Vice Premier",                       1955),
     (("Liu Jinguo",),              "pb",  "Deputy Secretary, CCDI",             1961),
@@ -138,72 +134,75 @@ TIER_FLOOR = {
     "cc":  0.1,
 }
 
-# ── NEWSAPI SEARCH ────────────────────────────────────────────────────────────
+# ── GOOGLE NEWS RSS FETCH ─────────────────────────────────────────────────────
 
-def _newsapi_get(query: str, date_from: str, date_to: str) -> int:
+def _build_query(terms: list, date_from: str, date_to: str) -> str:
     """
-    Search NewsAPI for articles matching query within a date window.
-    Returns total result count.
+    Build a Google News RSS query string.
+    terms: list of strings to AND together
+    date_from / date_to: YYYY-MM-DD strings — used as after:/before: operators
+    Sources filtered via site: operator covering both Xinhua and People's Daily.
     """
-    if not NEWSAPI_KEY:
-        raise RuntimeError("NEWSAPI_KEY environment variable not set")
+    source_filter = " OR ".join(f"site:{s}" for s in SOURCES)
+    term_str      = " ".join(f'"{t}"' for t in terms)
+    query         = f'{term_str} ({source_filter}) after:{date_from} before:{date_to}'
+    return query
 
-    params = {
-        "q":        query,
-        "sources":  NEWSAPI_SOURCES,
-        "from":     date_from,
-        "to":       date_to,
-        "language": "en",
-        "pageSize": 1,          # we only need the count, not the articles
-        "apiKey":   NEWSAPI_KEY,
+
+def _fetch_rss(query: str) -> BeautifulSoup:
+    """Fetch Google News RSS for a query and return parsed BeautifulSoup."""
+    url     = f"{GNEWS_RSS}?q={quote_plus(query)}&hl=en-US&gl=US&ceid=US:en"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)",
+        "Accept":     "application/rss+xml, application/xml, text/xml",
     }
     try:
-        r = requests.get(NEWSAPI_URL, params=params, timeout=10)
+        r = requests.get(url, headers=headers, timeout=15)
         r.raise_for_status()
-        data = r.json()
-        if data.get("status") != "ok":
-            print(f"    WARNING: NewsAPI error — {data.get('message', 'unknown')}")
-            return 0
-        return int(data.get("totalResults", 0))
+        return BeautifulSoup(r.text, "xml")
     except Exception as e:
-        print(f"    WARNING: NewsAPI fetch failed [{query[:50]}]: {e}")
-        return 0
+        print(f"    WARNING: RSS fetch failed: {e}")
+        return BeautifulSoup("", "xml")
 
 
-def _newsapi_get_articles(query: str, date_from: str, n: int) -> list:
-    """
-    Return up to n recent articles (title + url + description) for the position pass.
-    """
-    if not NEWSAPI_KEY:
-        return []
+def _count_items(soup: BeautifulSoup) -> int:
+    """Count <item> elements in parsed RSS."""
+    return len(soup.find_all("item"))
 
-    params = {
-        "q":        query,
-        "sources":  NEWSAPI_SOURCES,
-        "from":     date_from,
-        "language": "en",
-        "sortBy":   "publishedAt",
-        "pageSize": n,
-        "apiKey":   NEWSAPI_KEY,
-    }
-    try:
-        r = requests.get(NEWSAPI_URL, params=params, timeout=10)
-        r.raise_for_status()
-        data = r.json()
-        if data.get("status") != "ok":
-            return []
-        return data.get("articles", [])
-    except Exception as e:
-        print(f"    WARNING: NewsAPI article fetch failed [{query[:50]}]: {e}")
-        return []
+
+def _get_items(soup: BeautifulSoup) -> list:
+    """Return list of (title, description, link) tuples from RSS items."""
+    items = []
+    for item in soup.find_all("item"):
+        title = item.find("title")
+        desc  = item.find("description")
+        link  = item.find("link")
+        items.append((
+            title.get_text(strip=True)  if title else "",
+            desc.get_text(strip=True)   if desc  else "",
+            link.get_text(strip=True)   if link  else "",
+        ))
+    return items
 
 
 def fetch_mention_count(name: str, date_from: str, date_to: str) -> int:
-    return _newsapi_get(f'"{name}"', date_from, date_to)
+    query = _build_query([name], date_from, date_to)
+    soup  = _fetch_rss(query)
+    return _count_items(soup)
 
 
 def fetch_xi_cooccurrence_count(name: str, date_from: str, date_to: str) -> int:
-    return _newsapi_get(f'"{XI_NAME}" "{name}"', date_from, date_to)
+    query = _build_query([XI_NAME, name], date_from, date_to)
+    soup  = _fetch_rss(query)
+    return _count_items(soup)
+
+
+def fetch_recent_items(name: str, date_from: str) -> list:
+    """Fetch recent RSS items for position scoring."""
+    today = datetime.date.today().strftime("%Y-%m-%d")
+    query = _build_query([name], date_from, today)
+    soup  = _fetch_rss(query)
+    return _get_items(soup)
 
 
 # ── AGE PENALTY ───────────────────────────────────────────────────────────────
@@ -221,7 +220,7 @@ def weighted_score(name_variants: tuple) -> tuple:
     """
     Recency-weighted, Xi-boosted mention score across LOOKBACK_DAYS.
     Splits into weekly buckets with exponential recency decay.
-    Returns (total_score, raw_mention_total, xi_cooccurrence_total, last_seen_date_str).
+    Returns (total_score, raw_mention_total, xi_total, last_seen_date_str).
     """
     buckets = []
     weeks   = LOOKBACK_DAYS // 7
@@ -260,37 +259,31 @@ def weighted_score(name_variants: tuple) -> tuple:
 
 # ── ARTICLE POSITION SCORING ──────────────────────────────────────────────────
 
-def score_article_position(article: dict, name: str) -> str:
+def score_item_position(title: str, description: str, link: str, name: str) -> str:
     """
-    Given a NewsAPI article dict, determine where `name` appears.
-    NewsAPI returns title, description (lead snippet), and url.
-    We check title first, then description, then fetch the full page as fallback.
-
+    Check where `name` appears in a single RSS item.
+    RSS gives us title and description snippet directly — no page fetch needed
+    for headline/lead detection. Only falls back to page fetch for body check.
     Returns: 'headline', 'lead', 'body', or 'none'
     """
     name_lower = name.lower()
 
-    # Check title (headline)
-    title = article.get("title") or ""
     if name_lower in title.lower():
         return "headline"
 
-    # Check description (lead paragraph snippet — usually first 1-2 sentences)
-    description = article.get("description") or ""
     if name_lower in description.lower():
         return "lead"
 
-    # Fallback: fetch full article and check body
-    url = article.get("url", "")
-    if url:
+    # Fallback: fetch full article page for body check
+    if link:
         try:
             headers = {"User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)"}
-            r = requests.get(url, headers=headers, timeout=12)
+            r = requests.get(link, headers=headers, timeout=12)
             r.raise_for_status()
-            soup = BeautifulSoup(r.text, "html.parser")
-            paragraphs = soup.find_all("p")
-            body_text = " ".join(p.get_text(" ", strip=True) for p in paragraphs)
-            if name_lower in body_text.lower():
+            soup  = BeautifulSoup(r.text, "html.parser")
+            paras = soup.find_all("p")
+            body  = " ".join(p.get_text(" ", strip=True) for p in paras)
+            if name_lower in body.lower():
                 return "body"
         except Exception as e:
             print(f"      WARNING: article page fetch failed: {e}")
@@ -300,25 +293,27 @@ def score_article_position(article: dict, name: str) -> str:
 
 def position_multiplier(name_variants: tuple) -> tuple:
     """
-    Fetch recent articles and determine best position for this member.
+    Fetch recent RSS items and determine best position for this member.
     Returns (multiplier, human_readable_label).
     """
     primary_name = name_variants[0]
     today        = datetime.date.today()
     date_from    = (today - datetime.timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
 
-    articles = _newsapi_get_articles(f'"{primary_name}"', date_from, POSITION_ARTICLES)
+    items = fetch_recent_items(primary_name, date_from)
     time.sleep(REQUEST_DELAY)
 
-    if not articles:
+    if not items:
         return 1.0, "no articles"
 
     headline_count = 0
     lead_count     = 0
     best_position  = "body"
+    checked        = 0
 
-    for article in articles[:POSITION_ARTICLES]:
-        pos = score_article_position(article, primary_name)
+    for title, description, link in items[:POSITION_ARTICLES]:
+        pos = score_item_position(title, description, link, primary_name)
+        checked += 1
         if pos == "headline":
             headline_count += 1
             best_position = "headline"
@@ -327,7 +322,6 @@ def position_multiplier(name_variants: tuple) -> tuple:
             best_position = "lead"
         time.sleep(POSITION_REQUEST_DELAY)
 
-    checked = len(articles[:POSITION_ARTICLES])
     if best_position == "headline":
         return POSITION_HEADLINE_MULT, f"headline ({headline_count}/{checked} articles)"
     elif best_position == "lead":
@@ -339,17 +333,11 @@ def position_multiplier(name_variants: tuple) -> tuple:
 # ── MAIN ──────────────────────────────────────────────────────────────────────
 
 def main():
-    if not NEWSAPI_KEY:
-        print("ERROR: NEWSAPI_KEY environment variable is not set.")
-        print("  Local: NEWSAPI_KEY=your_key python scrape_scores.py")
-        print("  CI:    add NEWSAPI_KEY to GitHub Actions secrets")
-        return
-
     print(f"Starting scrape — {datetime.datetime.now().isoformat()}")
-    print(f"Source: NewsAPI (xinhua) | Lookback: {LOOKBACK_DAYS}d | "
-          f"Xi boost: {XI_BOOST_MULTIPLIER}x | Age penalty >{RETIREMENT_AGE}: "
-          f"{AGE_PENALTY_FACTOR}x | Position pass: top {POSITION_TOP_N} | "
-          f"Members: {len(MEMBERS)}\n")
+    print(f"Source: Google News RSS (xinhuanet.com + en.people.cn)")
+    print(f"Lookback: {LOOKBACK_DAYS}d | Xi boost: {XI_BOOST_MULTIPLIER}x | "
+          f"Age penalty >{RETIREMENT_AGE}: {AGE_PENALTY_FACTOR}x | "
+          f"Position pass: top {POSITION_TOP_N} | Members: {len(MEMBERS)}\n")
 
     results   = []
     penalised = []
@@ -429,7 +417,7 @@ def main():
         r["position_multiplier"] = mult
         r["position_label"]      = label
         r["raw_score"]           = r["raw_score"] * mult
-        print(f"    -> position: {label} → {mult}x → adjusted score {r['raw_score']:.2f}")
+        print(f"    -> {label} → {mult}x → adjusted score {r['raw_score']:.2f}")
 
     for r in results[POSITION_TOP_N:]:
         if r["position_label"] == "pending":
