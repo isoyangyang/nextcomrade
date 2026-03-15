@@ -159,10 +159,10 @@ def _fetch_rss(query: str) -> BeautifulSoup:
     try:
         r = requests.get(url, headers=headers, timeout=15)
         r.raise_for_status()
-        return BeautifulSoup(r.text, "xml")
+        return BeautifulSoup(r.text, "html.parser")
     except Exception as e:
         print(f"    WARNING: RSS fetch failed: {e}")
-        return BeautifulSoup("", "xml")
+        return BeautifulSoup("", "html.parser")
 
 
 def _count_items(soup: BeautifulSoup) -> int:
