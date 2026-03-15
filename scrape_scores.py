@@ -1,11 +1,11 @@
 """
 scrape_scores.py
 ----------------
-Fetches Xinhua mention counts for each CCP member over the last 30 days,
+Fetches NewsAPI mention counts for each CCP member over the last 30 days,
 computes a recency-weighted score, and writes scores.json for the frontend.
 
 Scoring pipeline per member:
-  1. Base score       — recency-weighted Xinhua mention count across 4 weekly buckets
+  1. Base score       — recency-weighted NewsAPI mention count across 4 weekly buckets
   2. Xi boost         — articles co-mentioning Xi Jinping count 3x (base + 2x extra)
   3. Age penalty      — members over 68 have score multiplied by AGE_PENALTY_FACTOR
   4. Fixed scores     — certain members (Wang Huning) hardcoded regardless of media
@@ -15,15 +15,18 @@ Scoring pipeline per member:
                         Headline mention  → POSITION_HEADLINE_MULT  (default 1.6x)
                         Lead para mention → POSITION_LEAD_MULT      (default 1.25x)
                         Deeper mention    → no bonus (1.0x)
-                        Final score = base_score × position_multiplier
 
-Run locally:  python scrape_scores.py
+Data source: NewsAPI.org (free tier, requires NEWSAPI_KEY env variable)
+  Filters to Xinhua English source to keep data provenance consistent.
+
+Run locally:  NEWSAPI_KEY=your_key python scrape_scores.py
 Run via CI:   see .github/workflows/update_scores.yml
 
 Dependencies: pip install requests beautifulsoup4
 """
 
 import json
+import os
 import time
 import datetime
 import requests
@@ -31,9 +34,9 @@ from bs4 import BeautifulSoup
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
-LOOKBACK_DAYS           = 30    # how far back to search
+LOOKBACK_DAYS           = 7     # 1 weekly bucket — keeps requests within NewsAPI free tier (100/day)
 RECENCY_HALFLIFE        = 7     # days — most recent week counts 2x vs week prior
-REQUEST_DELAY           = 2.0   # seconds between requests — be polite to Xinhua
+REQUEST_DELAY           = 1.0   # seconds between requests (NewsAPI is more tolerant)
 OUTPUT_FILE             = "scores.json"
 
 XI_NAME                 = "Xi Jinping"
@@ -47,12 +50,14 @@ POSITION_TOP_N          = 30    # only run article-position pass on top N member
 POSITION_ARTICLES       = 5     # how many recent articles to fetch per member
 POSITION_HEADLINE_MULT  = 1.6   # member named in headline → score × this
 POSITION_LEAD_MULT      = 1.25  # member named in first 2 paragraphs → score × this
-POSITION_REQUEST_DELAY  = 3.0   # slightly longer delay for article page fetches
+POSITION_REQUEST_DELAY  = 2.0   # delay for article page fetches
+
+# NewsAPI config
+NEWSAPI_KEY     = os.environ.get("NEWSAPI_KEY", "")
+NEWSAPI_URL     = "https://newsapi.org/v2/everything"
+NEWSAPI_SOURCES = "xinhua"      # filter to Xinhua English
 
 # ── MEMBERS ───────────────────────────────────────────────────────────────────
-# Each entry: (name_variants_tuple, tier, display_role, birth_year)
-# Name variants are summed — handles romanisation differences.
-# birth_year: use None if unknown (no age penalty applied).
 
 MEMBERS = [
     # PSC
@@ -119,14 +124,13 @@ MEMBERS = [
     (("Zhou Qiang",),              "cc",  "Central Committee Member",           1960),
 ]
 
-# ── FIXED SCORES — override all scoring logic ─────────────────────────────────
+# ── FIXED SCORES ──────────────────────────────────────────────────────────────
 
 FIXED_SCORES = {
-    "Wang Huning": 0.08,   # ideologist, not a succession candidate
+    "Wang Huning": 0.08,
 }
 
-# ── TIER FLOOR WEIGHTS ────────────────────────────────────────────────────────
-# Applied AFTER age penalty — over-68 PSC members still floor above CC.
+# ── TIER FLOORS ───────────────────────────────────────────────────────────────
 
 TIER_FLOOR = {
     "psc": 5.0,
@@ -134,98 +138,72 @@ TIER_FLOOR = {
     "cc":  0.1,
 }
 
-# ── XINHUA SEARCH ─────────────────────────────────────────────────────────────
+# ── NEWSAPI SEARCH ────────────────────────────────────────────────────────────
 
-XINHUA_SEARCH     = "https://so.news.cn/en/query"
-XINHUA_ARTICLE    = "https://english.news.cn"   # base for resolving relative URLs
-
-def _xinhua_get(keyword: str, days_ago_start: int, days_ago_end: int) -> int:
-    """Shared Xinhua search — returns total result count for a keyword query."""
-    today     = datetime.date.today()
-    date_from = (today - datetime.timedelta(days=days_ago_start)).strftime("%Y-%m-%d")
-    date_to   = (today - datetime.timedelta(days=days_ago_end)).strftime("%Y-%m-%d")
+def _newsapi_get(query: str, date_from: str, date_to: str) -> int:
+    """
+    Search NewsAPI for articles matching query within a date window.
+    Returns total result count.
+    """
+    if not NEWSAPI_KEY:
+        raise RuntimeError("NEWSAPI_KEY environment variable not set")
 
     params = {
-        "keyword":   keyword,
-        "lang":      "en",
-        "sortField": "score",
-        "dateFrom":  date_from,
-        "dateTo":    date_to,
-        "curPage":   1,
-        "pageSize":  10,
-    }
-    headers = {
-        "User-Agent":   "Mozilla/5.0 (compatible; research-bot/1.0)",
-        "Accept":       "application/json, text/plain, */*",
-        "Referer":      "https://so.news.cn/",
-        "Content-Type": "application/json",
+        "q":        query,
+        "sources":  NEWSAPI_SOURCES,
+        "from":     date_from,
+        "to":       date_to,
+        "language": "en",
+        "pageSize": 1,          # we only need the count, not the articles
+        "apiKey":   NEWSAPI_KEY,
     }
     try:
-        r = requests.post(XINHUA_SEARCH, json=params, headers=headers, timeout=10)
+        r = requests.get(NEWSAPI_URL, params=params, timeout=10)
         r.raise_for_status()
         data = r.json()
-        return int(
-            data.get("data", {}).get("total", 0)
-            or data.get("total", 0)
-            or 0
-        )
+        if data.get("status") != "ok":
+            print(f"    WARNING: NewsAPI error — {data.get('message', 'unknown')}")
+            return 0
+        return int(data.get("totalResults", 0))
     except Exception as e:
-        print(f"    WARNING: Xinhua search failed [{keyword[:50]}]: {e}")
+        print(f"    WARNING: NewsAPI fetch failed [{query[:50]}]: {e}")
         return 0
 
 
-def _xinhua_get_urls(keyword: str, days_ago_start: int, n: int = POSITION_ARTICLES) -> list:
+def _newsapi_get_articles(query: str, date_from: str, n: int) -> list:
     """
-    Return up to n article URLs from Xinhua search results for a keyword.
-    Used for the article-position pass.
+    Return up to n recent articles (title + url + description) for the position pass.
     """
-    today     = datetime.date.today()
-    date_from = (today - datetime.timedelta(days=days_ago_start)).strftime("%Y-%m-%d")
-    date_to   = today.strftime("%Y-%m-%d")
+    if not NEWSAPI_KEY:
+        return []
 
     params = {
-        "keyword":   keyword,
-        "lang":      "en",
-        "sortField": "date",      # most recent first
-        "dateFrom":  date_from,
-        "dateTo":    date_to,
-        "curPage":   1,
-        "pageSize":  n,
-    }
-    headers = {
-        "User-Agent":   "Mozilla/5.0 (compatible; research-bot/1.0)",
-        "Accept":       "application/json, text/plain, */*",
-        "Referer":      "https://so.news.cn/",
-        "Content-Type": "application/json",
+        "q":        query,
+        "sources":  NEWSAPI_SOURCES,
+        "from":     date_from,
+        "language": "en",
+        "sortBy":   "publishedAt",
+        "pageSize": n,
+        "apiKey":   NEWSAPI_KEY,
     }
     try:
-        r = requests.post(XINHUA_SEARCH, json=params, headers=headers, timeout=10)
+        r = requests.get(NEWSAPI_URL, params=params, timeout=10)
         r.raise_for_status()
-        data  = r.json()
-        items = (
-            data.get("data", {}).get("list", [])
-            or data.get("list", [])
-            or []
-        )
-        urls = []
-        for item in items:
-            url = item.get("url") or item.get("link") or item.get("href") or ""
-            if url:
-                if url.startswith("/"):
-                    url = XINHUA_ARTICLE + url
-                urls.append(url)
-        return urls
+        data = r.json()
+        if data.get("status") != "ok":
+            return []
+        return data.get("articles", [])
     except Exception as e:
-        print(f"    WARNING: URL fetch failed [{keyword[:50]}]: {e}")
+        print(f"    WARNING: NewsAPI article fetch failed [{query[:50]}]: {e}")
         return []
 
 
-def fetch_mention_count(name: str, days_ago_start: int, days_ago_end: int) -> int:
-    return _xinhua_get(f'"{name}"', days_ago_start, days_ago_end)
+def fetch_mention_count(name: str, date_from: str, date_to: str) -> int:
+    return _newsapi_get(f'"{name}"', date_from, date_to)
 
 
-def fetch_xi_cooccurrence_count(name: str, days_ago_start: int, days_ago_end: int) -> int:
-    return _xinhua_get(f'"{XI_NAME}" "{name}"', days_ago_start, days_ago_end)
+def fetch_xi_cooccurrence_count(name: str, date_from: str, date_to: str) -> int:
+    return _newsapi_get(f'"{XI_NAME}" "{name}"', date_from, date_to)
 
 
 # ── AGE PENALTY ───────────────────────────────────────────────────────────────
@@ -242,23 +220,25 @@ def age_penalty_multiplier(birth_year):
 def weighted_score(name_variants: tuple) -> tuple:
     """
     Recency-weighted, Xi-boosted mention score across LOOKBACK_DAYS.
+    Splits into weekly buckets with exponential recency decay.
     Returns (total_score, raw_mention_total, xi_cooccurrence_total, last_seen_date_str).
     """
     buckets = []
     weeks   = LOOKBACK_DAYS // 7
+    today   = datetime.date.today()
 
     for w in range(weeks):
-        days_start = LOOKBACK_DAYS - (w * 7)
-        days_end   = days_start - 7
+        date_to   = (today - datetime.timedelta(days=w * 7)).strftime("%Y-%m-%d")
+        date_from = (today - datetime.timedelta(days=(w + 1) * 7)).strftime("%Y-%m-%d")
 
         base_count = 0
         for name in name_variants:
-            base_count += fetch_mention_count(name, days_start, days_end)
+            base_count += fetch_mention_count(name, date_from, date_to)
             time.sleep(REQUEST_DELAY)
 
         xi_count = 0
         for name in name_variants:
-            xi_count += fetch_xi_cooccurrence_count(name, days_start, days_end)
+            xi_count += fetch_xi_cooccurrence_count(name, date_from, date_to)
             time.sleep(REQUEST_DELAY)
 
         boosted_count  = base_count + (xi_count * XI_BOOST_MULTIPLIER)
@@ -270,7 +250,6 @@ def weighted_score(name_variants: tuple) -> tuple:
     score     = sum(bc * rw for _b, _x,  bc,  rw in buckets)
 
     last_seen = "Unknown"
-    today = datetime.date.today()
     for w, (base_count, _x, _bc, _rw) in enumerate(buckets):
         if base_count > 0:
             last_seen = (today - datetime.timedelta(days=w * 7)).strftime("%Y-%m-%d")
@@ -281,94 +260,65 @@ def weighted_score(name_variants: tuple) -> tuple:
 
 # ── ARTICLE POSITION SCORING ──────────────────────────────────────────────────
 
-def score_article_position(url: str, name: str) -> str:
+def score_article_position(article: dict, name: str) -> str:
     """
-    Fetch a single Xinhua article and determine where `name` first appears:
-      'headline'  — in the <title> or <h1>
-      'lead'      — in the first 2 <p> tags of the article body
-      'body'      — anywhere deeper
-      'none'      — name not found (stale search result)
+    Given a NewsAPI article dict, determine where `name` appears.
+    NewsAPI returns title, description (lead snippet), and url.
+    We check title first, then description, then fetch the full page as fallback.
 
-    Returns one of those four strings.
+    Returns: 'headline', 'lead', 'body', or 'none'
     """
-    headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)",
-        "Accept":     "text/html,application/xhtml+xml",
-        "Referer":    "https://english.news.cn/",
-    }
-    try:
-        r = requests.get(url, headers=headers, timeout=12)
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, "html.parser")
+    name_lower = name.lower()
 
-        # Check headline — <title> and first <h1>
-        title_text = soup.title.get_text(" ", strip=True) if soup.title else ""
-        h1         = soup.find("h1")
-        h1_text    = h1.get_text(" ", strip=True) if h1 else ""
-        if name.lower() in title_text.lower() or name.lower() in h1_text.lower():
-            return "headline"
+    # Check title (headline)
+    title = article.get("title") or ""
+    if name_lower in title.lower():
+        return "headline"
 
-        # Find article body paragraphs — Xinhua uses <div class="article"> or similar
-        body = (
-            soup.find("div", class_="article")
-            or soup.find("div", id="article")
-            or soup.find("article")
-            or soup.find("div", class_="content")
-            or soup.body
-        )
-        if not body:
-            return "none"
+    # Check description (lead paragraph snippet — usually first 1-2 sentences)
+    description = article.get("description") or ""
+    if name_lower in description.lower():
+        return "lead"
 
-        paragraphs = body.find_all("p")
-        if not paragraphs:
-            return "none"
+    # Fallback: fetch full article and check body
+    url = article.get("url", "")
+    if url:
+        try:
+            headers = {"User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)"}
+            r = requests.get(url, headers=headers, timeout=12)
+            r.raise_for_status()
+            soup = BeautifulSoup(r.text, "html.parser")
+            paragraphs = soup.find_all("p")
+            body_text = " ".join(p.get_text(" ", strip=True) for p in paragraphs)
+            if name_lower in body_text.lower():
+                return "body"
+        except Exception as e:
+            print(f"      WARNING: article page fetch failed: {e}")
 
-        # Check lead (first 2 paragraphs)
-        lead_text = " ".join(p.get_text(" ", strip=True) for p in paragraphs[:2])
-        if name.lower() in lead_text.lower():
-            return "lead"
-
-        # Check rest of body
-        body_text = " ".join(p.get_text(" ", strip=True) for p in paragraphs[2:])
-        if name.lower() in body_text.lower():
-            return "body"
-
-        return "none"
-
-    except Exception as e:
-        print(f"      WARNING: article fetch failed [{url[:60]}]: {e}")
-        return "none"
+    return "none"
 
 
 def position_multiplier(name_variants: tuple) -> tuple:
     """
-    Fetch up to POSITION_ARTICLES recent articles for this member,
-    score each for position, and return an aggregate multiplier.
-
-    Logic:
-      - Take the best position found across all sampled articles.
-      - Headline in any article → POSITION_HEADLINE_MULT
-      - Lead in any article (no headline) → POSITION_LEAD_MULT
-      - Body only → 1.0 (no bonus)
-      - No articles found → 1.0
-
-    Also returns a human-readable position_label for the JSON output.
+    Fetch recent articles and determine best position for this member.
+    Returns (multiplier, human_readable_label).
     """
     primary_name = name_variants[0]
-    urls = _xinhua_get_urls(f'"{primary_name}"', LOOKBACK_DAYS)
+    today        = datetime.date.today()
+    date_from    = (today - datetime.timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
+
+    articles = _newsapi_get_articles(f'"{primary_name}"', date_from, POSITION_ARTICLES)
     time.sleep(REQUEST_DELAY)
 
-    if not urls:
+    if not articles:
         return 1.0, "no articles"
 
-    best_position = "body"   # default — assume body-level if found at all
     headline_count = 0
     lead_count     = 0
-    checked        = 0
+    best_position  = "body"
 
-    for url in urls[:POSITION_ARTICLES]:
-        pos = score_article_position(url, primary_name)
-        checked += 1
+    for article in articles[:POSITION_ARTICLES]:
+        pos = score_article_position(article, primary_name)
         if pos == "headline":
             headline_count += 1
             best_position = "headline"
@@ -377,38 +327,40 @@ def position_multiplier(name_variants: tuple) -> tuple:
             best_position = "lead"
         time.sleep(POSITION_REQUEST_DELAY)
 
+    checked = len(articles[:POSITION_ARTICLES])
     if best_position == "headline":
-        mult  = POSITION_HEADLINE_MULT
-        label = f"headline ({headline_count}/{checked} articles)"
+        return POSITION_HEADLINE_MULT, f"headline ({headline_count}/{checked} articles)"
     elif best_position == "lead":
-        mult  = POSITION_LEAD_MULT
-        label = f"lead para ({lead_count}/{checked} articles)"
+        return POSITION_LEAD_MULT, f"lead para ({lead_count}/{checked} articles)"
     else:
-        mult  = 1.0
-        label = f"body only ({checked} articles)"
-
-    return mult, label
+        return 1.0, f"body only ({checked} articles)"
 
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
 
 def main():
+    if not NEWSAPI_KEY:
+        print("ERROR: NEWSAPI_KEY environment variable is not set.")
+        print("  Local: NEWSAPI_KEY=your_key python scrape_scores.py")
+        print("  CI:    add NEWSAPI_KEY to GitHub Actions secrets")
+        return
+
     print(f"Starting scrape — {datetime.datetime.now().isoformat()}")
-    print(f"Lookback: {LOOKBACK_DAYS}d | Xi boost: {XI_BOOST_MULTIPLIER}x | "
-          f"Age penalty >{RETIREMENT_AGE}: {AGE_PENALTY_FACTOR}x | "
-          f"Position pass: top {POSITION_TOP_N} | Members: {len(MEMBERS)}\n")
+    print(f"Source: NewsAPI (xinhua) | Lookback: {LOOKBACK_DAYS}d | "
+          f"Xi boost: {XI_BOOST_MULTIPLIER}x | Age penalty >{RETIREMENT_AGE}: "
+          f"{AGE_PENALTY_FACTOR}x | Position pass: top {POSITION_TOP_N} | "
+          f"Members: {len(MEMBERS)}\n")
 
     results   = []
     penalised = []
 
-    # ── Phase 1: base scoring for all members ─────────────────────────────
+    # ── Phase 1: base scoring ──────────────────────────────────────────────
     print("── Phase 1: Base scoring ──────────────────────────────────────")
     for name_variants, tier, role, birth_year in MEMBERS:
         primary_name = name_variants[0]
         age_str      = str(birth_year) if birth_year else "?"
         print(f"  [{tier.upper()}] {primary_name} (b.{age_str})...")
 
-        # Fixed override
         if primary_name in FIXED_SCORES:
             age = datetime.date.today().year - birth_year if birth_year else None
             results.append({
@@ -429,12 +381,10 @@ def main():
             print(f"    -> fixed at {FIXED_SCORES[primary_name]}")
             continue
 
-        # Fetch base + xi scores
         score, count, xi_count, last_seen = weighted_score(name_variants)
         print(f"    -> mentions: {count} (xi co-occur: {xi_count}), "
               f"weighted: {score:.2f}, last seen: {last_seen}")
 
-        # Age penalty
         penalty       = age_penalty_multiplier(birth_year)
         age_penalised = penalty < 1.0
         if age_penalised:
@@ -443,7 +393,6 @@ def main():
             penalised.append(primary_name)
         score *= penalty
 
-        # Tier floor
         final_score = max(score, TIER_FLOOR[tier])
         age_val     = datetime.date.today().year - birth_year if birth_year else None
 
@@ -463,11 +412,11 @@ def main():
             "fixed":                 False,
         })
 
-    # ── Intermediate sort to identify top N for position pass ─────────────
+    # intermediate sort to find top N
     results.sort(key=lambda r: r["raw_score"], reverse=True)
 
-    # ── Phase 2: article position pass — top N only ────────────────────────
-    print(f"\n── Phase 2: Article position pass (top {POSITION_TOP_N}) ────────────────")
+    # ── Phase 2: position pass — top N only ───────────────────────────────
+    print(f"\n── Phase 2: Position pass (top {POSITION_TOP_N}) ─────────────────────")
     for r in results[:POSITION_TOP_N]:
         if r.get("fixed"):
             r["position_label"]      = "fixed"
@@ -475,22 +424,18 @@ def main():
             continue
 
         print(f"  {r['name']}...")
-        name_variants = next(
-            m[0] for m in MEMBERS if m[0][0] == r["name"]
-        )
-        mult, label = position_multiplier(name_variants)
+        name_variants = next(m[0] for m in MEMBERS if m[0][0] == r["name"])
+        mult, label   = position_multiplier(name_variants)
         r["position_multiplier"] = mult
         r["position_label"]      = label
         r["raw_score"]           = r["raw_score"] * mult
-        print(f"    -> position: {label} → multiplier {mult}x "
-              f"→ adjusted score {r['raw_score']:.2f}")
+        print(f"    -> position: {label} → {mult}x → adjusted score {r['raw_score']:.2f}")
 
-    # Mark remaining members as not assessed
     for r in results[POSITION_TOP_N:]:
         if r["position_label"] == "pending":
             r["position_label"] = "not assessed"
 
-    # ── Final normalise, sort, rank ────────────────────────────────────────
+    # ── Normalise, sort, rank ──────────────────────────────────────────────
     total = sum(r["raw_score"] for r in results)
     for r in results:
         r["probability"] = round(r["raw_score"] / total * 100, 4)
