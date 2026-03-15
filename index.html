@@ -218,8 +218,9 @@
       align-items: center;
       margin-bottom: 48px;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 720px) {
       .chart-grid { grid-template-columns: 1fr; }
+      .chart-wrap { height: 240px; }
     }
     .chart-wrap {
       position: relative;
@@ -343,6 +344,8 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       overflow: hidden;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
     table {
       width: 100%;
@@ -558,6 +561,54 @@
       margin-top: 16px;
     }
     .share-btn:hover { border-color: white; color: white; }
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+
+    /* Header — hide nav links, keep logo + badge */
+    .header-nav { display: none; }
+    .header-inner { padding: 0 16px; }
+
+    /* Hero */
+    .hero { padding: 40px 16px 32px; }
+    .hero-stats { gap: 20px; }
+    .hero-stat-num { font-size: 22px; }
+    .hero-stat-label { font-size: 10px; }
+
+    /* Main padding */
+    .main-wrap { padding: 24px 16px 48px; }
+
+    /* Controls — wrap and shrink buttons */
+    .controls-row { gap: 6px; }
+    .tier-btn, .reshuffle-btn {
+      font-size: 10px;
+      padding: 4px 10px;
+    }
+    .reshuffle-btn { margin-left: 0; width: 100%; text-align: center; margin-top: 4px; }
+
+    /* Table — hide lower-priority columns on small screens */
+    .col-role      { display: none; }
+    .col-gossip    { display: none; }
+    .col-lastseen  { display: none; }
+    .col-assessment { display: none; }
+
+    /* Table cells tighter */
+    td, th { padding: 7px 8px; }
+    .member-name { font-size: 12px; }
+    .odds-bar { width: 32px; }
+
+    /* Disclaimer section */
+    .disclaimer-section { padding: 24px 20px; }
+    .disclaimer-section h2 { font-size: 16px; }
+
+    /* Methodology */
+    .methodology { padding: 16px 18px; }
+  }
+
+  @media (max-width: 420px) {
+    .hero-stats { gap: 14px; }
+    .hero-stat-num { font-size: 18px; }
+    .tier-btn { font-size: 9px; padding: 3px 8px; }
+  }
   </style>
 </head>
 <body>
@@ -648,11 +699,11 @@
           <th>#</th>
           <th>Name</th>
           <th>Body</th>
-          <th>Role</th>
+          <th class="col-role">Role</th>
           <th class="r">Probability</th>
-          <th class="r">Assessment</th>
-          <th>Gossip</th>
-          <th class="r">Last Seen</th>
+          <th class="r col-assessment">Assessment</th>
+          <th class="col-gossip">Gossip</th>
+          <th class="r col-lastseen">Last Seen</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -1105,16 +1156,16 @@ function renderTable() {
       <td><span class="rank-num">${m.rank}</span></td>
       <td><span class="member-name">${m.name}</span></td>
       <td><span class="tier-pill ${tierClass(m.tier)}">${tierText(m.tier)}</span></td>
-      <td style="color:#666;font-size:12px">${m.role}</td>
+      <td class="col-role" style="color:#666;font-size:12px">${m.role}</td>
       <td class="r">
         <div class="odds-bar-wrap">
           <div class="odds-bar"><div class="odds-bar-fill" style="width:${barPct}%;background:${vibe.color}"></div></div>
           <span class="odds-pct" style="color:${m.pct>5?'#1a1a1a':'#888'}">${m.pct.toFixed(2)}%</span>
         </div>
       </td>
-      <td class="r"><span class="vibe-label" style="color:${vibe.color}">${vibe.label}</span></td>
-      <td><span class="gossip-cell" title="${gossip}">${gossip}</span></td>
-      <td class="r">${lastSeenCell}</td>
+      <td class="r col-assessment"><span class="vibe-label" style="color:${vibe.color}">${vibe.label}</span></td>
+      <td class="col-gossip"><span class="gossip-cell" title="${gossip}">${gossip}</span></td>
+      <td class="r col-lastseen">${lastSeenCell}</td>
     </tr>`;
   }).join("");
 
