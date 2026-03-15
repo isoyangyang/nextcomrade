@@ -25,8 +25,10 @@ import json
 import time
 import datetime
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 from urllib.parse import quote_plus
+import warnings
+warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
 
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
@@ -156,12 +158,17 @@ def _fetch_rss(query: str) -> BeautifulSoup:
         "User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)",
         "Accept":     "application/rss+xml, application/xml, text/xml",
     }
+    print(f"      fetching: {url[:80]}...")
     try:
-        r = requests.get(url, headers=headers, timeout=15)
+        r = requests.get(url, headers=headers, timeout=8)
+        print(f"      status: {r.status_code}, bytes: {len(r.content)}")
         r.raise_for_status()
         return BeautifulSoup(r.text, "html.parser")
+    except requests.exceptions.Timeout:
+        print(f"      TIMEOUT — Google blocked or slow")
+        return BeautifulSoup("", "html.parser")
     except Exception as e:
-        print(f"    WARNING: RSS fetch failed: {e}")
+        print(f"      WARNING: RSS fetch failed: {e}")
         return BeautifulSoup("", "html.parser")
 
 
