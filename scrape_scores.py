@@ -155,12 +155,13 @@ def _xinhua_get(keyword: str, days_ago_start: int, days_ago_end: int) -> int:
         "pageSize":  10,
     }
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)",
-        "Accept":     "application/json, text/plain, */*",
-        "Referer":    "https://so.news.cn/",
+        "User-Agent":   "Mozilla/5.0 (compatible; research-bot/1.0)",
+        "Accept":       "application/json, text/plain, */*",
+        "Referer":      "https://so.news.cn/",
+        "Content-Type": "application/json",
     }
     try:
-        r = requests.get(XINHUA_SEARCH, params=params, headers=headers, timeout=10)
+        r = requests.post(XINHUA_SEARCH, json=params, headers=headers, timeout=10)
         r.raise_for_status()
         data = r.json()
         return int(
@@ -192,12 +193,13 @@ def _xinhua_get_urls(keyword: str, days_ago_start: int, n: int = POSITION_ARTICL
         "pageSize":  n,
     }
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; research-bot/1.0)",
-        "Accept":     "application/json, text/plain, */*",
-        "Referer":    "https://so.news.cn/",
+        "User-Agent":   "Mozilla/5.0 (compatible; research-bot/1.0)",
+        "Accept":       "application/json, text/plain, */*",
+        "Referer":      "https://so.news.cn/",
+        "Content-Type": "application/json",
     }
     try:
-        r = requests.get(XINHUA_SEARCH, params=params, headers=headers, timeout=10)
+        r = requests.post(XINHUA_SEARCH, json=params, headers=headers, timeout=10)
         r.raise_for_status()
         data  = r.json()
         items = (
