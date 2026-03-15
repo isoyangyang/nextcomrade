@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Next Comrade — Xi Jinping Succession Tracker</title>
+  <meta name="description" content="Real-time™ probabilistic analysis of CCP succession. 200 candidates. One throne. Endless speculation." />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nextcomrade.com/" />
+  <meta property="og:title" content="Next Comrade — Xi Jinping Succession Tracker" />
+  <meta property="og:description" content="Who will lead China after Xi? Our proprietary intelligence network has the answer." />
+  <meta property="og:image" content="https://nextcomrade.com/og-image.png" />
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://nextcomrade.com/" />
+  <meta property="twitter:title" content="Next Comrade — Xi Jinping Succession Tracker" />
+  <meta property="twitter:description" content="200 CCP members. One throne. Odds reset daily." />
+  <meta property="twitter:image" content="https://nextcomrade.com/og-image.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #C0392B;
+      --red-dark: #922B21;
+      --red-light: #F9EBEA;
+      --red-mid: #E74C3C;
+      --gold: #B7950B;
+      --gold-light: #F9F3E3;
+      --ink: #1a1a1a;
+      --ink-mid: #4a4a4a;
+      --ink-light: #8a8a8a;
+      --paper: #FDFCFA;
+      --paper-mid: #F5F3EF;
+      --border: #E8E4DC;
+      --border-strong: #D0CAC0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--ink);
+      color: white;
+      padding: 0;
+      border-bottom: 3px solid var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+    }
+    .site-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-star {
+      color: var(--red-mid);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .header-nav {
+      display: flex;
+      gap: 4px;
+    }
+    .header-nav a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .header-nav a:hover { color: white; background: rgba(255,255,255,0.08); }
+    .header-badge {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      background: var(--red);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      color: white;
+      padding: 56px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '★ ★ ★ ★ ★';
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--red-mid);
+      font-size: 13px;
+      letter-spacing: 8px;
+      opacity: 0.7;
+    }
+    .hero-eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--red-mid);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      margin-top: 10px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .hero-title span { color: var(--red-mid); }
+    .hero-subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat {
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .hero-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      margin: 28px auto 0;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .main-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    /* ── CHART SECTION ── */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 700px) {
+      .chart-grid { grid-template-columns: 1fr; }
+    }
+    .chart-wrap {
+      position: relative;
+      height: 300px;
+    }
+    .donut-center {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+    }
+    .donut-center-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--ink);
+      display: block;
+      line-height: 1;
+    }
+    .donut-center-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    #top-legend { font-size: 13px; }
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 0.5px solid var(--border);
+      cursor: default;
+    }
+    .legend-swatch {
+      width: 10px; height: 10px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .legend-name {
+      flex: 1;
+      font-size: 13px;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .legend-pct {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+      min-width: 42px;
+      text-align: right;
+    }
+
+    /* ── TIER PILL ── */
+    .tier-pill {
+      font-size: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .tier-psc  { background: var(--red-light);  color: var(--red-dark); }
+    .tier-pb   { background: #EBF5FB;  color: #1A5276; }
+    .tier-cc   { background: var(--paper-mid); color: var(--ink-light); }
+
+    /* ── CONTROLS ── */
+    .controls-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .tier-btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      padding: 5px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: all 0.15s;
+      letter-spacing: 0.3px;
+    }
+    .tier-btn:hover { border-color: var(--ink); color: var(--ink); }
+    .tier-btn.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    .reshuffle-btn {
+      margin-left: auto;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      padding: 5px 14px;
+      border: 1px solid var(--red);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--red);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .reshuffle-btn:hover { background: var(--red); color: white; }
+
+    /* ── TABLE ── */
+    .table-showing {
+      font-size: 11px;
+      color: var(--ink-light);
+      font-family: 'IBM Plex Mono', monospace;
+      margin-bottom: 8px;
+    }
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead tr {
+      background: var(--paper-mid);
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      padding: 9px 14px;
+      text-align: left;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      color: var(--ink-light);
+      text-transform: uppercase;
+    }
+    th.r { text-align: right; }
+    td {
+      padding: 8px 14px;
+      border-bottom: 0.5px solid var(--border);
+      color: var(--ink);
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:nth-child(even) { background: var(--paper-mid); }
+    tbody tr:hover { background: #F0EDE6; }
+    td.r { text-align: right; }
+    .rank-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-light);
+    }
+    .member-name { font-weight: 500; }
+    .odds-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .odds-bar {
+      width: 52px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .odds-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+    .odds-pct {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      min-width: 44px;
+      text-align: right;
+    }
+    .vibe-label {
+      font-size: 11px;
+      font-family: 'IBM Plex Mono', monospace;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .gossip-cell {
+      font-size: 11px;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--ink-mid);
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+      text-align: center;
+      font-size: 12px;
+      color: var(--ink-light);
+      font-style: italic;
+      padding: 12px;
+      background: var(--paper-mid);
+    }
+
+    /* ── SEPARATOR ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 48px 0;
+    }
+    .red-divider {
+      border: none;
+      border-top: 2px solid var(--red);
+      width: 40px;
+      margin: 0 0 20px;
+    }
+
+    /* ── METHODOLOGY ── */
+    .methodology {
+      background: var(--paper-mid);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--red);
+      border-radius: 0 6px 6px 0;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+    .methodology h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .methodology p {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+    .methodology code {
+      font-family: 'IBM Plex Mono', monospace;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 12px;
+      color: var(--red-dark);
+    }
+
+    /* ── DISCLAIMER PAGE ── */
+    .disclaimer-section {
+      background: var(--ink);
+      color: white;
+      border-radius: 8px;
+      padding: 36px 40px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .disclaimer-section::before {
+      content: '§';
+      position: absolute;
+      right: 30px;
+      top: 20px;
+      font-size: 120px;
+      font-family: 'Playfair Display', serif;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .disclaimer-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--red-mid);
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    .disclaimer-section p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .disclaimer-section p:last-child { margin-bottom: 0; }
+    .disclaimer-section strong { color: rgba(255,255,255,0.9); }
+    .disclaimer-section a { color: var(--red-mid); text-decoration: none; }
+    .disclaimer-list {
+      list-style: none;
+      margin: 12px 0;
+    }
+    .disclaimer-list li {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.7;
+    }
+    .disclaimer-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--red-mid);
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.3px;
+    }
+    .site-footer span { color: var(--red-mid); }
+
+    /* ── SHARE BTN ── */
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.15s;
+      margin-top: 16px;
+    }
+    .share-btn:hover { border-color: white; color: white; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="site-logo">
+      <span class="logo-star">★</span>
+      Next Comrade
+    </a>
+    <nav class="header-nav">
+      <a href="#tracker">Tracker</a>
+      <a href="#sources">Sources</a>
+      <a href="#disclaimer">Disclaimer</a>
+    </nav>
+    <span class="header-badge">LIVE™</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Classified · For Internal Use Only</p>
+  <h1 class="hero-title">Who's <span>Next</span>,<br>Comrade?</h1>
+  <p class="hero-subtitle">Comprehensive probabilistic succession analysis for the People's Republic. 200 candidates. One throne. Updated daily.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num">200</span>
+      <span class="hero-stat-label">Candidates</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">7</span>
+      <span class="hero-stat-label">PSC Members</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">0</span>
+      <span class="hero-stat-label">Xi's Endorsements</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num">∞</span>
+      <span class="hero-stat-label">Ways This Goes Wrong</span>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+
+  <button class="share-btn" onclick="shareOnTwitter()">
+    ✕ Share on X / Twitter
+  </button>
+</section>
+
+<!-- MAIN -->
+<main class="main-wrap" id="tracker">
+
+  <!-- Chart -->
+  <p class="section-label">Top 10 Contenders</p>
+  <h2 class="section-title">Current Probability Distribution</h2>
+
+  <div class="chart-grid">
+    <div class="chart-wrap">
+      <canvas id="donutChart"></canvas>
+      <div class="donut-center">
+        <span class="donut-center-num">200</span>
+        <span class="donut-center-label">candidates</span>
+      </div>
+    </div>
+    <div id="top-legend"></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls-row" id="tracker">
+    <button class="tier-btn active" id="btn-all"  onclick="filterTier('all')">All (200)</button>
+    <button class="tier-btn"        id="btn-psc"  onclick="filterTier('psc')">PSC (7)</button>
+    <button class="tier-btn"        id="btn-pb"   onclick="filterTier('pb')">Politburo (18)</button>
+    <button class="tier-btn"        id="btn-cc"   onclick="filterTier('cc')">Central Committee (175)</button>
+    <button class="reshuffle-btn"   onclick="reshuffle()">↻ Re-run Model</button>
+  </div>
+
+  <p class="table-showing" id="showing-label">Showing all 200 members</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Body</th>
+          <th>Role</th>
+          <th class="r">Probability</th>
+          <th class="r">Assessment</th>
+          <th>Gossip</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Sources -->
+  <div id="sources">
+    <p class="section-label">Intelligence</p>
+    <h2 class="section-title">Sources &amp; Methodology</h2>
+    <div class="methodology">
+      <h3>How the model works</h3>
+      <p>
+        Each candidate is assessed using a proprietary weighting system that incorporates their position in the CCP hierarchy, seniority, factional alignment, and proximity to Xi Jinping at official functions. PSC members carry substantially higher prior probability than Politburo members, who in turn outrank the Central Committee. Assessments are recalibrated daily as new intelligence becomes available.
+      </p>
+      <p style="margin-top: 10px;">
+        Probabilities are normalised to sum to 100% across all 200 tracked candidates. In practice, the top 7 PSC members collectively account for the majority of total probability mass — a reflection of how power is actually concentrated in a Leninist party-state. The remaining probability is distributed across 193 members who are, we are told, honoured to be included.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Disclaimer -->
+  <div id="disclaimer">
+    <p class="section-label">Legal &amp; Political</p>
+    <h2 class="section-title">Important Disclaimers</h2>
+  </div>
+  <div class="disclaimer-section">
+    <h2>⚠ Please Read Before Continuing Your Revolutionary Activities</h2>
+    <p>All probabilities displayed on this site are produced by a meticulous intelligence gathering process, geopolitical analysis, inside sources, and Zhongnanhai cleaning staff.</p>
+    <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.3); font-family: 'IBM Plex Mono', monospace;">
+      © nextcomrade.com · Not affiliated with the CCP, CIA, MI6, or anyone who actually knows anything
+    </p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>★ <span>nextcomrade.com</span> ★ — Odds reset daily. Results not guaranteed. Xi Jinping not consulted.</p>
+  <p style="margin-top: 6px; font-size: 11px;">Built with Math.random() · Hosted somewhere outside China</p>
+</footer>
+
+<!-- Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const MEMBERS = [
+  // PSC
+  // Wang Huning: fixed — the ideas man, not a succession candidate
+  { name:"Li Qiang",       tier:"psc", role:"Premier, State Council",            base:22,  fixed:null },
+  { name:"Zhao Leji",      tier:"psc", role:"Chairman, NPC",                     base:18,  fixed:null },
+  { name:"Wang Huning",    tier:"psc", role:"Chairman, CPPCC",                   base:0,   fixed:0.08 },
+  { name:"Cai Qi",         tier:"psc", role:"Director, General Office",          base:11,  fixed:null },
+  // Ding Xuexiang: collapsed — sources suggest diminished standing
+  { name:"Ding Xuexiang",  tier:"psc", role:"Executive Vice Premier",            base:0,   fixed:null, collapsed:true },
+  // Li Xi: collapsed — CCDI chief, powerful but not a succession figure
+  { name:"Li Xi",          tier:"psc", role:"Secretary, CCDI",                   base:0,   fixed:null, collapsed:true },
+  { name:"Han Zheng",      tier:"psc", role:"Vice President (State)",            base:5,   fixed:null },
+  // Politburo
+  { name:"Chen Wenqing",   tier:"pb",  role:"Director, Political-Legal Comm.",   base:3.2 },
+  { name:"Zhang Youxia",   tier:"pb",  role:"Vice Chairman, CMC",                base:2.8 },
+  { name:"He Weidong",     tier:"pb",  role:"Vice Chairman, CMC",                base:2.5 },
+  { name:"Liu Guozhong",   tier:"pb",  role:"Vice Premier",                      base:2.2 },
+  { name:"Ma Xingrui",     tier:"pb",  role:"Party Secretary, Xinjiang",         base:1.9 },
+  { name:"Yuan Jiajun",    tier:"pb",  role:"Party Secretary, Chongqing",        base:1.7 },
+  { name:"Li Ganjie",      tier:"pb",  role:"Party Secretary, Guangdong",        base:1.5 },
+  { name:"Shen Yiqin",     tier:"pb",  role:"Executive Vice Premier",            base:1.4 },
+  { name:"Zhang Guoqing",  tier:"pb",  role:"Vice Premier",                      base:1.3 },
+  { name:"Wang Yi",        tier:"pb",  role:"Director, Foreign Affairs Comm.",   base:1.2 },
+  { name:"Li Hongzhong",   tier:"pb",  role:"Deputy Chair, NPC",                 base:1.1 },
+  { name:"Chen Min'er",    tier:"pb",  role:"Party Secretary, Tianjin",          base:1.0 },
+  { name:"Yin Li",         tier:"pb",  role:"Party Secretary, Shanghai",         base:0.9 },
+  { name:"He Lifeng",      tier:"pb",  role:"Vice Premier",                      base:0.8 },
+  { name:"Liu Jinguo",     tier:"pb",  role:"Deputy Secretary, CCDI",            base:0.7 },
+  { name:"Guo Shengkun",   tier:"pb",  role:"Deputy Chair, NPC",                 base:0.6 },
+  { name:"Huang Kunming",  tier:"pb",  role:"Former Party Secretary, Guangdong", base:0.5 },
+  { name:"Dong Jun",       tier:"pb",  role:"Minister of National Defense",      base:0.5 },
+];
+
+// CC members
+const CC_NAMES = [
+  "Bai Chunli","Bao Xingjian","Bi Jingquan","Bu Xiaolin","Cai Fang","Cao Chunting","Cao Jianming",
+  "Chai Shaoliang","Chang Kuo","Chen Guangguo","Chen Haojian","Chen Jining","Chen Jiqing",
+  "Chen Quanguo","Chen Runhua","Chen Siqing","Chen Xi","Chen Zhengrong","Cheng Li","Chi Zhijing",
+  "Cui Jiangyuan","Cui Shijun","Dang Jianming","Deng Xiaogang","Di Jinhua","Du Jiahao",
+  "Duan Chunhua","Fan Changlong","Fan Xuejun","Fang Fenghui","Fang Wanchang","Fei Gaoyun",
+  "Feng Fei","Fu Liquan","Fu Zhenghua","Gao Jin","Gao Jinsong","Gong Hui","Gou Zhongwen",
+  "Gu Chaohai","Guan Junbo","Gui Congyou","Guo Gang","Guo Jiashu","Han Changfu","Han Junliang",
+  "Han Wenxiu","Hao Ming","He Ping","He Zhongyou","Hou Kai","Hu Changqing","Hu Chunhua",
+  "Hu Heping","Hu Jianzhong","Hu Zemin","Huang Shuxian","Huang Wei","Ji Bingxuan","Jia Qinglin",
+  "Jiang Xinzhi","Jiang Yi","Jin Zhuanglong","Kang Rijun","Kong Xuanyou","Lei Junqing",
+  "Li Bin","Li Chengkui","Li Dajin","Li Feng","Li Gong","Li Guoying","Li Hansheng",
+  "Li Jianguo","Li Juan","Li Kang","Li Maosong","Li Ming","Li Peng","Li Ruiyu",
+  "Li Shulei","Li Tengfei","Li Wei","Li Xin","Li Yang","Li Yunze","Li Zhanshu",
+  "Liang Yanshun","Liao Guoqiang","Liao Min","Lin Duo","Lin Jun","Liu Bin","Liu Chunmei",
+  "Liu He","Liu Jinsong","Liu Jun","Liu Kunyi","Liu Peng","Liu Shaoliang","Liu Zhenli",
+  "Luo Baoming","Luo Huining","Luo Shugang","Ma Shan","Ma Wenrui","Mao Weiming","Mi Feng",
+  "Miao Xu","Mo Gaoyi","Ni Yuefeng","Nie Chenxi","Ning Jizhe","Niu Qingbao","Niu Yingji",
+  "Pan Gongshen","Peng Bo","Peng Jiaxue","Qian Xiaoqian","Qiao Jianxin","Qin Gang",
+  "Qin Yizhi","Qu Qing","Ren Guoqiang","Ren Hongbin","Shen Haixiong","Shi Taifeng",
+  "Shi Yubao","Song Tao","Su Hong","Su Shulin","Sun Chunlan","Sun Jinlong","Sun Shaocheng",
+  "Tang Fangyu","Tang Liangzhi","Tang Yijun","Tao Jingwen","Tian Guohua","Tong Daochi",
+  "Tu Mingjian","Wan Gang","Wang Chen","Wang Dong","Wang Dongfeng","Wang Gang","Wang Guanzhong",
+  "Wang Junzheng","Wang Lei","Wang Min","Wang Peng","Wang Quanzhong","Wang Xiaohong",
+  "Wang Xin","Wang Xiuqing","Wang Xuedong","Wang Yong","Wang Zhigang","Wei Fenghe",
+  "Wen Keli","Wu Chao","Wu Jianghao","Wu Kang","Wu Yuliang","Xia Baolong","Xiao Jie",
+  "Xu Dazhe","Xu Lin","Xu Luode","Xu Qiliang","Xu Shousheng","Yan Jinghai","Yang Jinshan",
+  "Yang Shuping","Yang Xiaodu","Yang Yi","Yao Qing","You Zhanshe","Yu Qun",
+  "Yuan Guiren","Zhan Kailong","Zhang Chao","Zhang Haiwen","Zhang Jian","Zhang Jun",
+  "Zhang Qingli","Zhang Shengmin","Zhang Shuguang","Zhang Xia","Zhang Yi","Zhang Yongzhen",
+  "Zhao Kezhi","Zhao Wanchang","Zhao Xiujiang","Zheng Zanguang","Zhou Qiang","Zhou Zhiyong",
+  "Zhu Hailun","Zhu Rongji","Zou Jiahua"
+];
+
+CC_NAMES.slice(0,175).forEach((name, i) => {
+  // A handful of CC members punch well above their weight — elevated by our sources
+  const elevated = ["Chen Quanguo", "Hu Chunhua", "Li Shulei", "Qin Gang", "Chen Xi"];
+  const isElevated = elevated.includes(name);
+  MEMBERS.push({ name, tier:"cc", role:"Central Committee Member", base:0, elevated: isElevated });
+});
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let currentData = [];
+let currentFilter = "all";
+let chart = null;
+
+const COLORS = [
+  "#C0392B","#D85A30","#B7950B","#1D8A6E","#1A5276",
+  "#6C3483","#C0392B","#784212","#1F618D","#117A65","#5D6D7E"
+];
+
+// ── ODDS ENGINE ───────────────────────────────────────────────────────────────
+function generateOdds() {
+  const data = MEMBERS.map(m => {
+    let raw;
+    if (m.fixed !== undefined && m.fixed !== null) {
+      // Hardcoded absolute value — Wang Huning
+      raw = m.fixed;
+    } else if (m.collapsed) {
+      // PSC member dragged down to upper-CC territory
+      raw = 0.2 + Math.random() * 0.4;
+    } else if (m.elevated) {
+      // CC member elevated to lower-Politburo territory
+      raw = 1.0 + Math.random() * 1.8;
+    } else if (m.tier === "psc") {
+      raw = Math.max(0.5, m.base + (Math.random()-0.5)*5);
+    } else if (m.tier === "pb") {
+      raw = Math.max(0.05, m.base + (Math.random()-0.5)*0.8);
+    } else {
+      raw = Math.random() * 0.35;
+    }
+    return { ...m, raw };
+  });
+  const total = data.reduce((s,m) => s + m.raw, 0);
+  data.forEach(m => m.pct = m.raw / total * 100);
+  data.sort((a,b) => b.pct - a.pct);
+  data.forEach((m,i) => m.rank = i+1);
+  return data;
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function tierClass(tier) {
+  return tier === "psc" ? "tier-psc" : tier === "pb" ? "tier-pb" : "tier-cc";
+}
+function tierText(tier) {
+  return tier === "psc" ? "PSC" : tier === "pb" ? "Politburo" : "CC";
+}
+function vibeFor(pct, tier, flags) {
+  if (flags && flags.fixed !== undefined && flags.fixed !== null)
+    return { label:"✍ Theorist only",   color:"#888" };
+  if (flags && flags.collapsed)
+    return { label:"📉 Sources concerned", color:"#C0392B" };
+  if (flags && flags.elevated)
+    return { label:"⚡ Dark horse",       color:"#B7950B" };
+  if (tier==="psc" && pct > 15) return { label:"🔥 Scorching",        color:"#C0392B" };
+  if (tier==="psc" && pct > 10) return { label:"📈 Very warm",         color:"#BA7517" };
+  if (tier==="psc")              return { label:"🤔 Possible",          color:"#888" };
+  if (tier==="pb"  && pct > 2)  return { label:"👀 Watching",          color:"#1A5276" };
+  if (tier==="pb")               return { label:"🙏 Optimistic",        color:"#888" };
+  return                                { label:"✉ Has applied",       color:"#aaa" };
+}
+
+// ── CHART ─────────────────────────────────────────────────────────────────────
+function updateChart() {
+  const top10 = currentData.slice(0,10);
+  const rest  = currentData.slice(10).reduce((s,m) => s+m.pct, 0);
+  const labels = [...top10.map(m=>m.name), "Everyone else"];
+  const values = [...top10.map(m=>parseFloat(m.pct.toFixed(2))), parseFloat(rest.toFixed(2))];
+
+  if (chart) chart.destroy();
+  chart = new Chart(document.getElementById("donutChart"), {
+    type: "doughnut",
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: [...COLORS.slice(0,10),"#ccc"],
+        borderWidth: 2,
+        borderColor: "#FDFCFA",
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: "65%",
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.label}: ${ctx.parsed.toFixed(2)}%`
+          }
+        }
+      }
+    }
+  });
+
+  // Legend
+  document.getElementById("top-legend").innerHTML = top10.map((m,i) => `
+    <div class="legend-row">
+      <span class="legend-swatch" style="background:${COLORS[i]}"></span>
+      <span class="legend-name">${m.name}</span>
+      <span class="tier-pill ${tierClass(m.tier)}">${tierText(m.tier)}</span>
+      <span class="legend-pct">${m.pct.toFixed(1)}%</span>
+    </div>
+  `).join("");
+}
+
+// ── GOSSIP ────────────────────────────────────────────────────────────────────
+const GOSSIP = [
+  "Suspicion of corruption investigation","Unpopular policy recommendations","High fived Xi in the hallway",
+  "Large purchases of maotai","Uncharacteristic demeanour lately","Missed recent Politburo session",
+  "Seen lunching with foreign diplomats","Unusually long Xinhua profile","Speech applauded 47 times",
+  "Acquired a second villa in Hainan","Protégé recently promoted twice","Praised in People's Daily op-ed",
+  "Sources report new tailor","Attended Xi's birthday dinner","Suspiciously frequent Beidaihe visits",
+  "Faction ally just arrested","Wife seen at luxury boutique","Cited in internal circular",
+  "Missed standing ovation by half a second","Forwarded Xi Thought newsletter",
+  "Rumoured speech at closed-door session","Subordinates unusually nervous","Seen jogging with CMC aide",
+  "Approved obscure infrastructure project","Visited Yan'an twice this quarter",
+  "Photo placement on front page improved","Appeared thinner at state banquet",
+  "Cited favourably in CCDI briefing","Name dropped in regional party congress",
+  "Office recently renovated","Assigned new security detail","Gave unusually long toast",
+  "Photograph with Xi published without caption","Declined to comment on policy shift",
+  "Former aide promoted to vice-minister","Tea selection upgraded at meetings",
+  "Applauded Xi slightly ahead of others","Mentioned in politburo work report",
+  "Recent disappearance from public events","Unusual frequency of overseas travel",
+  "Attended three galas in one week","Car convoy unusually large","New portrait in provincial offices",
+  "Long telephone call with Xi's office","Submitted revised self-criticism",
+  "Seen at Mao's mausoleum unannounced","Declined overseas summit attendance",
+  "Quoted in internal party journal","Sources report heightened security",
+  "Subordinate under CCDI scrutiny","Visited rural poverty sites on camera",
+  "Gave stirring speech in minority region","Recent health check unusually private",
+  "Promoted nephew to county level","Speech length increased 12 minutes",
+  "Arrived first to Politburo meeting","Left last at national congress session",
+  "Issued statement on Xi Thought compliance","Signed loyalty circular twice",
+  "Organised study session on party history","Known friendship with Xi from Fujian days",
+  "Previously allied with Bo Xilai camp","Survived three rounds of anti-corruption",
+  "Profile in foreign press described as moderate","Cited in three separate internal memos",
+  "Staffers reportedly updating CVs","Lunch meetings now held at Zhongnanhai",
+  "Overheard using Xi's preferred terminology","Recently toured flood-hit province",
+  "Seen at military parade front row","Allocated extra airtime on CCTV",
+  "Declined to attend Zhou Enlai memorial","Unusually well-received at CPPCC",
+  "Daughter studying at Tsinghua","Posted selfie at Jinggangshan base",
+  "Waved at Xi, Xi waved back","Maotai consumption at three-year high",
+  "Endorsed new carbon neutrality initiative","Positioned left of centre at group photo",
+  "Speech punctuated with Xi quotes","Never photographed frowning at Xi",
+  "Third star on uniform appeared overnight","New armoured vehicle assigned",
+  "Cited by provincial governors three times","Promoted three subordinates in one week",
+  "Former boss recently exited stage left","Never photographed looking bored",
+  "Attended obscure Marxist theory symposium","Known interest in historical materialism",
+  "Sources describe as 'very focused'","Rejected foreign think-tank invitation",
+  "Visited model village on national TV","Local officials unusually eager to please",
+  "New portrait unveiled in party school","Desk recently moved closer to Xi's",
+  "Appeared on cover of Seeking Truth","Quoted in opening paragraph of resolution",
+  "Accepted post nobody else wanted","Turned down golf invitation from Alibaba exec",
+  "Children enrolled in party school","Speaks fluent Xi Jinping vocabulary",
+  "Handshake lasted an estimated 4.2 seconds","Name misspelled in official document — retraction issued",
+  "Presented Xi with a locally crafted gift","Held umbrella for Xi in light drizzle",
+  "Unusually long bilateral with Xi","Cleared for CMC security briefing",
+  "Known preference for plain congee at meetings","Recently co-authored party theory paper",
+  "Faction rivals conspicuously absent","Attended every session without notes",
+  "Quoted extensively in provincial party journal","Transferred to more senior post quietly",
+  "Sources describe 'positive energy' emanating","New official biography quietly updated",
+  "Appeared on screen behind Xi three times","Spotted at Diaoyutai State Guesthouse",
+  "Attended Politburo study session in front row","Gave away branded notebooks with Xi quotes",
+  "Delivered speech in Mandarin and Cantonese","Visited three revolutionary bases in one trip",
+  "Has read Selected Works four times allegedly","Frequently quoted by Xinhua commentators",
+  "Received award for frugal governance","Banned imported pens from office",
+  "Sources say very clean desk","Recently toured military academy",
+  "Took two flights economy class, photographed","Speech praised for correct ideological line",
+  "Former associate quietly elevated","Submitted detailed five-year plan",
+  "Described as 'reliable' in leaked cable","Attended Xi's inspection of new metro line",
+  "Unusual spike in provincial media coverage","Name spoken on CCTV evening news",
+  "Opened new railway line with Xi","Photographed planting a tree with Xi",
+  "Wrote marginal notes on policy document","Received Xi's personal reply to report",
+  "Known to take detailed notes","Never absent from extraordinary sessions",
+  "Organised discipline inspection in own ministry","Two subordinates surrendered voluntarily",
+  "Submitted 40-page self-evaluation","Sources say reading habits impeccable",
+  "Frequently uses phrase 'as the General Secretary teaches'","Known collection of Xi speeches",
+  "Attended lecture at Central Party School","Graduated from same class as Xi",
+  "Worked in same province as Xi in 1990s","Recommended by Xi's former Fujian colleague",
+  "Office walls reportedly covered in Xi quotes","Refused limousine, took party car",
+  "Donated bonus to flood relief fund","Self-criticism rated 'thorough' by CCDI",
+  "No foreign holidays in seven years","Net worth mysteriously stable",
+  "Family assets declared on time","Accepted only one gift: a party almanac",
+  "Attends 6am study session voluntarily","Never photographed at foreign luxury brand event",
+  "Recently published essay on dialectical materialism","Known to quote Lenin at dinners",
+  "Maintains direct hotline to provincial governors","Staff described as 'disciplined and motivated'",
+  "Recently completed anti-corruption certification","Attended model worker banquet front table",
+  "Praised farmers on national TV","Rolled up sleeves during factory inspection",
+  "Endorsed without reservation in party circular","Photo tweeted by Xinhua three times in a week",
+  "Unusually specific praise in party communiqué","Handpicked for sensitive overseas delegation",
+  "Described in foreign media as 'pragmatic'","Known to draft speeches personally",
+  "Shown in profile shot next to Xi's portrait","Cited in congress work report paragraph 3",
+  "Welcomed three delegations in one morning","Named as key implementor of core policy",
+  "Identified as 'model cadre' in party school case study","Source of reliable policy intelligence",
+  "Sent personally signed letter to veterans","Never contradicted Xi in public",
+  "Corrected subordinate who misquoted Xi","Led ceremonial wreath at Tiananmen",
+  "Delivered children's day speech unscripted","Finished speech before allocated time",
+  "Asked good question at politburo session","Referred to by Xi on first-name basis allegedly",
+  "Seen at same table as Xi at Spring Festival","Photographed laughing at Xi's joke",
+  "Nodded vigorously during Xi's address","Applause lasted two seconds longer than average",
+  "Took detailed notes during Xi's speech","Reading glasses match Xi's preferred style",
+  "Bought everyone in department a copy of Xi's book","Sources say excellent standing in CMC",
+  "Donated personal library to party school","Never photographed with a foreign journalist",
+  "Participated in national poverty alleviation relay","Adopted model village personally",
+  "Posted photo of humble childhood home","Gave speech without notes, nobody noticed mistakes",
+  "Submitted budget under target three years running","Never ordered seafood at state banquet",
+  "Described by think tank as 'capable administrator'","Sources in Shanghai report increased influence",
+  "Recently toured three Belt and Road projects","Returned from Central Asia with favourable communiqué",
+  "Cited in white paper on digital economy","Oversees infrastructure project ahead of schedule",
+  "Delivered anti-corruption speech considered unusually candid","Office received highest discipline score",
+  "Subordinates never photographed looking relaxed","Department achieved full Xi Thought certification",
+  "Submitted 12-point improvement plan unsolicited","Responded to inspection team within one hour",
+  "Runs an internal study circle on party theory","Colleagues describe as 'always prepared'",
+  "Raised eyebrow at budget meeting, others took note","Said 'of course' when asked about Xi's leadership",
+  "New wife previously worked in central organisation department","Brother-in-law is a retired PLA general",
+  "Cousin chairs a state-owned enterprise","Uncle was a model labourer in 1978",
+  "Father reportedly knew Deng Xiaoping's aide","Mother is a retired provincial party secretary",
+  "Alma mater recently named key party school","Graduate thesis on socialist modernisation theory",
+  "Postdoctoral work on party discipline mechanisms","Speaks three dialects fluently",
+  "Known to have personally translated a Lenin chapter","Reads internal documents before breakfast",
+  "Annotated the latest party resolution publicly","Sent 400-character message of support to Xi",
+  "Posted mountain photo, rumoured to be Yan'an","Wears same watch for 12 years, considered frugal",
+  "Turned down upgrade to first class","Took bus to inspection site, photographed",
+  "Shared meal with rural family, went viral","Drank local baijiu without grimacing",
+  "Appeared moved during red tourism visit","Cited Wei Zhengde approvingly in speech",
+  "Cleared of allegation within 72 hours","Allegation never officially confirmed",
+  "Publicly self-criticised before being asked","Told inspection team: 'I deserve stricter supervision'",
+  "Sources describe as 'very disciplined private life'","No debt, no properties abroad",
+  "Three separate audits, no findings","Considered boring at diplomatic receptions, considered good",
+  "Never photographed yawning","Reportedly stays until lights go off in Zhongnanhai",
+  "Seen arriving at office before 7am","Office has no personal photographs, only Xi portrait",
+  "Memorised all five-year plan targets","Can recite Xi's 2017 congress speech from memory",
+  "Described by subordinate as 'the party incarnate'","Known to correct grammar in official documents",
+  "Once interrupted a meeting to correct a factual error","Speaks slowly, considered deliberate not confused",
+  "Sources say unusually quiet in faction meetings lately","Seen deep in conversation with CMC vice chair",
+  "Attended session usually skipped by peers","Accepted transfer to difficult post without complaint",
+  "Described as 'reliable in a crisis'","Oversaw pandemic response in province, zero complaints",
+  "Province had lowest corruption rate three years running","Introduced zero-tolerance policy before it was policy",
+  "Ran personal inspection of local courthouse","Visited detention facility unannounced",
+  "Reduced provincial debt 18% in two years","Implemented austerity before central directive",
+  "Turned off heating in office to save costs","Filed expense receipts same day",
+  "Never expensed a single banquet","Office reused stationery until physically unusable",
+  "Printed on both sides of paper, photographed","Proposed cutting own department's budget",
+  "Described by audit as 'model of fiscal discipline'","Returned unused travel funds to treasury",
+  "Sources say has not redecorated office since appointment","Furniture is original 1990s issue",
+  "Still uses a Nokia phone at party meetings","Laptop runs domestic operating system",
+  "Refuses foreign social media on any device","Device audited annually, no findings",
+  "Home internet subject to voluntary monitoring","Voluntarily submitted to quarterly review",
+  "Known to report suspicious contacts immediately","Once reported own subordinate to CCDI",
+  "Subordinate investigated, found clean, thanked publicly","Hosted CCDI inspection team dinner, served simple food",
+  "Welcomed inspection with phrase: 'I have nothing to hide'","Offered to extend inspection by one week",
+  "Self-criticism rated most thorough in department history","Publicly thanked inspector for rigorous questioning",
+  "Sources say reads party journals cover to cover","Subscribes to all three Xinhua digests",
+  "Reads Qiushi before cabinet briefing","Has personal copy of all Xi Jinping collected works",
+  "Gifted annotated Xi Thought book to delegation","Sent personal card to model worker recipient",
+  "Attended model soldier ceremony in snow","Sources say cried at revolutionary film screening",
+  "Visited parents of fallen soldier personally","Attended martyr memorial without press",
+  "Donated anonymously to flood relief, later identified","Visited injured worker in hospital off-schedule",
+  "Arrived at earthquake site within six hours","Personally supervised relief distribution",
+  "Slept in field tent during flood inspection","Ate emergency rations alongside rescue workers",
+  "Known to carry party membership card in breast pocket","Renews party dues on exact anniversary",
+  "Attended every party anniversary celebration since 1998","Never missed a flag-raising ceremony in the capital",
+  "Wept openly at party centenary, widely praised","Recited party oath from memory at public event",
+  "Sources say prayers offered to party founders daily","Known fondness for red tourism destinations",
+  "Visited Gutian three times in one year","Quoted Mao approvingly in non-required context",
+  "Uses Mao's calligraphy style in personal notes","Hangs Long March map in private office",
+  "Named daughter Hongmei, son Jianguo","Family photo taken at Tiananmen, every year",
+  "Sources say sings The Internationale in the car","Known collection of party memorabilia",
+  "Purchased rare first edition of Mao's Selected Works","Donated collection to central party archive",
+  "Considered reliable source of institutional memory","Described as 'no surprises' by superiors",
+  "Never late, never early, always exactly on time","Ends all meetings two minutes before schedule",
+  "Follows up on every action item personally","Never delegates sensitive communication",
+  "Writes own speeches, no speechwriter","Submits reports three days early",
+  "Known for unusually precise use of party terminology","Uses correct ideological framing unprompted",
+  "Corrected another member's terminology, quietly","Praised by party school for ideological clarity",
+  "Sources say cadres in ministry consider incorruptible","Zero gifts declared but many offered",
+  "Returned expensive watch, logged it","Gave back mooncakes to sender",
+  "Donated red envelope contents to veterans fund","Reported own cousin for improper gift",
+  "Cousin investigated, charges dropped, relationship strained","Sources describe as 'serious at all times'",
+  "Never photographed smiling in official context","Smiles only when Xi smiles first",
+  "Laughter described as 'measured and appropriate'","Known to disagree privately, agree publicly",
+  "Sources say most loyal cadre in third row","Considered model of collective discipline",
+  "Raised at Politburo meeting, matter dropped","Mentioned favourably in Xi's internal remarks",
+  "Subject of positive case study in party training","Cited in foreign policy white paper footnote",
+  "Appeared in documentary about party renewal","Named in local history textbook revision",
+  "Subject of biography commissioned by provincial press","Photo in city hall lobby recently updated",
+  "Name appears on commemorative stamp proposal","Sources say next congress seat nearly guaranteed",
+  "Faction backing reportedly consolidated","Three provincial bosses pledged informal support",
+  "Considered consensus choice among military observers","Known to have Xi's confidence on economic file",
+  "Sources say Xi read his report personally","Report returned with single approving character",
+  "Briefed Xi directly without intermediary","Waited outside Xi's office for 40 minutes, still smiling",
+  "Joined Xi for inspection of Three Gorges project","Accompanied Xi to rural Sichuan unannounced",
+  "Photographed walking two steps behind Xi","Opened car door for Xi, captured on state media",
+  "Described in cable as 'steady and loyal'","Sources in Guangdong say 'the name to watch'",
+  "Considered by analysts as centrist consolidator","Known ideological flexibility praised as 'adaptable'",
+  "Described in think tank report as 'next generation'","Mentioned in same sentence as future leadership",
+  "Sources in Beijing say 'momentum building'","Provincial press unusually enthusiastic about recent visit",
+  "Name trending on approved news aggregator","Weibo post about him not deleted",
+];
+
+// assign gossip deterministically per member index
+function gossipFor(idx) {
+  return GOSSIP[idx % GOSSIP.length];
+}
+
+// ── TABLE ─────────────────────────────────────────────────────────────────────
+function renderTable() {
+  const filtered = currentFilter==="all" ? currentData : currentData.filter(m=>m.tier===currentFilter);
+  const counts   = { all:"all 200 members", psc:"7 PSC members", pb:"18 Politburo members", cc:"175 CC members" };
+  document.getElementById("showing-label").textContent = `Showing ${counts[currentFilter]}`;
+
+  const display = filtered.slice(0,80);
+  let html = display.map((m,idx) => {
+    const vibe   = vibeFor(m.pct, m.tier, m);
+    const barPct = Math.min(100, m.pct * 4.5);
+    const gossip = gossipFor(m.rank + idx);
+    return `<tr>
+      <td><span class="rank-num">${m.rank}</span></td>
+      <td><span class="member-name">${m.name}</span></td>
+      <td><span class="tier-pill ${tierClass(m.tier)}">${tierText(m.tier)}</span></td>
+      <td style="color:#666;font-size:12px">${m.role}</td>
+      <td class="r">
+        <div class="odds-bar-wrap">
+          <div class="odds-bar"><div class="odds-bar-fill" style="width:${barPct}%;background:${vibe.color}"></div></div>
+          <span class="odds-pct" style="color:${m.pct>5?'#1a1a1a':'#888'}">${m.pct.toFixed(2)}%</span>
+        </div>
+      </td>
+      <td class="r"><span class="vibe-label" style="color:${vibe.color}">${vibe.label}</span></td>
+      <td><span class="gossip-cell" title="${gossip}">${gossip}</span></td>
+    </tr>`;
+  }).join("");
+
+  if (filtered.length > 80) {
+    html += `<tr class="table-footer-row"><td colspan="7">… and ${filtered.length-80} more members, all polling at ≈ 0.01% — bless their ambition</td></tr>`;
+  }
+  document.getElementById("table-body").innerHTML = html;
+}
+
+// ── CONTROLS ──────────────────────────────────────────────────────────────────
+function filterTier(tier) {
+  currentFilter = tier;
+  ["all","psc","pb","cc"].forEach(t => {
+    const btn = document.getElementById("btn-"+t);
+    if (btn) btn.classList.toggle("active", t===tier);
+  });
+  renderTable();
+}
+
+function reshuffle() {
+  currentData = generateOdds();
+  updateChart();
+  renderTable();
+}
+
+// ── SHARE ─────────────────────────────────────────────────────────────────────
+function shareOnTwitter() {
+  const top = currentData[0];
+  const text = `Today's top CCP succession pick: ${top.name} at ${top.pct.toFixed(1)}% — according to our intelligence network. Who's next? nextcomrade.com`;
+  window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(text), "_blank");
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+currentData = generateOdds();
+updateChart();
+renderTable();
+</script>
+</body>
+</html>
