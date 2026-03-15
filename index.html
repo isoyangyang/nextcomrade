@@ -600,6 +600,10 @@
       <span class="hero-stat-num">∞</span>
       <span class="hero-stat-label">Ways This Goes Wrong</span>
     </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num" id="last-updated" style="font-size:14px;line-height:1.2">—</span>
+      <span class="hero-stat-label">Data Updated</span>
+    </div>
   </div>
   <div class="hero-divider"></div>
 
@@ -648,6 +652,7 @@
           <th class="r">Probability</th>
           <th class="r">Assessment</th>
           <th>Gossip</th>
+          <th class="r">Last Seen</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -1087,9 +1092,15 @@ function renderTable() {
 
   const display = filtered.slice(0,80);
   let html = display.map((m,idx) => {
-    const vibe   = vibeFor(m.pct, m.tier, m);
-    const barPct = Math.min(100, m.pct * 4.5);
-    const gossip = gossipFor(m.rank + idx);
+    const vibe    = vibeFor(m.pct, m.tier, m);
+    const barPct  = Math.min(100, m.pct * 4.5);
+    const gossip  = gossipFor(m.rank + idx);
+    const days    = daysSince(m.last_seen);
+    const lastSeenCell = days === null
+      ? `<span style="font-size:11px;color:#ccc;font-family:'IBM Plex Mono',monospace">—</span>`
+      : days > 30
+        ? `<span style="font-size:10px;padding:2px 7px;border-radius:3px;background:#F9EBEA;color:#C0392B;font-family:'IBM Plex Mono',monospace;white-space:nowrap">SILENT ${days}d</span>`
+        : `<span style="font-size:11px;color:#888;font-family:'IBM Plex Mono',monospace">${m.last_seen}</span>`;
     return `<tr>
       <td><span class="rank-num">${m.rank}</span></td>
       <td><span class="member-name">${m.name}</span></td>
@@ -1103,11 +1114,12 @@ function renderTable() {
       </td>
       <td class="r"><span class="vibe-label" style="color:${vibe.color}">${vibe.label}</span></td>
       <td><span class="gossip-cell" title="${gossip}">${gossip}</span></td>
+      <td class="r">${lastSeenCell}</td>
     </tr>`;
   }).join("");
 
   if (filtered.length > 80) {
-    html += `<tr class="table-footer-row"><td colspan="7">… and ${filtered.length-80} more members, all polling at ≈ 0.01% — bless their ambition</td></tr>`;
+    html += `<tr class="table-footer-row"><td colspan="8">… and ${filtered.length-80} more members, all polling at ≈ 0.01% — bless their ambition</td></tr>`;
   }
   document.getElementById("table-body").innerHTML = html;
 }
@@ -1136,9 +1148,55 @@ function shareOnTwitter() {
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
-currentData = generateOdds();
-updateChart();
-renderTable();
+function daysSince(dateStr) {
+  if (!dateStr || dateStr === "Unknown" || dateStr === "N/A") return null;
+  return Math.floor((new Date() - new Date(dateStr)) / (1000 * 60 * 60 * 24));
+}
+
+async function init() {
+  try {
+    const res = await fetch("scores.json?t=" + Date.now());
+    if (!res.ok) throw new Error("scores.json not found");
+    const json = await res.json();
+
+    // Build a lookup by name from the live scores
+    const scoreMap = {};
+    json.members.forEach(m => { scoreMap[m.name] = m; });
+
+    // Merge live scores into MEMBERS
+    currentData = MEMBERS.map(m => {
+      const live = scoreMap[m.name];
+      return {
+        ...m,
+        pct:           live ? live.probability   : 0.01,
+        mention_count: live ? live.mention_count : 0,
+        last_seen:     live ? live.last_seen      : "Unknown",
+      };
+    });
+
+    currentData.sort((a, b) => b.pct - a.pct);
+    currentData.forEach((m, i) => m.rank = i + 1);
+
+    // Show last-updated date in hero
+    const el = document.getElementById("last-updated");
+    if (el) {
+      const d = new Date(json.generated_at);
+      el.textContent = d.toLocaleDateString("en-GB", { day:"numeric", month:"short", year:"numeric" });
+    }
+
+  } catch (e) {
+    // scores.json not available yet — fall back to generated odds
+    console.log("scores.json unavailable, using generated odds:", e.message);
+    currentData = generateOdds();
+    const el = document.getElementById("last-updated");
+    if (el) el.textContent = "Pending";
+  }
+
+  updateChart();
+  renderTable();
+}
+
+init();
 </script>
 </body>
 </html>
