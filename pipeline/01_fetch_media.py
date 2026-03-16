@@ -1,3 +1,4 @@
+
 """
 pipeline/01_fetch_media.py
 --------------------------
@@ -30,7 +31,7 @@ HISTORY_FILE = ROOT / "data" / "media_history.json"
 # ── CONFIG ────────────────────────────────────────────────────────────────────
 
 RETENTION_DAYS    = 180
-REQUEST_DELAY     = 1.5
+REQUEST_DELAY     = 3.0   # increased from 1.5 — GDELT rate limits aggressively
 POSITION_ARTICLES = 5
 LOOKBACK_DAYS     = 7
 GDELT_DOC_URL     = "https://api.gdeltproject.org/api/v2/doc/doc"
@@ -41,7 +42,7 @@ SOURCES           = ["xinhuanet.com", "en.people.cn"]
 
 def gdelt_request(params: dict) -> dict:
     """Make a GDELT DOC API request with exponential backoff. Returns {} on failure."""
-    wait = 10
+    wait = 30  # start higher — GDELT 429s need more breathing room
     for attempt in range(3):
         try:
             r = requests.get(GDELT_DOC_URL, params=params, timeout=15)
