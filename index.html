@@ -413,6 +413,7 @@
       text-align: right;
       white-space: nowrap;
     }
+    .col-layers    { width: 72px; }
     .gossip-cell {
       font-size: 11px;
       font-family: 'IBM Plex Mono', monospace;
@@ -590,6 +591,7 @@
     .col-gossip    { display: none; }
     .col-lastseen  { display: none; }
     .col-assessment { display: none; }
+    .col-layers    { display: none; }
 
     /* Table cells tighter */
     td, th { padding: 7px 8px; }
@@ -702,6 +704,7 @@
           <th class="col-role">Role</th>
           <th class="r">Probability</th>
           <th class="r col-assessment">Assessment</th>
+          <th class="col-layers">Layers</th>
           <th class="col-gossip">Gossip</th>
           <th class="r col-lastseen">Last Seen</th>
         </tr>
@@ -1138,39 +1141,85 @@ function gossipFor(idx) {
 // ── TABLE ─────────────────────────────────────────────────────────────────────
 function renderTable() {
   const filtered = currentFilter==="all" ? currentData : currentData.filter(m=>m.tier===currentFilter);
-  const counts   = { all:"all 200 members", psc:"7 PSC members", pb:"18 Politburo members", cc:"175 CC members" };
+  const counts   = { all:`all ${currentData.length} members`, psc:"PSC (7)", pb:"Politburo (18)", cc:"Central Committee" };
   document.getElementById("showing-label").textContent = `Showing ${counts[currentFilter]}`;
 
-  const display = filtered.slice(0,80);
-  let html = display.map((m,idx) => {
-    const vibe    = vibeFor(m.pct, m.tier, m);
+  const display = filtered.slice(0, 80);
+  let html = display.map((m, idx) => {
     const barPct  = Math.min(100, m.pct * 4.5);
     const gossip  = gossipFor(m.rank + idx);
-    const days    = daysSince(m.last_seen);
-    const lastSeenCell = days === null
-      ? `<span style="font-size:11px;color:#ccc;font-family:'IBM Plex Mono',monospace">—</span>`
-      : days > 30
-        ? `<span style="font-size:10px;padding:2px 7px;border-radius:3px;background:#F9EBEA;color:#C0392B;font-family:'IBM Plex Mono',monospace;white-space:nowrap">SILENT ${days}d</span>`
-        : `<span style="font-size:11px;color:#888;font-family:'IBM Plex Mono',monospace">${m.last_seen}</span>`;
-    return `<tr>
+
+    // Last seen cell — use model's label if available, else compute
+    const days = daysSince(m.last_seen);
+    const lastSeenCell = m.is_silent
+      ? `<span style="font-size:10px;padding:2px 7px;border-radius:3px;background:#F9EBEA;color:#C0392B;font-family:'IBM Plex Mono',monospace;white-space:nowrap">SILENT</span>`
+      : days === null
+        ? `<span style="font-size:11px;color:#ccc;font-family:'IBM Plex Mono',monospace">—</span>`
+        : days > 30
+          ? `<span style="font-size:10px;padding:2px 7px;border-radius:3px;background:#F9EBEA;color:#C0392B;font-family:'IBM Plex Mono',monospace;white-space:nowrap">SILENT ${days}d</span>`
+          : `<span style="font-size:11px;color:#888;font-family:'IBM Plex Mono',monospace">${m.last_seen_label || m.last_seen}</span>`;
+
+    // Assessment — use model's own label when available
+    const assessLabel = m.assessment_label || "—";
+    const assessColor = m.assessment_color || "#888";
+
+    // Layer score mini-bars (L2 career, L3 media, L4 network)
+    const l2w = Math.round((m.layer2 || 0) * 100);
+    const l3w = Math.round((m.layer3 || 0) * 100);
+    const l4w = Math.min(100, Math.round((m.layer4 || 0) * 5000)); // pagerank is tiny, scale up
+    const layerBars = `
+      <div style="display:flex;flex-direction:column;gap:2px;width:52px">
+        <div title="Career: ${(m.layer2||0).toFixed(2)}" style="display:flex;align-items:center;gap:3px">
+          <span style="font-size:8px;color:#aaa;width:8px">C</span>
+          <div style="flex:1;height:3px;background:#eee;border-radius:1px">
+            <div style="width:${l2w}%;height:100%;background:#1A5276;border-radius:1px"></div>
+          </div>
+        </div>
+        <div title="Media: ${(m.layer3||0).toFixed(2)}" style="display:flex;align-items:center;gap:3px">
+          <span style="font-size:8px;color:#aaa;width:8px">M</span>
+          <div style="flex:1;height:3px;background:#eee;border-radius:1px">
+            <div style="width:${l3w}%;height:100%;background:#B7950B;border-radius:1px"></div>
+          </div>
+        </div>
+        <div title="Network: ${(m.layer4||0).toFixed(4)}" style="display:flex;align-items:center;gap:3px">
+          <span style="font-size:8px;color:#aaa;width:8px">N</span>
+          <div style="flex:1;height:3px;background:#eee;border-radius:1px">
+            <div style="width:${l4w}%;height:100%;background:#C0392B;border-radius:1px"></div>
+          </div>
+        </div>
+      </div>`;
+
+    // Anomaly badge
+    const z = m.anomaly_zscore;
+    const zBadge = z === null || z === undefined ? ""
+      : m.is_prominent ? `<span style="font-size:9px;padding:1px 4px;background:#F9F3E3;color:#B7950B;border-radius:2px;font-family:'IBM Plex Mono',monospace">z:+${z.toFixed(1)}</span>`
+      : m.is_silent    ? `<span style="font-size:9px;padding:1px 4px;background:#F9EBEA;color:#C0392B;border-radius:2px;font-family:'IBM Plex Mono',monospace">z:${z.toFixed(1)}</span>`
+      : "";
+
+    return `<tr title="${m.succession_notes || ""}">
       <td><span class="rank-num">${m.rank}</span></td>
-      <td><span class="member-name">${m.name}</span></td>
+      <td>
+        <span class="member-name">${m.name}</span>
+        ${m.name_zh ? `<span style="font-size:10px;color:#aaa;margin-left:4px">${m.name_zh}</span>` : ""}
+        ${zBadge}
+      </td>
       <td><span class="tier-pill ${tierClass(m.tier)}">${tierText(m.tier)}</span></td>
       <td class="col-role" style="color:#666;font-size:12px">${m.role}</td>
       <td class="r">
         <div class="odds-bar-wrap">
-          <div class="odds-bar"><div class="odds-bar-fill" style="width:${barPct}%;background:${vibe.color}"></div></div>
+          <div class="odds-bar"><div class="odds-bar-fill" style="width:${barPct}%;background:${assessColor}"></div></div>
           <span class="odds-pct" style="color:${m.pct>5?'#1a1a1a':'#888'}">${m.pct.toFixed(2)}%</span>
         </div>
       </td>
-      <td class="r col-assessment"><span class="vibe-label" style="color:${vibe.color}">${vibe.label}</span></td>
+      <td class="r col-assessment"><span class="vibe-label" style="color:${assessColor}">${assessLabel}</span></td>
+      <td class="col-layers">${layerBars}</td>
       <td class="col-gossip"><span class="gossip-cell" title="${gossip}">${gossip}</span></td>
       <td class="r col-lastseen">${lastSeenCell}</td>
     </tr>`;
   }).join("");
 
   if (filtered.length > 80) {
-    html += `<tr class="table-footer-row"><td colspan="8">… and ${filtered.length-80} more members, all polling at ≈ 0.01% — bless their ambition</td></tr>`;
+    html += `<tr class="table-footer-row"><td colspan="9">… and ${filtered.length-80} more members, all at minimal probability — bless their ambition</td></tr>`;
   }
   document.getElementById("table-body").innerHTML = html;
 }
@@ -1191,8 +1240,9 @@ function reshuffle() {
 
 // ── SHARE ─────────────────────────────────────────────────────────────────────
 function shareOnTwitter() {
-  const top = currentData[0];
-  const text = `Today's top CCP succession pick: ${top.name} at ${top.pct.toFixed(1)}% — according to our intelligence network. Who's next? nextcomrade.com`;
+  const top  = currentData[0];
+  const name = top.name || top.name_en || "Unknown";
+  const text = `Today's top CCP succession pick: ${name} at ${top.pct.toFixed(1)}% — according to our intelligence network. Who's next? nextcomrade.com`;
   window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(text), "_blank");
 }
 
@@ -1208,33 +1258,61 @@ async function init() {
     if (!res.ok) throw new Error("scores.json not found");
     const json = await res.json();
 
-    // Build a lookup by name from the live scores
-    const scoreMap = {};
-    json.members.forEach(m => { scoreMap[m.name] = m; });
+    // New scores.json structure — read directly, no MEMBERS merging needed
+    currentData = json.members.map(m => ({
+      // Core identity
+      id:              m.id,
+      name:            m.name_en,
+      name_zh:         m.name_zh || "",
+      tier:            m.tier,
+      role:            m.role,
+      birth_year:      m.birth_year,
+      age:             m.age,
 
-    // Merge live scores into MEMBERS
-    currentData = MEMBERS.map(m => {
-      const live = scoreMap[m.name];
-      return {
-        ...m,
-        pct:           live ? live.probability   : 0.01,
-        mention_count: live ? live.mention_count : 0,
-        last_seen:     live ? live.last_seen      : "Unknown",
-      };
-    });
+      // Probability
+      pct:             m.probability,
+      rank:            m.rank,
+
+      // Layer scores
+      layer1:          m.layer1_multiplier,
+      layer2:          m.layer2_career,
+      layer3:          m.layer3_media,
+      layer4:          m.layer4_network,
+
+      // Media signals
+      mention_count:   m.mention_count || 0,
+      xi_count:        m.xi_cooccurrence_count || 0,
+      last_seen:       m.last_seen || "Unknown",
+      anomaly_zscore:  m.anomaly_zscore,
+      is_silent:       m.is_silent || false,
+      is_prominent:    m.is_prominent || false,
+
+      // Model outputs
+      assessment_label: m.assessment_label || "",
+      assessment_color: m.assessment_color || "#888",
+      last_seen_label:  m.last_seen_label || m.last_seen || "—",
+      network_faction:  m.network_faction || "unknown",
+      succession_notes: m.succession_notes || "",
+
+      // Flags
+      fixed:           m.fixed || false,
+      age_penalised:   m.age_penalised || false,
+    }));
 
     currentData.sort((a, b) => b.pct - a.pct);
-    currentData.forEach((m, i) => m.rank = i + 1);
 
-    // Show last-updated date in hero
+    // Hero: last updated
     const el = document.getElementById("last-updated");
     if (el) {
       const d = new Date(json.generated_at);
       el.textContent = d.toLocaleDateString("en-GB", { day:"numeric", month:"short", year:"numeric" });
     }
 
+    // Hero: model version badge
+    const mv = document.getElementById("model-version");
+    if (mv) mv.textContent = `v${json.model_version || 1}`;
+
   } catch (e) {
-    // scores.json not available yet — fall back to generated odds
     console.log("scores.json unavailable, using generated odds:", e.message);
     currentData = generateOdds();
     const el = document.getElementById("last-updated");
