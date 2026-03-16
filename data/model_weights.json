@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "description": "Layer combination weights for the succession probability model. Updated weekly by pipeline/04_train_model.py once sufficient media_history data has accumulated (recommended: 60+ days).",
+  "last_trained": null,
+  "training_data_days": 0,
+  "note": "Initial weights are hand-tuned from academic literature. Layer 2 (career) is the strongest historical predictor. Layer 4 (network) is high quality but sparse. Layer 3 (media) is noisy but real-time. Weights will be refined by step 4 after sufficient history accumulates.",
+
+  "layer_weights": {
+    "layer2_career":  0.35,
+    "layer3_media":   0.30,
+    "layer4_network": 0.35
+  },
+
+  "layer1_penalties": {
+    "age_over_75":              0.02,
+    "age_70_to_75":             0.10,
+    "age_68_to_70":             0.35,
+    "no_provincial_secretary":  0.60,
+    "military_track_only":      0.50,
+    "factional_demotion":       0.40,
+    "ccdi_investigated":        0.05,
+    "ccdi_confirmed":           0.01,
+    "ideologist_role":          0.02,
+    "dismissed_from_office":    0.01
+  },
+
+  "layer3_params": {
+    "xi_boost_multiplier":      2.0,
+    "recency_halflife_days":    7,
+    "position_headline_mult":   1.6,
+    "position_lead_mult":       1.25,
+    "anomaly_window_days":      14,
+    "anomaly_baseline_days":    90,
+    "anomaly_spike_threshold":  2.0,
+    "anomaly_silent_threshold": -2.0
+  },
+
+  "tier_floors": {
+    "psc": 5.0,
+    "pb":  1.0,
+    "cc":  0.1
+  }
+}
