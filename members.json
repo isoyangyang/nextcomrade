@@ -1,0 +1,954 @@
+{
+  "schema_version": 2,
+  "description": "CCP elite biographical database for succession probability model",
+  "last_updated": "2026-03-16",
+  "notes": "Career histories sourced from Xinhua official biographies, Baidu Baike, NPC/CPPCC registries. Network ties based on documented shared service and patronage relationships from published academic sources (Shih, Miller, Batson).",
+
+  "members": [
+
+    {
+      "id": "li_qiang",
+      "name_en": "Li Qiang",
+      "name_zh": "李强",
+      "name_variants": ["Li Qiang"],
+      "tier": "psc",
+      "role": "Premier, State Council",
+      "birth_year": 1959,
+      "birth_month": 7,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Vice Governor, Zhejiang", "level": "vice_provincial", "start_year": 2004, "end_year": 2007, "province": "Zhejiang"},
+        {"role": "Secretary General, Zhejiang", "level": "vice_provincial", "start_year": 2007, "end_year": 2011, "province": "Zhejiang"},
+        {"role": "Party Secretary, Wenzhou", "level": "prefecture_secretary", "start_year": 2011, "end_year": 2012, "province": "Zhejiang"},
+        {"role": "Vice Secretary, Zhejiang", "level": "vice_provincial_secretary", "start_year": 2012, "end_year": 2013, "province": "Zhejiang"},
+        {"role": "Party Secretary, Jiangsu", "level": "provincial_secretary", "start_year": 2016, "end_year": 2017, "province": "Jiangsu"},
+        {"role": "Party Secretary, Shanghai", "level": "provincial_secretary", "start_year": 2017, "end_year": 2022, "province": "Shanghai"},
+        {"role": "Premier, State Council", "level": "state_council_premier", "start_year": 2023, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Zhejiang Agricultural University", "degree": "agricultural machinery", "year": 1982},
+        {"institution": "Central Party School", "degree": "postgraduate economics", "year": 2002}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": ["xi_jinping"],
+        "shared_service": ["xi_jinping"],
+        "shared_service_detail": "Both served in Zhejiang 2002-2007. Xi was Party Secretary, Li was Vice Governor.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": null,
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Most likely successor by structural position. Premier is the traditional second-in-command role. Close Xi ally. Relatively young at next congress (68 in 2027). Main risk is that Xi may break the premier-to-GS pattern.",
+      "meta": {"sources": ["xinhua_bio", "npc_registry", "baidu_baike"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "zhao_leji",
+      "name_en": "Zhao Leji",
+      "name_zh": "赵乐际",
+      "name_variants": ["Zhao Leji"],
+      "tier": "psc",
+      "role": "Chairman, NPC",
+      "birth_year": 1957,
+      "birth_month": 3,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Party Secretary, Qinghai", "level": "provincial_secretary", "start_year": 1999, "end_year": 2003, "province": "Qinghai"},
+        {"role": "Party Secretary, Shaanxi", "level": "provincial_secretary", "start_year": 2003, "end_year": 2007, "province": "Shaanxi"},
+        {"role": "Director, Central Organisation Department", "level": "central_pipeline", "start_year": 2012, "end_year": 2017, "province": null},
+        {"role": "Secretary, CCDI", "level": "central_pipeline", "start_year": 2017, "end_year": 2022, "province": null},
+        {"role": "Chairman, NPC", "level": "npc_chair", "start_year": 2023, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Peking University", "degree": "philosophy", "year": 1980}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": ["xi_jinping"],
+        "shared_service": [],
+        "shared_service_detail": "Aligned with Xi faction through Organisation Department role and CCDI leadership",
+        "cps_cohort": null,
+        "factional_label": "Xi faction"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": true,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "age_marginal",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Strong career credentials. Organisation Department and CCDI experience is classic pipeline. Age is marginal — will be 70 at 2027 congress. NPC Chair is traditionally a retirement role rather than a springboard.",
+      "meta": {"sources": ["xinhua_bio", "npc_registry"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "wang_huning",
+      "name_en": "Wang Huning",
+      "name_zh": "王沪宁",
+      "name_variants": ["Wang Huning"],
+      "tier": "psc",
+      "role": "Chairman, CPPCC",
+      "birth_year": 1955,
+      "birth_month": 10,
+      "gender": "M",
+      "fixed_probability": 0.08,
+
+      "career": [
+        {"role": "Director, Political Research Office, CC", "level": "central_pipeline", "start_year": 2002, "end_year": 2012, "province": null},
+        {"role": "Member, Secretariat", "level": "central_pipeline", "start_year": 2012, "end_year": 2017, "province": null},
+        {"role": "Chairman, CPPCC", "level": "cppcc_chair", "start_year": 2023, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Fudan University", "degree": "international politics", "year": 1981}
+      ],
+
+      "network": {
+        "patron": null,
+        "mentors": [],
+        "shared_service": ["jiang_zemin", "hu_jintao", "xi_jinping"],
+        "shared_service_detail": "Served all three GS as chief ideologist. Transactional not factional.",
+        "cps_cohort": null,
+        "factional_label": "ideologist — no faction"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": false,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": true,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "ideologist_role",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Hardcoded near-zero. Theorist and ideologist, not an operational leader. No provincial governance experience. Has served three consecutive GS as ideas man — this is his ceiling.",
+      "meta": {"sources": ["xinhua_bio", "academic_lit"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "cai_qi",
+      "name_en": "Cai Qi",
+      "name_zh": "蔡奇",
+      "name_variants": ["Cai Qi"],
+      "tier": "psc",
+      "role": "Director, General Office of CC",
+      "birth_year": 1955,
+      "birth_month": 12,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Vice Governor, Zhejiang", "level": "vice_provincial", "start_year": 2009, "end_year": 2014, "province": "Zhejiang"},
+        {"role": "Party Secretary, Guiyang", "level": "prefecture_secretary", "start_year": 2014, "end_year": 2016, "province": "Guizhou"},
+        {"role": "Mayor, Beijing", "level": "provincial_deputy", "start_year": 2016, "end_year": 2017, "province": "Beijing"},
+        {"role": "Party Secretary, Beijing", "level": "provincial_secretary", "start_year": 2017, "end_year": 2022, "province": "Beijing"},
+        {"role": "Director, General Office", "level": "central_pipeline", "start_year": 2022, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Fudan University", "degree": "political economy", "year": 1982}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": ["xi_jinping"],
+        "shared_service": ["xi_jinping"],
+        "shared_service_detail": "Served under Xi in Zhejiang 2009-2014. One of Xi's closest lieutenants.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — inner circle"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": true,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "age_marginal",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "One of Xi's most trusted allies. General Office director is a key gatekeeping role. Age is a significant barrier — will be 72 at 2027 congress. Could be exception to age norm given factional loyalty.",
+      "meta": {"sources": ["xinhua_bio", "baidu_baike"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "ding_xuexiang",
+      "name_en": "Ding Xuexiang",
+      "name_zh": "丁薛祥",
+      "name_variants": ["Ding Xuexiang"],
+      "tier": "psc",
+      "role": "Executive Vice Premier",
+      "birth_year": 1962,
+      "birth_month": 9,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Director, General Office of CC", "level": "central_pipeline", "start_year": 2017, "end_year": 2022, "province": null},
+        {"role": "Executive Vice Premier", "level": "state_council_vp", "start_year": 2023, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Shanghai University of Technology", "degree": "engineering", "year": 1984}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": ["xi_jinping"],
+        "shared_service": ["xi_jinping"],
+        "shared_service_detail": "Xi's chief of staff in Shanghai and then Beijing. Total loyalty figure.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — personal staff"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": false,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": true,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "no_provincial_experience",
+        "collapsed": true,
+        "elevated": false
+      },
+
+      "succession_notes": "Extremely close to Xi but has no provincial governance experience — a significant gap in the traditional CCP leadership credential set. Likely a powerful facilitator rather than a successor.",
+      "meta": {"sources": ["xinhua_bio"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "li_xi",
+      "name_en": "Li Xi",
+      "name_zh": "李希",
+      "name_variants": ["Li Xi"],
+      "tier": "psc",
+      "role": "Secretary, CCDI",
+      "birth_year": 1956,
+      "birth_month": 10,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Party Secretary, Gansu", "level": "provincial_secretary", "start_year": 2011, "end_year": 2016, "province": "Gansu"},
+        {"role": "Party Secretary, Liaoning", "level": "provincial_secretary", "start_year": 2016, "end_year": 2017, "province": "Liaoning"},
+        {"role": "Party Secretary, Guangdong", "level": "provincial_secretary", "start_year": 2017, "end_year": 2022, "province": "Guangdong"},
+        {"role": "Secretary, CCDI", "level": "central_pipeline", "start_year": 2022, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Lanzhou University", "degree": "history", "year": 1982}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": [],
+        "shared_service_detail": "Xi faction ally but no direct shared service. Elevated via Guangdong stewardship.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": true,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "age_marginal",
+        "collapsed": true,
+        "elevated": false
+      },
+
+      "succession_notes": "CCDI secretary role is powerful but historically not a succession springboard. Age barrier at 2027 congress. Strong provincial credentials but the anti-corruption role limits political coalition building.",
+      "meta": {"sources": ["xinhua_bio", "baidu_baike"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "han_zheng",
+      "name_en": "Han Zheng",
+      "name_zh": "韩正",
+      "name_variants": ["Han Zheng"],
+      "tier": "psc",
+      "role": "Vice President (State)",
+      "birth_year": 1954,
+      "birth_month": 4,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Mayor, Shanghai", "level": "provincial_deputy", "start_year": 2003, "end_year": 2012, "province": "Shanghai"},
+        {"role": "Party Secretary, Shanghai", "level": "provincial_secretary", "start_year": 2012, "end_year": 2017, "province": "Shanghai"},
+        {"role": "Executive Vice Premier", "level": "state_council_vp", "start_year": 2018, "end_year": 2023, "province": null},
+        {"role": "Vice President (State)", "level": "state_vp", "start_year": 2023, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "East China Normal University", "degree": "economics", "year": 1979}
+      ],
+
+      "network": {
+        "patron": "jiang_zemin",
+        "mentors": ["jiang_zemin"],
+        "shared_service": [],
+        "shared_service_detail": "Shanghai Gang member. Jiang protege. Tolerated by Xi as a balancing figure.",
+        "cps_cohort": null,
+        "factional_label": "Shanghai Gang"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "age_over_68",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "State VP role is a terminal position. Will be 73 at 2027 congress. Age alone eliminates him from succession consideration.",
+      "meta": {"sources": ["xinhua_bio", "npc_registry"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "chen_wenqing",
+      "name_en": "Chen Wenqing",
+      "name_zh": "陈文清",
+      "name_variants": ["Chen Wenqing"],
+      "tier": "pb",
+      "role": "Director, Political-Legal Affairs Commission",
+      "birth_year": 1960,
+      "birth_month": 3,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Vice Governor, Fujian", "level": "vice_provincial", "start_year": 2007, "end_year": 2012, "province": "Fujian"},
+        {"role": "Minister, State Security", "level": "central_ministry", "start_year": 2016, "end_year": 2022, "province": null},
+        {"role": "Director, Political-Legal Affairs Commission", "level": "central_pipeline", "start_year": 2022, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Xiamen University", "degree": "law", "year": 1983}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": ["xi_jinping"],
+        "shared_service": ["xi_jinping"],
+        "shared_service_detail": "Both served in Fujian. Xi was Governor, Chen was Vice Governor.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — Fujian network"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": true,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "no_provincial_secretary",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Security apparatus background. Political-Legal Commission is a key power centre. Missing provincial secretary credential. Strong Xi connection via Fujian. Possible dark horse.",
+      "meta": {"sources": ["xinhua_bio"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "zhang_youxia",
+      "name_en": "Zhang Youxia",
+      "name_zh": "张又侠",
+      "name_variants": ["Zhang Youxia", "Zhang You-xia"],
+      "tier": "pb",
+      "role": "Vice Chairman, CMC",
+      "birth_year": 1950,
+      "birth_month": 7,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Commander, Shenyang Military Region", "level": "military_region", "start_year": 2005, "end_year": 2012, "province": null},
+        {"role": "Director, CMC Joint Staff", "level": "cmc_staff", "start_year": 2012, "end_year": 2017, "province": null},
+        {"role": "Vice Chairman, CMC", "level": "cmc_vice_chair", "start_year": 2017, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "PLA Military Academy", "degree": "military science", "year": 1985}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": ["xi_jinping"],
+        "shared_service_detail": "Father Zhang Zongxun was a revolutionary-era comrade of Xi's father Xi Zhongxun. Deep princelings bond.",
+        "cps_cohort": null,
+        "factional_label": "princelings — Xi ally"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": true,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": false,
+        "has_cmc_experience": true,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "age_over_68",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Will be 77 at 2027 congress. Age entirely eliminates him. His significance is as Xi's trusted military enforcer, not as a succession candidate.",
+      "meta": {"sources": ["xinhua_bio", "pla_registry"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "he_weidong",
+      "name_en": "He Weidong",
+      "name_zh": "何卫东",
+      "name_variants": ["He Weidong"],
+      "tier": "pb",
+      "role": "Vice Chairman, CMC",
+      "birth_year": 1957,
+      "birth_month": 2,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Commander, Eastern Theater Command", "level": "military_theater", "start_year": 2019, "end_year": 2022, "province": null},
+        {"role": "Vice Chairman, CMC", "level": "cmc_vice_chair", "start_year": 2022, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "PLA National Defense University", "degree": "military science", "year": 1999}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": [],
+        "shared_service_detail": "Xi faction military appointment. Eastern Theater (Taiwan focus) gives him strategic significance.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction military"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": true,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": false,
+        "has_cmc_experience": true,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "age_marginal",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Military-only career. Will be 70 at 2027 congress. CMC vice chairs are rarely succession candidates for the GS role — different career track.",
+      "meta": {"sources": ["xinhua_bio", "pla_registry"], "confidence": "medium", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "liu_guozhong",
+      "name_en": "Liu Guozhong",
+      "name_zh": "刘国中",
+      "name_variants": ["Liu Guozhong"],
+      "tier": "pb",
+      "role": "Vice Premier",
+      "birth_year": 1962,
+      "birth_month": 6,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Party Secretary, Heilongjiang", "level": "provincial_secretary", "start_year": 2018, "end_year": 2020, "province": "Heilongjiang"},
+        {"role": "Party Secretary, Shaanxi", "level": "provincial_secretary", "start_year": 2020, "end_year": 2022, "province": "Shaanxi"},
+        {"role": "Vice Premier", "level": "state_council_vp", "start_year": 2023, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Jilin University of Technology", "degree": "engineering", "year": 1984}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": [],
+        "shared_service_detail": "Xi faction appointment. No direct shared service history.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": null,
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Strong provincial secretary credentials across two provinces. Vice Premier is a classic pre-PSC stepping stone. Age is right. Relatively low profile internationally but solid domestic credentials.",
+      "meta": {"sources": ["xinhua_bio", "npc_registry"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "ma_xingrui",
+      "name_en": "Ma Xingrui",
+      "name_zh": "马兴瑞",
+      "name_variants": ["Ma Xingrui"],
+      "tier": "pb",
+      "role": "Party Secretary, Xinjiang",
+      "birth_year": 1959,
+      "birth_month": 9,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "President, China Aerospace Science and Technology", "level": "soe_head", "start_year": 2007, "end_year": 2013, "province": null},
+        {"role": "Governor, Guangdong", "level": "provincial_deputy", "start_year": 2013, "end_year": 2017, "province": "Guangdong"},
+        {"role": "Party Secretary, Guangdong", "level": "provincial_secretary", "start_year": 2017, "end_year": 2021, "province": "Guangdong"},
+        {"role": "Party Secretary, Xinjiang", "level": "provincial_secretary", "start_year": 2021, "end_year": null, "province": "Xinjiang"}
+      ],
+
+      "education": [
+        {"institution": "Harbin Institute of Technology", "degree": "aerospace engineering", "year": 1982}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": [],
+        "shared_service_detail": "Appointed to Xinjiang by Xi — a trust assignment given its political sensitivity.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — technocrat"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "xinjiang_role",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Unusual background combining aerospace industry and provincial governance. Xinjiang assignment is a trust signal from Xi but also a political liability given international scrutiny. Engineering-technocrat profile.",
+      "meta": {"sources": ["xinhua_bio", "baidu_baike"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "yuan_jiajun",
+      "name_en": "Yuan Jiajun",
+      "name_zh": "袁家军",
+      "name_variants": ["Yuan Jiajun"],
+      "tier": "pb",
+      "role": "Party Secretary, Chongqing",
+      "birth_year": 1962,
+      "birth_month": 10,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "President, China Manned Space Agency", "level": "technical_agency", "start_year": 2004, "end_year": 2013, "province": null},
+        {"role": "Vice Governor, Zhejiang", "level": "vice_provincial", "start_year": 2013, "end_year": 2016, "province": "Zhejiang"},
+        {"role": "Governor, Zhejiang", "level": "provincial_deputy", "start_year": 2016, "end_year": 2017, "province": "Zhejiang"},
+        {"role": "Party Secretary, Zhejiang", "level": "provincial_secretary", "start_year": 2021, "end_year": 2022, "province": "Zhejiang"},
+        {"role": "Party Secretary, Chongqing", "level": "provincial_secretary", "start_year": 2022, "end_year": null, "province": "Chongqing"}
+      ],
+
+      "education": [
+        {"institution": "Harbin Institute of Technology", "degree": "aerospace engineering", "year": 1984}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": ["xi_jinping"],
+        "shared_service": ["xi_jinping"],
+        "shared_service_detail": "Served under Xi in Zhejiang. Xi was Party Secretary 2002-2007, Yuan served there 2013-2022.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — Zhejiang network"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": null,
+        "collapsed": false,
+        "elevated": true
+      },
+
+      "succession_notes": "Strong profile. Aerospace technocrat turned governor. Chongqing is a politically sensitive municipality — assignment signals trust. Zhejiang connection to Xi. Age appropriate. Legitimate dark horse for 2027.",
+      "meta": {"sources": ["xinhua_bio", "baidu_baike"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "wang_yi",
+      "name_en": "Wang Yi",
+      "name_zh": "王毅",
+      "name_variants": ["Wang Yi"],
+      "tier": "pb",
+      "role": "Director, Foreign Affairs Commission",
+      "birth_year": 1953,
+      "birth_month": 10,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Ambassador to Japan", "level": "diplomat", "start_year": 2004, "end_year": 2007, "province": null},
+        {"role": "Director, Taiwan Affairs Office", "level": "central_agency", "start_year": 2008, "end_year": 2013, "province": null},
+        {"role": "Foreign Minister", "level": "state_council_minister", "start_year": 2013, "end_year": 2023, "province": null},
+        {"role": "Director, Foreign Affairs Commission", "level": "central_pipeline", "start_year": 2022, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Beijing Second Foreign Language Institute", "degree": "Japanese", "year": 1977}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": [],
+        "shared_service_detail": "Foreign policy specialist elevated by Xi. No factional tie beyond functional loyalty.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — diplomatic technocrat"
+      },
+
+      "flags": {
+        "age_eligible": false,
+        "career_eligible": false,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": true,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "age_over_68",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Extremely high media volume due to diplomatic role — classic false positive for media-based models. Will be 74 at 2027 congress. No provincial governance experience. Not a succession candidate.",
+      "meta": {"sources": ["xinhua_bio", "mfa_registry"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "chen_miner",
+      "name_en": "Chen Miner",
+      "name_zh": "陈敏尔",
+      "name_variants": ["Chen Miner", "Chen Min'er"],
+      "tier": "pb",
+      "role": "Party Secretary, Tianjin",
+      "birth_year": 1960,
+      "birth_month": 9,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Vice Secretary, Zhejiang", "level": "vice_provincial_secretary", "start_year": 2012, "end_year": 2015, "province": "Zhejiang"},
+        {"role": "Party Secretary, Guizhou", "level": "provincial_secretary", "start_year": 2015, "end_year": 2017, "province": "Guizhou"},
+        {"role": "Party Secretary, Chongqing", "level": "provincial_secretary", "start_year": 2017, "end_year": 2022, "province": "Chongqing"},
+        {"role": "Party Secretary, Tianjin", "level": "provincial_secretary", "start_year": 2022, "end_year": null, "province": "Tianjin"}
+      ],
+
+      "education": [
+        {"institution": "Zhejiang University", "degree": "Chinese literature", "year": 1982}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": ["xi_jinping"],
+        "shared_service": ["xi_jinping"],
+        "shared_service_detail": "Served under Xi in Zhejiang. One of the most direct Xi protégés in the system.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — Zhejiang inner circle"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": null,
+        "collapsed": false,
+        "elevated": true
+      },
+
+      "succession_notes": "Was widely expected to make PSC in 2022 and did not — a signal of either Xi's caution or internal opposition. Zhejiang connection is extremely strong. Three provincial secretary posts. Will be 67 at 2027 congress — ideal age. Strong 2027 candidate.",
+      "meta": {"sources": ["xinhua_bio", "baidu_baike", "academic_lit"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "hu_chunhua",
+      "name_en": "Hu Chunhua",
+      "name_zh": "胡春华",
+      "name_variants": ["Hu Chunhua"],
+      "tier": "cc",
+      "role": "Central Committee Member",
+      "birth_year": 1963,
+      "birth_month": 4,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Party Secretary, Inner Mongolia", "level": "provincial_secretary", "start_year": 2009, "end_year": 2012, "province": "Inner Mongolia"},
+        {"role": "Party Secretary, Guangdong", "level": "provincial_secretary", "start_year": 2012, "end_year": 2017, "province": "Guangdong"},
+        {"role": "Vice Premier", "level": "state_council_vp", "start_year": 2018, "end_year": 2023, "province": null}
+      ],
+
+      "education": [
+        {"institution": "Peking University", "degree": "Chinese language and literature", "year": 1983}
+      ],
+
+      "network": {
+        "patron": "hu_jintao",
+        "mentors": ["hu_jintao"],
+        "shared_service": [],
+        "shared_service_detail": "Hu Jintao's protégé and Communist Youth League (tuanpai) faction leader. Demoted from Politburo at 2022 congress — significant political signal.",
+        "cps_cohort": null,
+        "factional_label": "tuanpai — Hu Jintao faction"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": true,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "factional_demotion",
+        "collapsed": false,
+        "elevated": true
+      },
+
+      "succession_notes": "The great what-if of 2022. Demoted from Politburo to CC — an unprecedented reversal for someone of his credentials. Either Xi does not trust him or there is something we do not know. Technically eligible but the 2022 demotion is a severe negative signal.",
+      "meta": {"sources": ["xinhua_bio", "academic_lit"], "confidence": "high", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "dong_jun",
+      "name_en": "Dong Jun",
+      "name_zh": "董军",
+      "name_variants": ["Dong Jun"],
+      "tier": "pb",
+      "role": "Minister of National Defense",
+      "birth_year": 1961,
+      "birth_month": 8,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Commander, Southern Theater Navy", "level": "military_regional", "start_year": 2017, "end_year": 2021, "province": null},
+        {"role": "Commander, Eastern Theater", "level": "military_theater", "start_year": 2021, "end_year": 2023, "province": null},
+        {"role": "Minister of National Defense", "level": "state_council_minister", "start_year": 2024, "end_year": null, "province": null}
+      ],
+
+      "education": [
+        {"institution": "PLA Naval Academy", "degree": "naval science", "year": 1984}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": [],
+        "shared_service_detail": "Appointed Defense Minister after Qin Gang and Li Shangfu dismissals — Xi loyalist.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction military"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": true,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": false,
+        "ccdi_confirmed": false,
+        "soft_penalty": "military_track",
+        "collapsed": false,
+        "elevated": false
+      },
+
+      "succession_notes": "Relatively new appointment. Military track limits succession prospects — GS has always come from civilian-party career path in modern era.",
+      "meta": {"sources": ["xinhua_bio", "pla_registry"], "confidence": "medium", "last_updated": "2026-03-16"}
+    },
+
+    {
+      "id": "qin_gang",
+      "name_en": "Qin Gang",
+      "name_zh": "秦刚",
+      "name_variants": ["Qin Gang"],
+      "tier": "cc",
+      "role": "Central Committee Member",
+      "birth_year": 1966,
+      "birth_month": 3,
+      "gender": "M",
+      "fixed_probability": null,
+
+      "career": [
+        {"role": "Ambassador to United States", "level": "diplomat", "start_year": 2021, "end_year": 2022, "province": null},
+        {"role": "Foreign Minister", "level": "state_council_minister", "start_year": 2022, "end_year": 2023, "province": null}
+      ],
+
+      "education": [
+        {"institution": "International Studies University", "degree": "international relations", "year": 1988}
+      ],
+
+      "network": {
+        "patron": "xi_jinping",
+        "mentors": [],
+        "shared_service": [],
+        "shared_service_detail": "Rapid Xi-era promotion. Disappeared July 2023 — dismissed October 2023.",
+        "cps_cohort": null,
+        "factional_label": "Xi faction — dismissed"
+      },
+
+      "flags": {
+        "age_eligible": true,
+        "career_eligible": false,
+        "has_provincial_secretary": false,
+        "has_central_pipeline": false,
+        "has_cmc_experience": false,
+        "ccdi_investigated": true,
+        "ccdi_confirmed": false,
+        "soft_penalty": "dismissed_from_office",
+        "collapsed": true,
+        "elevated": false
+      },
+
+      "succession_notes": "Dismissed from Foreign Minister and CC roles in 2023 under unexplained circumstances. Effectively zeroed out for succession. Kept in dataset as a tracking case for disappearance detection validation.",
+      "meta": {"sources": ["xinhua_bio", "academic_lit"], "confidence": "high", "last_updated": "2026-03-16"}
+    }
+  ],
+
+  "cc_members_stub": {
+    "description": "Central Committee members beyond those with full profiles above. These are assigned default career and network values and are primarily scored via media signals. Full biographical data to be added incrementally.",
+    "members": [
+      {"id": "bai_chunli",    "name_en": "Bai Chunli",    "name_zh": "白春礼", "birth_year": 1953, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "cao_chunting",  "name_en": "Cao Chunting",  "name_zh": "曹建明", "birth_year": 1963, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "chen_guangguo", "name_en": "Chen Guangguo", "name_zh": "陈全国", "birth_year": 1955, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "chen_jining",   "name_en": "Chen Jining",   "name_zh": "陈吉宁", "birth_year": 1964, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "chen_xi",       "name_en": "Chen Xi",       "name_zh": "陈希",   "birth_year": 1953, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "fan_changlong", "name_en": "Fan Changlong", "name_zh": "范长龙", "birth_year": 1947, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "fu_zhenghua",   "name_en": "Fu Zhenghua",   "name_zh": "傅政华", "birth_year": 1955, "flags": {"age_eligible": false, "ccdi_investigated": true }},
+      {"id": "gao_jin",       "name_en": "Gao Jin",       "name_zh": "高进",   "birth_year": 1963, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "han_changfu",   "name_en": "Han Changfu",   "name_zh": "韩长赋", "birth_year": 1954, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "hu_heping",     "name_en": "Hu Heping",     "name_zh": "胡和平", "birth_year": 1962, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "jin_zhuanglong","name_en": "Jin Zhuanglong","name_zh": "金壮龙", "birth_year": 1964, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "li_shulei",     "name_en": "Li Shulei",     "name_zh": "李书磊", "birth_year": 1964, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "li_yunze",      "name_en": "Li Yunze",      "name_zh": "李云泽", "birth_year": 1970, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "liu_he",        "name_en": "Liu He",         "name_zh": "刘鹤",   "birth_year": 1952, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "liu_zhenli",    "name_en": "Liu Zhenli",    "name_zh": "刘振立", "birth_year": 1964, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "luo_huining",   "name_en": "Luo Huining",   "name_zh": "骆惠宁", "birth_year": 1956, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "ma_wenrui",     "name_en": "Ma Wenrui",     "name_zh": "马文瑞", "birth_year": 1959, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "ni_yuefeng",    "name_en": "Ni Yuefeng",    "name_zh": "倪岳峰", "birth_year": 1965, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "ning_jizhe",    "name_en": "Ning Jizhe",    "name_zh": "宁吉喆", "birth_year": 1956, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "pan_gongshen",  "name_en": "Pan Gongshen",  "name_zh": "潘功胜", "birth_year": 1963, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "shi_taifeng",   "name_en": "Shi Taifeng",   "name_zh": "石泰峰", "birth_year": 1956, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "sun_chunlan",   "name_en": "Sun Chunlan",   "name_zh": "孙春兰", "birth_year": 1950, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "tang_yijun",    "name_en": "Tang Yijun",    "name_zh": "唐一军", "birth_year": 1964, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "wang_xiaohong", "name_en": "Wang Xiaohong", "name_zh": "王小洪", "birth_year": 1963, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "wei_fenghe",    "name_en": "Wei Fenghe",    "name_zh": "魏凤和", "birth_year": 1954, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "xia_baolong",   "name_en": "Xia Baolong",   "name_zh": "夏宝龙", "birth_year": 1952, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "xu_qiliang",    "name_en": "Xu Qiliang",    "name_zh": "许其亮", "birth_year": 1954, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "yang_xiaodu",   "name_en": "Yang Xiaodu",   "name_zh": "杨晓渡", "birth_year": 1963, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "zhang_jun",     "name_en": "Zhang Jun",     "name_zh": "张军",   "birth_year": 1963, "flags": {"age_eligible": true,  "ccdi_investigated": false}},
+      {"id": "zhao_kezhi",    "name_en": "Zhao Kezhi",    "name_zh": "赵克志", "birth_year": 1953, "flags": {"age_eligible": false, "ccdi_investigated": false}},
+      {"id": "zhou_qiang",    "name_en": "Zhou Qiang",    "name_zh": "周强",   "birth_year": 1960, "flags": {"age_eligible": true,  "ccdi_investigated": false}}
+    ]
+  },
+
+  "historical_outcomes": {
+    "description": "Ground truth for model calibration. PSC members appointed at each congress since 2002.",
+    "congresses": [
+      {
+        "congress": 16,
+        "year": 2002,
+        "new_psc_members": ["hu_jintao", "wu_bangguo", "wen_jiabao", "jia_qinglin", "zeng_qinghong", "huang_ju", "wu_guanzheng", "li_changchun", "luo_gan"]
+      },
+      {
+        "congress": 17,
+        "year": 2007,
+        "new_psc_members": ["xi_jinping", "li_keqiang", "he_guoqiang", "zhou_yongkang"]
+      },
+      {
+        "congress": 18,
+        "year": 2012,
+        "new_psc_members": ["zhang_dejiang", "yu_zhengsheng", "liu_yunshan", "wang_qishan", "zhang_gaoli"]
+      },
+      {
+        "congress": 19,
+        "year": 2017,
+        "new_psc_members": ["li_zhanshu", "wang_huning", "zhao_leji", "han_zheng"]
+      },
+      {
+        "congress": 20,
+        "year": 2022,
+        "new_psc_members": ["li_qiang", "cai_qi", "ding_xuexiang", "li_xi"]
+      }
+    ]
+  }
+}
