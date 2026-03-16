@@ -1,0 +1,33 @@
+name: Weekly Model Retrain
+
+on:
+  schedule:
+    - cron: '0 3 * * 0'   # 03:00 UTC every Sunday
+  workflow_dispatch:
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gdeltdoc networkx scikit-learn pandas
+
+      - name: Step 4 — Retrain model weights
+        run: python pipeline/04_train_model.py
+
+      - name: Commit model weights
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/model_weights.json
+          git diff --staged --quiet || git commit -m "chore: retrain model weights $(date -u +%Y-%m-%d)"
+          git push

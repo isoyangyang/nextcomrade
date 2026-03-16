@@ -1,0 +1,39 @@
+name: Daily Pipeline
+
+on:
+  schedule:
+    - cron: '0 5 * * *'   # 05:00 UTC daily — 13:00 Beijing time
+  workflow_dispatch:        # manual trigger from Actions tab
+
+jobs:
+  run_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 gdeltdoc networkx scikit-learn pandas
+
+      - name: Step 1 — Fetch media signals
+        run: python pipeline/01_fetch_media.py
+
+      - name: Step 2 — Score all layers
+        run: python pipeline/02_score_layers.py
+
+      - name: Step 3 — Combine scores and write scores.json
+        run: python pipeline/03_combine_scores.py
+
+      - name: Commit outputs
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/media_history.json scores.json
+          git diff --staged --quiet || git commit -m "chore: daily pipeline $(date -u +%Y-%m-%d)"
+          git push
