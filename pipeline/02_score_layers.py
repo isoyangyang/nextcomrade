@@ -24,6 +24,16 @@ try:
 except ImportError:
     raise ImportError("Run: pip install networkx")
 
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from score_layers_lib import (
+    score_layer2_from_career,
+    build_network_graph,
+    score_layer4,
+    LEVEL_SCORES,
+    HISTORICAL_PROV_SEC_AGES,
+)
+
 # ── PATHS ─────────────────────────────────────────────────────────────────────
 
 ROOT          = Path(__file__).parent.parent
@@ -113,96 +123,9 @@ def score_layer1(member: dict, weights: dict, congress_year: int = 2027) -> floa
 
 # ── LAYER 2 — CAREER TRAJECTORY ───────────────────────────────────────────────
 
-# Historical PSC members' first provincial secretary ages (from members.json outcomes)
-# Used as cohort benchmark for career velocity scoring
-HISTORICAL_PROV_SEC_AGES = [52, 54, 55, 53, 56, 50, 57, 54, 53, 55, 58, 51, 56, 54]  # approximate from literature
-
-LEVEL_SCORES = {
-    "provincial_secretary":       1.0,
-    "state_council_premier":      1.0,
-    "cmc_vice_chair":             0.9,
-    "state_council_vp":           0.85,
-    "central_pipeline":           0.8,
-    "npc_chair":                  0.5,
-    "cppcc_chair":                0.5,
-    "state_vp":                   0.4,
-    "provincial_deputy":          0.6,
-    "vice_provincial_secretary":  0.55,
-    "military_theater":           0.7,
-    "military_region":            0.6,
-    "cmc_staff":                  0.65,
-    "state_council_minister":     0.6,
-    "central_ministry":           0.55,
-    "central_agency":             0.5,
-    "soe_head":                   0.4,
-    "technical_agency":           0.4,
-    "prefecture_secretary":       0.45,
-    "vice_provincial":            0.4,
-    "diplomat":                   0.3,
-    "military_regional":          0.5,
-    "military_track":             0.45,
-}
-
-
 def score_layer2(member: dict, all_members: list) -> float:
-    """
-    Returns a career trajectory score between 0.0 and 1.0.
-    Higher = more complete, faster, better-positioned career path.
-    """
-    career  = member.get("career", [])
-    flags   = member.get("flags", {})
-    birth   = member.get("birth_year")
-    tier    = member.get("tier", "cc")
-
-    if not career and tier == "cc":
-        # Stub CC member — use tier as weak prior
-        return 0.15
-
-    score = 0.0
-
-    # 1. Peak role quality — highest level role achieved
-    role_levels = [LEVEL_SCORES.get(r.get("level", ""), 0.2) for r in career]
-    peak_role   = max(role_levels) if role_levels else 0.2
-    score      += peak_role * 0.40
-
-    # 2. Provincial secretary breadth — more provinces = broader trust base
-    prov_sec_roles = [r for r in career if r.get("level") == "provincial_secretary"]
-    prov_count     = len(prov_sec_roles)
-    prov_score     = min(1.0, prov_count * 0.4)    # 0: 0.0, 1: 0.4, 2: 0.8, 3+: 1.0
-    score         += prov_score * 0.20
-
-    # 3. Central pipeline experience
-    has_pipeline = flags.get("has_central_pipeline", False) or any(
-        r.get("level") == "central_pipeline" for r in career
-    )
-    score += (0.15 if has_pipeline else 0.0)
-
-    # 4. Career velocity — age at first provincial secretary role
-    first_prov_age = None
-    if birth:
-        for r in sorted(career, key=lambda x: x.get("start_year", 9999)):
-            if r.get("level") == "provincial_secretary":
-                first_prov_age = r.get("start_year", 0) - birth
-                break
-
-    if first_prov_age is not None:
-        # Score relative to historical benchmark (~54 years old)
-        benchmark = sum(HISTORICAL_PROV_SEC_AGES) / len(HISTORICAL_PROV_SEC_AGES)
-        velocity  = max(0.0, min(1.0, (benchmark - first_prov_age + 10) / 15))
-        score    += velocity * 0.15
-    else:
-        score += 0.05   # partial credit for unknown
-
-    # 5. Experience diversity — penalise single-track careers
-    has_provincial = any(r.get("level") in ("provincial_secretary", "vice_provincial",
-                                             "provincial_deputy") for r in career)
-    has_central    = any(r.get("level") in ("central_pipeline", "state_council_vp",
-                                             "state_council_premier", "cmc_vice_chair",
-                                             "state_council_minister") for r in career)
-    diversity      = (0.05 if has_provincial else 0.0) + (0.05 if has_central else 0.0)
-    score         += diversity
-
-    return round(min(1.0, score), 4)
+    """Wrapper — delegates to shared lib function."""
+    return score_layer2_from_career(member)
 
 
 # ── LAYER 3 — MEDIA SIGNAL ────────────────────────────────────────────────────
@@ -342,83 +265,10 @@ def score_layer3(member_id: str, history: dict, weights: dict) -> dict:
     }
 
 
-# ── LAYER 4 — NETWORK CENTRALITY ─────────────────────────────────────────────
-
-def build_network_graph(members: list) -> nx.DiGraph:
-    """
-    Build a directed weighted patronage graph.
-    Nodes = member ids. Edges = relationships with weights.
-    """
-    G = nx.DiGraph()
-
-    # Add all members as nodes
-    for m in members:
-        G.add_node(m["id"], name=m["name_en"], tier=m.get("tier", "cc"))
-
-    # Add Xi as anchor node if not already present
-    if "xi_jinping" not in G:
-        G.add_node("xi_jinping", name="Xi Jinping", tier="gs")
-
-    # Add edges from network data
-    for m in members:
-        mid     = m["id"]
-        network = m.get("network", {})
-
-        # Strong tie: direct patron relationship
-        patron = network.get("patron")
-        if patron and patron != mid:
-            if patron not in G:
-                G.add_node(patron, name=patron, tier="historical")
-            G.add_edge(patron, mid, weight=3.0, type="patron")
-
-        # Strong tie: explicit mentors
-        for mentor in network.get("mentors", []):
-            if mentor and mentor != mid:
-                if mentor not in G:
-                    G.add_node(mentor, name=mentor, tier="historical")
-                if not G.has_edge(mentor, mid):
-                    G.add_edge(mentor, mid, weight=3.0, type="mentor")
-
-        # Weak tie: shared service
-        for colleague in network.get("shared_service", []):
-            if colleague and colleague != mid:
-                if colleague not in G:
-                    G.add_node(colleague, name=colleague, tier="historical")
-                # Shared service is bidirectional and weaker
-                if not G.has_edge(colleague, mid):
-                    G.add_edge(colleague, mid, weight=1.0, type="shared_service")
-                if not G.has_edge(mid, colleague):
-                    G.add_edge(mid, colleague, weight=1.0, type="shared_service")
-
-    return G
+# ── LAYER 4 — network scoring imported from score_layers_lib ─────────────────
+# build_network_graph() and score_layer4() are imported from score_layers_lib.py
 
 
-def score_layer4(member_id: str, graph: nx.DiGraph) -> float:
-    """
-    Returns personalised PageRank score anchored to xi_jinping.
-    Higher = closer to Xi in the patronage network.
-    Returns 0.0 if member not in graph or no path to Xi.
-    """
-    if member_id not in graph:
-        return 0.0
-    if "xi_jinping" not in graph:
-        return 0.0
-
-    try:
-        # Personalised PageRank — concentrates probability mass on Xi
-        personalization = {"xi_jinping": 1.0}
-        pr = nx.pagerank(
-            graph,
-            alpha=0.85,
-            personalization=personalization,
-            weight="weight",
-            max_iter=200,
-        )
-        return round(pr.get(member_id, 0.0), 6)
-    except nx.PowerIterationFailedConvergence:
-        return 0.0
-    except Exception:
-        return 0.0
 
 
 # ── MAIN ──────────────────────────────────────────────────────────────────────
