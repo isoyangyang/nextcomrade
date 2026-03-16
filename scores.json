@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T18:53:27.370472Z",
+  "generated_at": "2026-03-16T07:57:48.896850Z",
   "lookback_days": 30,
   "member_count": 59,
   "members": [
@@ -9,15 +9,15 @@
       "role": "Premier, State Council",
       "birth_year": 1959,
       "age": 67,
-      "raw_score": 30.5,
-      "mention_count": 25,
-      "xi_cooccurrence_count": 11,
-      "last_seen": "2026-03-15",
+      "raw_score": 31.125,
+      "mention_count": 26,
+      "xi_cooccurrence_count": 12,
+      "last_seen": "2026-03-16",
       "age_penalised": false,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 26.6451,
+      "probability": 27.5934,
       "rank": 1
     },
     {
@@ -26,15 +26,15 @@
       "role": "Executive Vice Premier",
       "birth_year": 1962,
       "age": 64,
-      "raw_score": 19.5,
+      "raw_score": 20.0,
       "mention_count": 9,
-      "xi_cooccurrence_count": 7,
-      "last_seen": "2026-03-15",
+      "xi_cooccurrence_count": 8,
+      "last_seen": "2026-03-16",
       "age_penalised": false,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 17.0354,
+      "probability": 17.7307,
       "rank": 2
     },
     {
@@ -43,15 +43,15 @@
       "role": "Director, Foreign Affairs Comm.",
       "birth_year": 1953,
       "age": 73,
-      "raw_score": 12.674999999999999,
-      "mention_count": 125,
-      "xi_cooccurrence_count": 6,
-      "last_seen": "2026-03-15",
+      "raw_score": 10.518749999999999,
+      "mention_count": 106,
+      "xi_cooccurrence_count": 2,
+      "last_seen": "2026-03-16",
       "age_penalised": true,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 11.073,
+      "probability": 9.3252,
       "rank": 3
     },
     {
@@ -63,12 +63,12 @@
       "raw_score": 9.25,
       "mention_count": 4,
       "xi_cooccurrence_count": 3,
-      "last_seen": "2026-03-15",
+      "last_seen": "2026-03-16",
       "age_penalised": false,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 8.0809,
+      "probability": 8.2004,
       "rank": 4
     },
     {
@@ -77,15 +77,15 @@
       "role": "Chairman, NPC",
       "birth_year": 1957,
       "age": 69,
-      "raw_score": 5.5874999999999995,
-      "mention_count": 23,
-      "xi_cooccurrence_count": 11,
-      "last_seen": "2026-03-15",
+      "raw_score": 5.9624999999999995,
+      "mention_count": 27,
+      "xi_cooccurrence_count": 12,
+      "last_seen": "2026-03-16",
       "age_penalised": true,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 4.8813,
+      "probability": 5.286,
       "rank": 5
     },
     {
@@ -95,14 +95,14 @@
       "birth_year": 1955,
       "age": 71,
       "raw_score": 5.0,
-      "mention_count": 9,
+      "mention_count": 8,
       "xi_cooccurrence_count": 8,
-      "last_seen": "2026-03-15",
+      "last_seen": "2026-03-16",
       "age_penalised": true,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 4.3681,
+      "probability": 4.4327,
       "rank": 6
     },
     {
@@ -113,13 +113,13 @@
       "age": 70,
       "raw_score": 5.0,
       "mention_count": 9,
-      "xi_cooccurrence_count": 7,
-      "last_seen": "2026-03-15",
+      "xi_cooccurrence_count": 8,
+      "last_seen": "2026-03-16",
       "age_penalised": true,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 4.3681,
+      "probability": 4.4327,
       "rank": 7
     },
     {
@@ -130,31 +130,14 @@
       "age": 72,
       "raw_score": 5.0,
       "mention_count": 9,
-      "xi_cooccurrence_count": 7,
-      "last_seen": "2026-03-15",
+      "xi_cooccurrence_count": 8,
+      "last_seen": "2026-03-16",
       "age_penalised": true,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 4.3681,
+      "probability": 4.4327,
       "rank": 8
-    },
-    {
-      "name": "Shen Yiqin",
-      "tier": "pb",
-      "role": "Executive Vice Premier",
-      "birth_year": 1966,
-      "age": 60,
-      "raw_score": 2.75,
-      "mention_count": 4,
-      "xi_cooccurrence_count": 1,
-      "last_seen": "2026-03-15",
-      "age_penalised": false,
-      "position_label": "no articles",
-      "position_multiplier": 1.0,
-      "fixed": false,
-      "probability": 2.4024,
-      "rank": 9
     },
     {
       "name": "Li Hongzhong",
@@ -163,15 +146,49 @@
       "birth_year": 1956,
       "age": 70,
       "raw_score": 1.7249999999999999,
-      "mention_count": 9,
-      "xi_cooccurrence_count": 3,
-      "last_seen": "2026-03-15",
+      "mention_count": 10,
+      "xi_cooccurrence_count": 4,
+      "last_seen": "2026-03-16",
       "age_penalised": true,
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 1.507,
+      "probability": 1.5293,
+      "rank": 9
+    },
+    {
+      "name": "Shen Yiqin",
+      "tier": "pb",
+      "role": "Executive Vice Premier",
+      "birth_year": 1966,
+      "age": 60,
+      "raw_score": 1.5,
+      "mention_count": 3,
+      "xi_cooccurrence_count": 1,
+      "last_seen": "2026-03-09",
+      "age_penalised": false,
+      "position_label": "no articles",
+      "position_multiplier": 1.0,
+      "fixed": false,
+      "probability": 1.3298,
       "rank": 10
+    },
+    {
+      "name": "He Lifeng",
+      "tier": "pb",
+      "role": "Vice Premier",
+      "birth_year": 1955,
+      "age": 71,
+      "raw_score": 1.2375,
+      "mention_count": 9,
+      "xi_cooccurrence_count": 0,
+      "last_seen": "2026-03-16",
+      "age_penalised": true,
+      "position_label": "no articles",
+      "position_multiplier": 1.0,
+      "fixed": false,
+      "probability": 1.0971,
+      "rank": 11
     },
     {
       "name": "Chen Wenqing",
@@ -187,8 +204,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 11
+      "probability": 0.8865,
+      "rank": 12
     },
     {
       "name": "Zhang Youxia",
@@ -204,8 +221,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 12
+      "probability": 0.8865,
+      "rank": 13
     },
     {
       "name": "He Weidong",
@@ -221,8 +238,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 13
+      "probability": 0.8865,
+      "rank": 14
     },
     {
       "name": "Liu Guozhong",
@@ -238,8 +255,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 14
+      "probability": 0.8865,
+      "rank": 15
     },
     {
       "name": "Ma Xingrui",
@@ -255,8 +272,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 15
+      "probability": 0.8865,
+      "rank": 16
     },
     {
       "name": "Yuan Jiajun",
@@ -272,8 +289,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 16
+      "probability": 0.8865,
+      "rank": 17
     },
     {
       "name": "Li Ganjie",
@@ -289,8 +306,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 17
+      "probability": 0.8865,
+      "rank": 18
     },
     {
       "name": "Chen Miner",
@@ -306,8 +323,8 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 18
+      "probability": 0.8865,
+      "rank": 19
     },
     {
       "name": "Yin Li",
@@ -323,24 +340,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
-      "rank": 19
-    },
-    {
-      "name": "He Lifeng",
-      "tier": "pb",
-      "role": "Vice Premier",
-      "birth_year": 1955,
-      "age": 71,
-      "raw_score": 1.0,
-      "mention_count": 6,
-      "xi_cooccurrence_count": 0,
-      "last_seen": "2026-03-15",
-      "age_penalised": true,
-      "position_label": "no articles",
-      "position_multiplier": 1.0,
-      "fixed": false,
-      "probability": 0.8736,
+      "probability": 0.8865,
       "rank": 20
     },
     {
@@ -357,7 +357,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
+      "probability": 0.8865,
       "rank": 21
     },
     {
@@ -374,7 +374,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
+      "probability": 0.8865,
       "rank": 22
     },
     {
@@ -391,7 +391,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
+      "probability": 0.8865,
       "rank": 23
     },
     {
@@ -408,7 +408,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.8736,
+      "probability": 0.8865,
       "rank": 24
     },
     {
@@ -425,7 +425,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 25
     },
     {
@@ -442,7 +442,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 26
     },
     {
@@ -459,7 +459,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 27
     },
     {
@@ -476,7 +476,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 28
     },
     {
@@ -493,7 +493,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 29
     },
     {
@@ -510,7 +510,7 @@
       "position_label": "no articles",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 30
     },
     {
@@ -527,7 +527,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 31
     },
     {
@@ -544,7 +544,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 32
     },
     {
@@ -561,7 +561,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 33
     },
     {
@@ -578,7 +578,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 34
     },
     {
@@ -595,7 +595,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 35
     },
     {
@@ -612,7 +612,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 36
     },
     {
@@ -629,7 +629,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 37
     },
     {
@@ -646,7 +646,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 38
     },
     {
@@ -663,7 +663,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 39
     },
     {
@@ -680,7 +680,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 40
     },
     {
@@ -697,7 +697,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 41
     },
     {
@@ -714,7 +714,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 42
     },
     {
@@ -731,7 +731,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 43
     },
     {
@@ -748,7 +748,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 44
     },
     {
@@ -765,7 +765,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 45
     },
     {
@@ -782,7 +782,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 46
     },
     {
@@ -799,7 +799,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 47
     },
     {
@@ -816,7 +816,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 48
     },
     {
@@ -833,7 +833,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 49
     },
     {
@@ -850,7 +850,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 50
     },
     {
@@ -867,7 +867,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 51
     },
     {
@@ -884,7 +884,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 52
     },
     {
@@ -901,7 +901,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 53
     },
     {
@@ -918,7 +918,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 54
     },
     {
@@ -935,7 +935,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 55
     },
     {
@@ -952,7 +952,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 56
     },
     {
@@ -969,7 +969,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 57
     },
     {
@@ -986,7 +986,7 @@
       "position_label": "not assessed",
       "position_multiplier": 1.0,
       "fixed": false,
-      "probability": 0.0874,
+      "probability": 0.0887,
       "rank": 58
     },
     {
@@ -1003,7 +1003,7 @@
       "position_label": "fixed",
       "position_multiplier": 1.0,
       "fixed": true,
-      "probability": 0.0699,
+      "probability": 0.0709,
       "rank": 59
     }
   ]
