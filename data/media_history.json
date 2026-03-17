@@ -1,0 +1,801 @@
+{
+  "schema_version": 1,
+  "retention_days": 180,
+  "last_updated": "2026-03-17",
+  "series": {
+    "li_qiang": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20260310T0": 0,
+          "20260311T0": 0,
+          "20260312T0": 0,
+          "20260313T0": 0,
+          "20260314T0": 1,
+          "20260315T0": 0,
+          "20260316T0": 0,
+          "20260317T0": 0
+        },
+        "daily_xi": {},
+        "last_seen": "20260314T0",
+        "recent_articles": []
+      }
+    ],
+    "zhao_leji": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 1,
+        "xi_cooccurrence": 1,
+        "daily_mentions": {
+          "20260310T0": 0,
+          "20260311T0": 0,
+          "20260312T0": 1,
+          "20260313T0": 0,
+          "20260314T0": 0,
+          "20260315T0": 0,
+          "20260316T0": 0,
+          "20260317T0": 0
+        },
+        "daily_xi": {
+          "20260310T0": 0,
+          "20260311T0": 0,
+          "20260312T0": 1,
+          "20260313T0": 0,
+          "20260314T0": 0,
+          "20260315T0": 0,
+          "20260316T0": 0,
+          "20260317T0": 0
+        },
+        "last_seen": "20260312T0",
+        "recent_articles": [
+          {
+            "title": "China national legislature holds closing meeting of annual session",
+            "url": "http://en.people.cn/n3/2026/0312/c90000-20435301.html",
+            "date": "20260312T0"
+          }
+        ]
+      }
+    ],
+    "wang_huning": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "cai_qi": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "ding_xuexiang": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "li_xi": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 3,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20260310T0": 1,
+          "20260311T0": 1,
+          "20260312T0": 1,
+          "20260313T0": 0,
+          "20260314T0": 0,
+          "20260315T0": 0,
+          "20260316T0": 0,
+          "20260317T0": 0
+        },
+        "daily_xi": {},
+        "last_seen": "20260312T0",
+        "recent_articles": []
+      }
+    ],
+    "han_zheng": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "chen_wenqing": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "zhang_youxia": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "he_weidong": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "liu_guozhong": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "ma_xingrui": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "yuan_jiajun": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "wang_yi": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 9,
+        "xi_cooccurrence": 1,
+        "daily_mentions": {
+          "20260310T0": 3,
+          "20260311T0": 3,
+          "20260312T0": 0,
+          "20260313T0": 0,
+          "20260314T0": 2,
+          "20260315T0": 0,
+          "20260316T0": 0,
+          "20260317T0": 1
+        },
+        "daily_xi": {
+          "20260310T0": 0,
+          "20260311T0": 1,
+          "20260312T0": 0,
+          "20260313T0": 0,
+          "20260314T0": 0,
+          "20260315T0": 0,
+          "20260316T0": 0,
+          "20260317T0": 0
+        },
+        "last_seen": "20260317T0",
+        "recent_articles": [
+          {
+            "title": "Ministerial meeting of China - Vietnam  3+3  strategic dialogue held in Vietnam",
+            "url": "http://en.people.cn/n3/2026/0317/c90000-20436572.html",
+            "date": "20260317T0"
+          },
+          {
+            "title": "China - Netherlands mutually beneficial cooperation in line with common interests : Chinese FM",
+            "url": "http://en.people.cn/n3/2026/0314/c90000-20436048.html",
+            "date": "20260314T0"
+          },
+          {
+            "title": "Chinese senior officials to attend ministerial meeting of China - Vietnam  3+3  strategic dialogue in Vietnam",
+            "url": "http://en.people.cn/n3/2026/0313/c90000-20435923.html",
+            "date": "20260314T0"
+          },
+          {
+            "title": "Observer : China is injecting greater stability into the world",
+            "url": "http://en.people.cn/n3/2026/0311/c90000-20434742.html",
+            "date": "20260311T0"
+          },
+          {
+            "title": "Chinese FM urges ceasefire in Middle East , supports Gulf role in regional future",
+            "url": "https://en.people.cn/n3/2026/0311/c90000-20434723.html",
+            "date": "20260311T0"
+          }
+        ]
+      }
+    ],
+    "chen_miner": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "hu_chunhua": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "dong_jun": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 3,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20260310T0": 0,
+          "20260311T0": 0,
+          "20260312T0": 0,
+          "20260313T0": 0,
+          "20260314T0": 1,
+          "20260315T0": 0,
+          "20260316T0": 1,
+          "20260317T0": 1
+        },
+        "daily_xi": {},
+        "last_seen": "20260317T0",
+        "recent_articles": [
+          {
+            "title": "Ministerial meeting of China - Vietnam  3+3  strategic dialogue held in Vietnam",
+            "url": "http://en.people.cn/n3/2026/0317/c90000-20436572.html",
+            "date": "20260317T0"
+          },
+          {
+            "title": "中越举行外交 、 国防 、 公安  3+3  战略对话机制首次部长级会议 - 新华网",
+            "url": "http://www.xinhuanet.com/20260317/8ec6e5e2c30545b6b6bce3967e82c0d2/c.html",
+            "date": "20260316T2"
+          },
+          {
+            "title": "Chinese senior officials to attend ministerial meeting of China - Vietnam  3+3  strategic dialogue in Vietnam",
+            "url": "http://en.people.cn/n3/2026/0313/c90000-20435923.html",
+            "date": "20260314T0"
+          }
+        ]
+      }
+    ],
+    "qin_gang": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "bai_chunli": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "cao_chunting": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "chen_guangguo": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "chen_jining": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "chen_xi": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 2,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20260310T0": 0,
+          "20260311T0": 2,
+          "20260312T0": 0,
+          "20260313T0": 0,
+          "20260314T0": 0,
+          "20260315T0": 0,
+          "20260316T0": 0,
+          "20260317T0": 0
+        },
+        "daily_xi": {},
+        "last_seen": "20260311T0",
+        "recent_articles": [
+          {
+            "title": "中国政協第１４期全国委第４回会議 、 ３回目の 「 委員通路 」 取材",
+            "url": "http://jp.xinhuanet.com/20260311/37d85b98a7a2432d8aacb82baeee8424/c.html",
+            "date": "20260311T0"
+          },
+          {
+            "title": "中国政協第１４期全国委第４回会議が閉幕",
+            "url": "http://jp.xinhuanet.com/20260311/38093e4b361946babe689876ccf11150/c.html",
+            "date": "20260311T0"
+          }
+        ]
+      }
+    ],
+    "fan_changlong": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "fu_zhenghua": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "gao_jin": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "han_changfu": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "hu_heping": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "jin_zhuanglong": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "li_shulei": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "li_yunze": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "liu_he": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20260310T0": 0,
+          "20260311T0": 0,
+          "20260312T0": 0,
+          "20260313T0": 0,
+          "20260314T0": 0,
+          "20260315T0": 0,
+          "20260316T0": 1,
+          "20260317T0": 0
+        },
+        "daily_xi": {},
+        "last_seen": "20260316T0",
+        "recent_articles": [
+          {
+            "title": "新华视点｜春日盛景赋能  花经济  文旅融合焕发新活力 - 新华网",
+            "url": "http://www.xinhuanet.com/ci/20260316/a1db6eef6aeb45a1b1b60166a868a9c7/c.html",
+            "date": "20260316T0"
+          }
+        ]
+      }
+    ],
+    "liu_zhenli": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "luo_huining": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "ma_wenrui": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "ni_yuefeng": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "ning_jizhe": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "pan_gongshen": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "shi_taifeng": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "sun_chunlan": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "tang_yijun": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "wang_xiaohong": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": [
+          {
+            "title": "Ministerial meeting of China - Vietnam  3+3  strategic dialogue held in Vietnam",
+            "url": "http://en.people.cn/n3/2026/0317/c90000-20436572.html",
+            "date": "20260317T0"
+          },
+          {
+            "title": "Chinese senior officials to attend ministerial meeting of China - Vietnam  3+3  strategic dialogue in Vietnam",
+            "url": "http://en.people.cn/n3/2026/0313/c90000-20435923.html",
+            "date": "20260314T0"
+          }
+        ]
+      }
+    ],
+    "wei_fenghe": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "xia_baolong": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "xu_qiliang": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "yang_xiaodu": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "zhang_jun": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "zhao_kezhi": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ],
+    "zhou_qiang": [
+      {
+        "date": "2026-03-17",
+        "window_start": "2026-03-10",
+        "window_end": "2026-03-17",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      }
+    ]
+  }
+}
