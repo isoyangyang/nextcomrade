@@ -39,6 +39,7 @@ from score_layers_lib import (
 ROOT          = Path(__file__).parent.parent
 MEMBERS_FILE  = ROOT / "data" / "members.json"
 HISTORY_FILE  = ROOT / "data" / "media_history.json"
+CN_HISTORY_FILE = ROOT / "data" / "chinese_rss_history.json"
 WEIGHTS_FILE  = ROOT / "data" / "model_weights.json"
 OUTPUT_FILE   = ROOT / "data" / "layer_scores.json"
 
@@ -265,6 +266,56 @@ def score_layer3(member_id: str, history: dict, weights: dict) -> dict:
     }
 
 
+def blend_chinese_rss(l3_result: dict, cn_history: dict, member_id: str, weights: dict) -> dict:
+    """
+    Blend Chinese RSS signal into the existing Layer 3 score.
+    Chinese RSS mentions are weighted at CN_RSS_BLEND (0.4) of the total
+    media signal — meaningful but not dominant, since the feed covers
+    only 3 days of content vs GDELT's 30-day window.
+
+    Modifies l3_result in place and returns it.
+    """
+    CN_RSS_BLEND   = 0.4    # weight given to Chinese RSS in final media score
+    XI_ZH          = "习近平"
+    xi_boost       = weights["layer3_params"]["xi_boost_multiplier"]
+
+    cn_series = cn_history.get("series", {}).get(member_id, [])
+    if not cn_series:
+        l3_result["cn_mentions"]        = 0
+        l3_result["cn_xi_cooccurrence"] = 0
+        return l3_result
+
+    # Use most recent entry
+    latest      = sorted(cn_series, key=lambda e: e.get("date",""))[-1]
+    cn_mentions = latest.get("mentions", 0)
+    cn_xi       = latest.get("xi_cooccurrence", 0)
+
+    # Compute Chinese RSS score — same boosting logic as GDELT
+    cn_score = cn_mentions + (cn_xi * xi_boost)
+
+    # Normalise to same scale as GDELT score (cap at 50 — RSS covers 3 days
+    # vs GDELT's 30, so a fair comparison is ~1/10th the cap)
+    cn_score_norm = min(500.0, cn_score * 10)   # scale up to match 30-day window
+
+    # Blend: final = (1-blend)*gdelt + blend*chinese_rss
+    original_score = l3_result["media_score"]
+    blended_score  = (1 - CN_RSS_BLEND) * original_score + CN_RSS_BLEND * cn_score_norm
+
+    l3_result["media_score"]         = round(blended_score, 4)
+    l3_result["cn_mentions"]         = cn_mentions
+    l3_result["cn_xi_cooccurrence"]  = cn_xi
+    l3_result["cn_sample_titles"]    = latest.get("sample_titles", [])
+
+    # Update last_seen — Chinese RSS may be more recent
+    cn_last_seen = latest.get("last_seen", "Unknown")
+    current_last = l3_result.get("last_seen", "Unknown")
+    if cn_last_seen and cn_last_seen != "Unknown":
+        if current_last == "Unknown" or cn_last_seen > current_last:
+            l3_result["last_seen"] = cn_last_seen
+
+    return l3_result
+
+
 # ── LAYER 4 — network scoring imported from score_layers_lib ─────────────────
 # build_network_graph() and score_layer4() are imported from score_layers_lib.py
 
@@ -276,13 +327,15 @@ def score_layer3(member_id: str, history: dict, weights: dict) -> dict:
 def main():
     print(f"02_score_layers.py — {datetime.datetime.now().isoformat()}")
 
-    data     = load_json(MEMBERS_FILE)
-    members  = load_all_members(data)
-    history  = load_json(HISTORY_FILE) if HISTORY_FILE.exists() else {"series": {}}
-    weights  = load_json(WEIGHTS_FILE)
+    data       = load_json(MEMBERS_FILE)
+    members    = load_all_members(data)
+    history    = load_json(HISTORY_FILE) if HISTORY_FILE.exists() else {"series": {}}
+    cn_history = load_json(CN_HISTORY_FILE) if CN_HISTORY_FILE.exists() else {"series": {}}
+    weights    = load_json(WEIGHTS_FILE)
 
     print(f"Members: {len(members)} | "
-          f"History series: {len(history.get('series', {}))} | "
+          f"GDELT series: {len(history.get('series', {}))} | "
+          f"Chinese RSS series: {len(cn_history.get('series', {}))} | "
           f"Layer weights: {weights['layer_weights']}\n")
 
     # Build network graph once
@@ -304,6 +357,7 @@ def main():
         # Layers 2–4
         l2 = score_layer2(m, members)
         l3 = score_layer3(mid, history, weights)
+        l3 = blend_chinese_rss(l3, cn_history, mid, weights)  # blend in Chinese RSS
         l4 = score_layer4(mid, graph)
 
         # Normalise media score to 0-1 range (cap at 500 raw weighted mentions)
@@ -311,7 +365,8 @@ def main():
 
         print(f"  [{tier.upper()}] {name:<22} "
               f"L1: {l1_mult:.3f}  L2: {l2:.3f}  "
-              f"L3: {l3_normalised:.3f} (raw:{l3['media_score']:.1f}, z:{l3['anomaly_zscore']})  "
+              f"L3: {l3_normalised:.3f} (raw:{l3['media_score']:.1f}, "
+              f"cn:{l3.get('cn_mentions',0)}, z:{l3['anomaly_zscore']})  "
               f"L4: {l4:.4f}"
               + (" [FIXED]" if fixed is not None else "")
               + (" [SILENT]" if l3["is_silent"] else "")
