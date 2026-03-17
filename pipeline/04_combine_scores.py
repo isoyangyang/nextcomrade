@@ -128,16 +128,20 @@ def main():
         if fixed is not None:
             raw_score = fixed
         elif l1 == -1.0:
-            # Sentinel for fixed (shouldn't happen but safe fallback)
             raw_score = fixed or 0.01
         else:
-            # Core combination formula
-            combined  = w2 * l2 + w3 * l3 + w4 * l4
+            # Scale L4 — PageRank values are tiny (0.0001–0.01 range)
+            # Scale up so the top network score ≈ 1.0
+            # We use 50x as a reasonable multiplier given our graph size
+            l4_scaled = min(1.0, l4 * 50.0)
+            combined  = w2 * l2 + w3 * l3 + w4 * l4_scaled
             raw_score = l1 * combined
 
-        # Apply tier floor
-        floor     = floors.get(tier, 0.1)
-        raw_score = max(raw_score, floor * 0.001)  # floor applied post-normalisation
+        # Apply tier floor only when combined score is near-zero
+        # and member is not fixed — floor preserves hierarchy for
+        # members with no media data yet, but doesn't override real scores
+        if fixed is None and raw_score < floor * 0.01:
+            raw_score = floor * 0.01  # tiny floor placeholder pre-normalisation
 
         results.append({
             "id":                   mid,
@@ -170,8 +174,11 @@ def main():
             "succession_notes":     gossip_map.get(mid, ""),
         })
 
-    # Apply tier floors to raw scores before normalisation
+    # Apply tier floors — ensures PSC members never score below Politburo,
+    # Politburo never below CC. Skip fixed members entirely.
     for r in results:
+        if r["fixed"]:
+            continue   # Wang Huning etc — never apply floor
         floor = floors.get(r["tier"], 0.1)
         r["raw_score"] = max(r["raw_score"], floor)
 
