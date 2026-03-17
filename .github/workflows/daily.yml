@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4 gdeltdoc networkx scikit-learn pandas
 
-      - name: Test Chinese sources
-        run: python test_chinese_sources.py
+      - name: Test Chinese RSS
+        run: python test_chinese_rss.py
 
       - name: Step 1 — Fetch media signals
         run: python pipeline/01_fetch_media.py
