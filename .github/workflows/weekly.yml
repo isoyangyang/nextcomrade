@@ -22,7 +22,7 @@ jobs:
         run: pip install requests beautifulsoup4 gdeltdoc networkx scikit-learn pandas
 
       - name: Step 4 — Retrain model weights
-        run: python pipeline/04_train_model.py
+        run: python pipeline/05_train_model.py
 
       - name: Commit model weights
         run: |
