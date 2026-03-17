@@ -2,8 +2,8 @@ name: Daily Pipeline
 
 on:
   schedule:
-    - cron: '0 5 * * *'   # 05:00 UTC daily — 13:00 Beijing time
-  workflow_dispatch:        # manual trigger from Actions tab
+    - cron: '0 5 * * *'
+  workflow_dispatch:
 
 jobs:
   run_pipeline:
@@ -21,23 +21,23 @@ jobs:
       - name: Install dependencies
         run: pip install requests beautifulsoup4 gdeltdoc networkx scikit-learn pandas
 
-      - name: Test Chinese RSS
-        run: python test_chinese_rss2.py
-
-      - name: Step 1 — Fetch media signals
+      - name: Step 1 — Fetch GDELT English media signals
         run: python pipeline/01_fetch_media.py
 
-      - name: Step 2 — Score all layers
-        run: python pipeline/02_score_layers.py
+      - name: Step 2 — Fetch Chinese RSS signals
+        run: python pipeline/02_fetch_chinese_rss.py
 
-      - name: Step 3 — Combine scores and write scores.json
-        run: python pipeline/03_combine_scores.py
+      - name: Step 3 — Score all layers
+        run: python pipeline/03_score_layers.py
+
+      - name: Step 4 — Combine scores and write scores.json
+        run: python pipeline/04_combine_scores.py
 
       - name: Commit outputs
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/media_history.json scores.json
+          git add data/media_history.json data/chinese_rss_history.json scores.json
           git diff --staged --quiet || git commit -m "chore: daily pipeline $(date -u +%Y-%m-%d)"
           git pull --rebase origin main
           git push
