@@ -137,12 +137,8 @@ def main():
             combined  = w2 * l2 + w3 * l3 + w4 * l4_scaled
             raw_score = l1 * combined
 
-        # Apply tier floor only when combined score is near-zero
-        # and member is not fixed — floor preserves hierarchy for
-        # members with no media data yet, but doesn't override real scores
         floor = floors.get(tier, 0.1)
-        if fixed is None and raw_score < floor * 0.01:
-            raw_score = floor * 0.01  # tiny floor placeholder pre-normalisation
+        _ = floor  # retained for reference in model_weights.json but not applied here
 
         results.append({
             "id":                   mid,
@@ -175,13 +171,30 @@ def main():
             "succession_notes":     gossip_map.get(mid, ""),
         })
 
-    # Apply tier floors — ensures PSC members never score below Politburo,
-    # Politburo never below CC. Skip fixed members entirely.
+    # Proportional tier minimums — PSC members must score at least
+    # 3x the average Politburo score, Politburo at least 3x average CC.
+    # Applied only if real scores violate hierarchy, not unconditionally.
+    # Fixed members (Wang Huning) are always excluded.
+    non_fixed = [r for r in results if not r["fixed"]]
+
+    cc_scores  = [r["raw_score"] for r in non_fixed if r["tier"] == "cc"]
+    pb_scores  = [r["raw_score"] for r in non_fixed if r["tier"] == "pb"]
+    psc_scores = [r["raw_score"] for r in non_fixed if r["tier"] == "psc"]
+
+    cc_avg  = sum(cc_scores)  / len(cc_scores)  if cc_scores  else 0.01
+    pb_avg  = sum(pb_scores)  / len(pb_scores)  if pb_scores  else 0.01
+    psc_avg = sum(psc_scores) / len(psc_scores) if psc_scores else 0.01
+
+    pb_min  = cc_avg  * 2.0   # Politburo should be at least 2x CC average
+    psc_min = pb_avg  * 3.0   # PSC should be at least 3x Politburo average
+
     for r in results:
         if r["fixed"]:
-            continue   # Wang Huning etc — never apply floor
-        floor = floors.get(r["tier"], 0.1)
-        r["raw_score"] = max(r["raw_score"], floor)
+            continue
+        if r["tier"] == "pb":
+            r["raw_score"] = max(r["raw_score"], pb_min * 0.5)
+        elif r["tier"] == "psc":
+            r["raw_score"] = max(r["raw_score"], psc_min * 0.5)
 
     # Normalise to percentages
     total = sum(r["raw_score"] for r in results)
