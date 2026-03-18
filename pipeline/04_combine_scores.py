@@ -140,6 +140,7 @@ def main():
         # Apply tier floor only when combined score is near-zero
         # and member is not fixed — floor preserves hierarchy for
         # members with no media data yet, but doesn't override real scores
+        floor = floors.get(tier, 0.1)
         if fixed is None and raw_score < floor * 0.01:
             raw_score = floor * 0.01  # tiny floor placeholder pre-normalisation
 
