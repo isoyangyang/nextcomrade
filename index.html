@@ -15,7 +15,7 @@
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://nextcomrade.com/" />
   <meta property="twitter:title" content="Next Comrade — Xi Jinping Succession Tracker" />
-  <meta property="twitter:description" content="200 CCP members. One throne. Odds reset daily." />
+  <meta property="twitter:description" content="200 CCP members. One throne. Updated daily." />
   <meta property="twitter:image" content="https://nextcomrade.com/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -612,6 +612,10 @@
     .tier-btn { font-size: 9px; padding: 3px 8px; }
   }
   </style>
+  <!-- GoatCounter analytics — privacy-friendly, no cookies -->
+  <script data-goatcounter="https://nextcomrade.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
 </head>
 <body>
 
@@ -654,7 +658,7 @@
       <span class="hero-stat-label">Ways This Goes Wrong</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num" id="last-updated" style="font-size:14px;line-height:1.2">—</span>
+      <span class="hero-stat-num" id="last-updated">—</span>
       <span class="hero-stat-label">Data Updated</span>
     </div>
   </div>
@@ -722,10 +726,22 @@
     <div class="methodology">
       <h3>How the model works</h3>
       <p>
-        Each candidate is assessed using a proprietary weighting system that incorporates their position in the CCP hierarchy, seniority, factional alignment, and proximity to Xi Jinping at official functions. PSC members carry substantially higher prior probability than Politburo members, who in turn outrank the Central Committee. Assessments are recalibrated daily as new intelligence becomes available.
+        Probabilities are produced by a four-layer scoring model updated every morning from live intelligence sources.
       </p>
-      <p style="margin-top: 10px;">
-        Probabilities are normalised to sum to 100% across all 200 tracked candidates. In practice, the top 7 PSC members collectively account for the majority of total probability mass — a reflection of how power is actually concentrated in a Leninist party-state. The remaining probability is distributed across 193 members who are, we are told, honoured to be included.
+      <p style="margin-top:10px">
+        <strong>Layer 1 — Structural eligibility.</strong> Hard and soft constraints derived from CCP succession norms. The informal 68-year retirement norm, provincial secretary credential requirements, and CCDI investigation status are encoded as multipliers. Members who are structurally ineligible are suppressed regardless of media prominence.
+      </p>
+      <p style="margin-top:10px">
+        <strong>Layer 2 — Career trajectory.</strong> Each candidate's career history is scored against the historical pattern of officials who eventually reached the Politburo Standing Committee. Features include age at first provincial secretary appointment, number of distinct provinces served, presence of central pipeline roles (Organisation Department, General Office, CCDI), and promotion velocity relative to birth-year cohort peers.
+      </p>
+      <p style="margin-top:10px">
+        <strong>Layer 3 — Media signal.</strong> Daily mention counts are fetched from two sources: the GDELT Global Knowledge Graph (English-language Xinhua and People's Daily coverage) and direct Chinese-language RSS feeds from People's Daily and Xinhua. Articles co-mentioning a candidate alongside Xi Jinping receive a 3× prominence boost. Scores are recency-weighted with a 7-day half-life. After sufficient history accumulates, anomaly detection compares each member's recent coverage against their personal baseline — sustained silence triggers a SILENT indicator, unusual prominence triggers a SPIKE indicator.
+      </p>
+      <p style="margin-top:10px">
+        <strong>Layer 4 — Factional network centrality.</strong> A directed weighted patronage graph encodes relationships between officials: direct patron-protégé ties (weight 3.0), shared provincial service (weight 1.0), and peer ties from co-service. Personalised PageRank anchored to Xi Jinping measures each candidate's proximity to the General Secretary in the patronage network — the structural predictor that raw media coverage cannot capture.
+      </p>
+      <p style="margin-top:10px">
+        The four layers are combined as a weighted sum (career 35%, media 30%, network 35%), with Layer 1 acting as a global multiplier. Scores are normalised to 100% across all tracked members and updated daily.
       </p>
     </div>
   </div>
@@ -749,8 +765,8 @@
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <p>★ <span>nextcomrade.com</span> ★ — Odds reset daily. Results not guaranteed. Xi Jinping not consulted.</p>
-  <p style="margin-top: 6px; font-size: 11px;">Built with Math.random() · Hosted somewhere outside China</p>
+  <p>★ <span>nextcomrade.com</span> ★ — Updated daily. Results not guaranteed. Xi Jinping not consulted.</p>
+  <p style="margin-top: 6px; font-size: 11px;">Powered by GDELT · People's Daily · Hosted in Langley, Virginia</p>
 </footer>
 
 <!-- Chart.js -->
@@ -1305,7 +1321,7 @@ async function init() {
     const el = document.getElementById("last-updated");
     if (el) {
       const d = new Date(json.generated_at);
-      el.textContent = d.toLocaleDateString("en-GB", { day:"numeric", month:"short", year:"numeric" });
+      el.textContent = d.toLocaleDateString("en-GB", { day:"numeric", month:"short" });
     }
 
     // Hero: model version badge
