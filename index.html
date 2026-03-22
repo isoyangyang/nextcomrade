@@ -254,7 +254,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 5px 0;
+      padding: 6px 0;
       border-bottom: 0.5px solid var(--border);
       cursor: default;
     }
@@ -262,6 +262,28 @@
       width: 10px; height: 10px;
       border-radius: 2px;
       flex-shrink: 0;
+    }
+    .legend-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      flex-shrink: 0;
+      background: var(--paper-mid);
+      border: 1.5px solid var(--border);
+    }
+    .legend-avatar-placeholder {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--ink-light);
+      border: 1.5px solid var(--border);
+      background: var(--paper-mid);
     }
     .legend-name {
       flex: 1;
@@ -278,6 +300,31 @@
       color: var(--ink);
       min-width: 42px;
       text-align: right;
+    }
+    .member-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      vertical-align: middle;
+      margin-right: 6px;
+      background: var(--paper-mid);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .member-avatar-placeholder {
+      display: inline-block;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--paper-mid);
+      border: 1px solid var(--border);
+      vertical-align: middle;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+    .name-cell {
+      display: flex;
+      align-items: center;
     }
 
     /* ── TIER PILL ── */
@@ -910,6 +957,91 @@ function vibeFor(pct, tier, flags) {
 }
 
 // ── CHART ─────────────────────────────────────────────────────────────────────
+// ── PHOTOS ───────────────────────────────────────────────────────────────────
+// Wikipedia page titles for each member id — used to fetch official portraits
+// via the Wikipedia pageimages API (free, no key, returns thumbnail URL)
+const WIKI_TITLES = {
+  "li_qiang":       "Li Qiang",
+  "zhao_leji":      "Zhao Leji",
+  "wang_huning":    "Wang Huning",
+  "cai_qi":         "Cai Qi (politician)",
+  "ding_xuexiang":  "Ding Xuexiang",
+  "li_xi":          "Li Xi (politician)",
+  "han_zheng":      "Han Zheng",
+  "chen_wenqing":   "Chen Wenqing",
+  "zhang_youxia":   "Zhang Youxia",
+  "he_weidong":     "He Weidong (general)",
+  "liu_guozhong":   "Liu Guozhong",
+  "ma_xingrui":     "Ma Xingrui",
+  "yuan_jiajun":    "Yuan Jiajun",
+  "wang_yi":        "Wang Yi (politician)",
+  "chen_miner":     "Chen Min'er",
+  "hu_chunhua":     "Hu Chunhua",
+  "dong_jun":       "Dong Jun (admiral)",
+  "qin_gang":       "Qin Gang",
+};
+
+// Cache: member_id -> photo URL (or null if not found)
+const photoCache = {};
+
+async function fetchPhoto(memberId) {
+  if (memberId in photoCache) return photoCache[memberId];
+  const title = WIKI_TITLES[memberId];
+  if (!title) { photoCache[memberId] = null; return null; }
+
+  try {
+    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
+    const r   = await fetch(url);
+    if (!r.ok) { photoCache[memberId] = null; return null; }
+    const data = await r.json();
+    const img  = data?.thumbnail?.source || data?.originalimage?.source || null;
+    photoCache[memberId] = img;
+    return img;
+  } catch {
+    photoCache[memberId] = null;
+    return null;
+  }
+}
+
+// Preload photos for top N members and update the DOM when ready
+async function preloadPhotos(members, topN = 20) {
+  const targets = members.slice(0, topN);
+  await Promise.allSettled(targets.map(m => fetchPhoto(m.id)));
+  // After preloading, refresh legend and table avatars
+  refreshAvatars();
+}
+
+function refreshAvatars() {
+  // Update legend avatars
+  document.querySelectorAll("[data-photo-id]").forEach(el => {
+    const mid = el.dataset.photoId;
+    const url = photoCache[mid];
+    if (url) {
+      if (el.tagName === "IMG") {
+        el.src = url;
+      } else {
+        // Replace placeholder span with img
+        const img = document.createElement("img");
+        img.src       = url;
+        img.className = el.className.replace("placeholder","").trim();
+        img.dataset.photoId = mid;
+        img.onerror   = () => { img.style.display = "none"; };
+        el.replaceWith(img);
+      }
+    }
+  });
+}
+
+function avatarHTML(memberId, size = "table") {
+  const url       = photoCache[memberId];
+  const cls       = size === "legend" ? "legend-avatar" : "member-avatar";
+  const clsHolder = size === "legend" ? "legend-avatar-placeholder" : "member-avatar-placeholder";
+  if (url) {
+    return `<img src="${url}" class="${cls}" data-photo-id="${memberId}" onerror="this.style.display='none'">`;
+  }
+  return `<span class="${clsHolder}" data-photo-id="${memberId}"></span>`;
+}
+
 function updateChart() {
   const top10 = currentData.slice(0,10);
   const rest  = currentData.slice(10).reduce((s,m) => s+m.pct, 0);
@@ -944,10 +1076,10 @@ function updateChart() {
     }
   });
 
-  // Legend
+  // Legend with photos
   document.getElementById("top-legend").innerHTML = top10.map((m,i) => `
     <div class="legend-row">
-      <span class="legend-swatch" style="background:${COLORS[i]}"></span>
+      ${avatarHTML(m.id, "legend")}
       <span class="legend-name">${m.name}</span>
       <span class="tier-pill ${tierClass(m.tier)}">${tierText(m.tier)}</span>
       <span class="legend-pct">${m.pct.toFixed(1)}%</span>
@@ -1215,9 +1347,14 @@ function renderTable() {
     return `<tr title="${m.succession_notes || ""}">
       <td><span class="rank-num">${m.rank}</span></td>
       <td>
-        <span class="member-name">${m.name}</span>
-        ${m.name_zh ? `<span style="font-size:10px;color:#aaa;margin-left:4px">${m.name_zh}</span>` : ""}
-        ${zBadge}
+        <div class="name-cell">
+          ${avatarHTML(m.id, "table")}
+          <div>
+            <span class="member-name">${m.name}</span>
+            ${m.name_zh ? `<span style="font-size:10px;color:#aaa;margin-left:4px">${m.name_zh}</span>` : ""}
+            ${zBadge}
+          </div>
+        </div>
       </td>
       <td><span class="tier-pill ${tierClass(m.tier)}">${tierText(m.tier)}</span></td>
       <td class="col-role" style="color:#666;font-size:12px">${m.role}</td>
@@ -1337,6 +1474,8 @@ async function init() {
 
   updateChart();
   renderTable();
+  // Preload photos async — updates avatars when ready without blocking render
+  preloadPhotos(currentData, 25);
 }
 
 init();
