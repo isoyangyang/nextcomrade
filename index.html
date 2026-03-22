@@ -1009,52 +1009,40 @@ function vibeFor(pct, tier, flags) {
 
 // ── CHART ─────────────────────────────────────────────────────────────────────
 // ── PHOTOS ───────────────────────────────────────────────────────────────────
-const WIKI_TITLES = {
-  "li_qiang":       "Li Qiang",
-  "zhao_leji":      "Zhao Leji",
-  "wang_huning":    "Wang Huning",
-  "cai_qi":         "Cai Qi (politician)",
-  "ding_xuexiang":  "Ding Xuexiang",
-  "li_xi":          "Li Xi (politician)",
-  "han_zheng":      "Han Zheng",
-  "chen_wenqing":   "Chen Wenqing",
-  "zhang_youxia":   "Zhang Youxia",
-  "he_weidong":     "He Weidong (general)",
-  "liu_guozhong":   "Liu Guozhong",
-  "ma_xingrui":     "Ma Xingrui",
-  "yuan_jiajun":    "Yuan Jiajun",
-  "wang_yi":        "Wang Yi (politician)",
-  "chen_miner":     "Chen Min'er",
-  "hu_chunhua":     "Hu Chunhua",
-  "dong_jun":       "Dong Jun (admiral)",
-  "qin_gang":       "Qin Gang",
+// Direct Wikimedia Commons thumbnail URLs — no API call, no CORS issues.
+// Format: https://upload.wikimedia.org/wikipedia/commons/thumb/[a]/[ab]/Filename.jpg/80px-Filename.jpg
+// These are stable CDN URLs served with permissive CORS headers.
+const PHOTO_URLS = {
+  "li_qiang":      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Li_Qiang_in_2023.jpg/80px-Li_Qiang_in_2023.jpg",
+  "zhao_leji":     "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Zhao_Leji_in_2022.jpg/80px-Zhao_Leji_in_2022.jpg",
+  "wang_huning":   "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Wang_Huning_2017.jpg/80px-Wang_Huning_2017.jpg",
+  "cai_qi":        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Cai_Qi_in_2022.jpg/80px-Cai_Qi_in_2022.jpg",
+  "ding_xuexiang": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ding_Xuexiang_in_2022.jpg/80px-Ding_Xuexiang_in_2022.jpg",
+  "li_xi":         "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Li_Xi_in_2022.jpg/80px-Li_Xi_in_2022.jpg",
+  "han_zheng":     "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Han_Zheng_in_2023.jpg/80px-Han_Zheng_in_2023.jpg",
+  "chen_wenqing":  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Chen_Wenqing_in_2022.jpg/80px-Chen_Wenqing_in_2022.jpg",
+  "zhang_youxia":  "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Zhang_Youxia_in_2022.jpg/80px-Zhang_Youxia_in_2022.jpg",
+  "he_weidong":    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/He_Weidong_in_2022.jpg/80px-He_Weidong_in_2022.jpg",
+  "liu_guozhong":  "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Liu_Guozhong_in_2022.jpg/80px-Liu_Guozhong_in_2022.jpg",
+  "ma_xingrui":    "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Ma_Xingrui_in_2022.jpg/80px-Ma_Xingrui_in_2022.jpg",
+  "yuan_jiajun":   "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Yuan_Jiajun.png/80px-Yuan_Jiajun.png",
+  "wang_yi":       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Wang_Yi_in_2022.jpg/80px-Wang_Yi_in_2022.jpg",
+  "chen_miner":    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Chen_Min%27er_in_2022.jpg/80px-Chen_Min%27er_in_2022.jpg",
+  "hu_chunhua":    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Hu_Chunhua_in_2017.jpg/80px-Hu_Chunhua_in_2017.jpg",
+  "dong_jun":      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Dong_Jun_in_2024.jpg/80px-Dong_Jun_in_2024.jpg",
+  "qin_gang":      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Qin_Gang_in_2022.jpg/80px-Qin_Gang_in_2022.jpg",
 };
 
-const photoCache = {};
+// Photo cache — pre-populated from hardcoded URLs, no fetching needed
+const photoCache = { ...PHOTO_URLS };
 
+// No-op — photos are already available synchronously
 async function fetchPhoto(memberId) {
-  if (memberId in photoCache) return photoCache[memberId];
-  const title = WIKI_TITLES[memberId];
-  if (!title) { photoCache[memberId] = null; return null; }
-  try {
-    // Use the Wikipedia action API with pageimages — better CORS support
-    const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=80&origin=*`;
-    const r   = await fetch(url);
-    if (!r.ok) { photoCache[memberId] = null; return null; }
-    const data  = await r.json();
-    const pages = data?.query?.pages || {};
-    const page  = Object.values(pages)[0];
-    const img   = page?.thumbnail?.source || null;
-    photoCache[memberId] = img;
-    return img;
-  } catch {
-    photoCache[memberId] = null;
-    return null;
-  }
+  return photoCache[memberId] || null;
 }
 
 async function preloadPhotos(members, topN = 25) {
-  await Promise.allSettled(members.slice(0, topN).map(m => fetchPhoto(m.id)));
+  // All URLs are already in cache — just trigger a DOM refresh
   refreshAvatars();
 }
 
@@ -1062,19 +1050,18 @@ function refreshAvatars() {
   document.querySelectorAll("[data-photo-id]").forEach(el => {
     const mid = el.dataset.photoId;
     const url = photoCache[mid];
-    if (url && el.tagName === "IMG") {
+    if (url && el.tagName === "IMG" && !el.src) {
       el.src = url;
     }
   });
 }
 
-// Returns an <img> or <div> that is strictly 28px (table) or 40px (legend)
 function avatarHTML(memberId, size) {
   const px  = size === "legend" ? 40 : 28;
-  const url = photoCache[memberId] || "";
+  const url = PHOTO_URLS[memberId] || "";
   const cls = size === "legend" ? "avatar-lg" : "avatar";
   if (url) {
-    return `<img src="${url}" width="${px}" height="${px}" class="${cls}" data-photo-id="${memberId}" onerror="this.src=''" alt="">`;
+    return `<img src="${url}" width="${px}" height="${px}" class="${cls}" data-photo-id="${memberId}" onerror="this.style.opacity='0'" alt="">`;
   }
   return `<div class="${cls}" style="width:${px}px;height:${px}px" data-photo-id="${memberId}"></div>`;
 }
@@ -1091,13 +1078,13 @@ let popupTimeout;
 
 function showPopup(e, member, gossip) {
   clearTimeout(popupTimeout);
-  const url = photoCache[member.id];
-  popupAvatar.src         = url || "";
+  const url = PHOTO_URLS[member.id];
+  popupAvatar.src           = url || "";
   popupAvatar.style.display = url ? "block" : "none";
-  popupName.textContent   = member.name;
-  popupMeta.textContent   = `#${member.rank} · ${member.tier.toUpperCase()} · Age ${member.age || "?"}`;
-  popupProb.textContent   = `${member.pct.toFixed(2)}% probability`;
-  popupGossip.textContent = `"${gossip}"`;
+  popupName.textContent     = member.name;
+  popupMeta.textContent     = `#${member.rank} · ${member.tier.toUpperCase()} · Age ${member.age || "?"}`;
+  popupProb.textContent     = `${member.pct.toFixed(2)}% probability`;
+  popupGossip.textContent   = `"${gossip}"`;
   popup.classList.add("visible");
   positionPopup(e);
 }
