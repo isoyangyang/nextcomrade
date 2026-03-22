@@ -309,6 +309,13 @@
       align-items: center;
       gap: 7px;
     }
+    .name-inner {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: nowrap;
+      gap: 4px;
+      min-width: 0;
+    }
 
     /* ── HOVER POPUP ── */
     .member-popup {
@@ -1030,12 +1037,16 @@ async function fetchPhoto(memberId) {
   const title = WIKI_TITLES[memberId];
   if (!title) { photoCache[memberId] = null; return null; }
   try {
-    const r    = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
-    const data = r.ok ? await r.json() : {};
-    const img  = data?.thumbnail?.source || null;
-    // Request a small thumbnail — append width param to Wikimedia URL
-    photoCache[memberId] = img ? img.replace(/\/\d+px-/, "/80px-") : null;
-    return photoCache[memberId];
+    // Use the Wikipedia action API with pageimages — better CORS support
+    const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=80&origin=*`;
+    const r   = await fetch(url);
+    if (!r.ok) { photoCache[memberId] = null; return null; }
+    const data  = await r.json();
+    const pages = data?.query?.pages || {};
+    const page  = Object.values(pages)[0];
+    const img   = page?.thumbnail?.source || null;
+    photoCache[memberId] = img;
+    return img;
   } catch {
     photoCache[memberId] = null;
     return null;
@@ -1423,9 +1434,9 @@ function renderTable() {
       <td>
         <div class="name-cell">
           ${avatarHTML(m.id, "table")}
-          <div>
+          <div class="name-inner">
             <span class="member-name">${m.name}</span>
-            ${m.name_zh ? `<span style="font-size:10px;color:#aaa;margin-left:4px">${m.name_zh}</span>` : ""}
+            ${m.name_zh ? `<span style="font-size:11px;color:#aaa;white-space:nowrap">${m.name_zh}</span>` : ""}
             ${zBadge}
           </div>
         </div>
