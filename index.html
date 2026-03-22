@@ -257,33 +257,36 @@
       padding: 6px 0;
       border-bottom: 0.5px solid var(--border);
       cursor: default;
+      position: relative;
     }
     .legend-swatch {
       width: 10px; height: 10px;
       border-radius: 2px;
       flex-shrink: 0;
     }
-    .legend-avatar {
-      width: 36px; height: 36px;
+    .avatar {
+      width: 28px; height: 28px;
+      min-width: 28px; max-width: 28px;
+      min-height: 28px; max-height: 28px;
       border-radius: 50%;
       object-fit: cover;
       object-position: top center;
-      flex-shrink: 0;
+      border: 1px solid var(--border);
       background: var(--paper-mid);
-      border: 1.5px solid var(--border);
+      flex-shrink: 0;
+      display: block;
     }
-    .legend-avatar-placeholder {
-      width: 36px; height: 36px;
+    .avatar-lg {
+      width: 40px; height: 40px;
+      min-width: 40px; max-width: 40px;
+      min-height: 40px; max-height: 40px;
       border-radius: 50%;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-family: 'IBM Plex Mono', monospace;
-      color: var(--ink-light);
+      object-fit: cover;
+      object-position: top center;
       border: 1.5px solid var(--border);
       background: var(--paper-mid);
+      flex-shrink: 0;
+      display: block;
     }
     .legend-name {
       flex: 1;
@@ -301,30 +304,71 @@
       min-width: 42px;
       text-align: right;
     }
-    .member-avatar {
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
-      vertical-align: middle;
-      margin-right: 6px;
-      background: var(--paper-mid);
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-    .member-avatar-placeholder {
-      display: inline-block;
-      width: 28px; height: 28px;
-      border-radius: 50%;
-      background: var(--paper-mid);
-      border: 1px solid var(--border);
-      vertical-align: middle;
-      margin-right: 6px;
-      flex-shrink: 0;
-    }
     .name-cell {
       display: flex;
       align-items: center;
+      gap: 7px;
+    }
+
+    /* ── HOVER POPUP ── */
+    .member-popup {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      background: var(--ink);
+      color: white;
+      border-radius: 8px;
+      padding: 12px 14px;
+      width: 220px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+      pointer-events: none;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .member-popup.visible { display: block; }
+    .popup-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .popup-avatar {
+      width: 52px; height: 52px;
+      min-width: 52px; max-width: 52px;
+      min-height: 52px; max-height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: #333;
+      flex-shrink: 0;
+    }
+    .popup-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .popup-meta {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      font-family: 'IBM Plex Mono', monospace;
+      margin-top: 2px;
+    }
+    .popup-prob {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--red-mid);
+      margin-bottom: 6px;
+    }
+    .popup-gossip {
+      color: rgba(255,255,255,0.75);
+      font-size: 11px;
+      font-style: italic;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 7px;
+      margin-top: 2px;
     }
 
     /* ── TIER PILL ── */
@@ -958,8 +1002,6 @@ function vibeFor(pct, tier, flags) {
 
 // ── CHART ─────────────────────────────────────────────────────────────────────
 // ── PHOTOS ───────────────────────────────────────────────────────────────────
-// Wikipedia page titles for each member id — used to fetch official portraits
-// via the Wikipedia pageimages API (free, no key, returns thumbnail URL)
 const WIKI_TITLES = {
   "li_qiang":       "Li Qiang",
   "zhao_leji":      "Zhao Leji",
@@ -981,66 +1023,90 @@ const WIKI_TITLES = {
   "qin_gang":       "Qin Gang",
 };
 
-// Cache: member_id -> photo URL (or null if not found)
 const photoCache = {};
 
 async function fetchPhoto(memberId) {
   if (memberId in photoCache) return photoCache[memberId];
   const title = WIKI_TITLES[memberId];
   if (!title) { photoCache[memberId] = null; return null; }
-
   try {
-    const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
-    const r   = await fetch(url);
-    if (!r.ok) { photoCache[memberId] = null; return null; }
-    const data = await r.json();
-    const img  = data?.thumbnail?.source || data?.originalimage?.source || null;
-    photoCache[memberId] = img;
-    return img;
+    const r    = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`);
+    const data = r.ok ? await r.json() : {};
+    const img  = data?.thumbnail?.source || null;
+    // Request a small thumbnail — append width param to Wikimedia URL
+    photoCache[memberId] = img ? img.replace(/\/\d+px-/, "/80px-") : null;
+    return photoCache[memberId];
   } catch {
     photoCache[memberId] = null;
     return null;
   }
 }
 
-// Preload photos for top N members and update the DOM when ready
-async function preloadPhotos(members, topN = 20) {
-  const targets = members.slice(0, topN);
-  await Promise.allSettled(targets.map(m => fetchPhoto(m.id)));
-  // After preloading, refresh legend and table avatars
+async function preloadPhotos(members, topN = 25) {
+  await Promise.allSettled(members.slice(0, topN).map(m => fetchPhoto(m.id)));
   refreshAvatars();
 }
 
 function refreshAvatars() {
-  // Update legend avatars
   document.querySelectorAll("[data-photo-id]").forEach(el => {
     const mid = el.dataset.photoId;
     const url = photoCache[mid];
-    if (url) {
-      if (el.tagName === "IMG") {
-        el.src = url;
-      } else {
-        // Replace placeholder span with img
-        const img = document.createElement("img");
-        img.src       = url;
-        img.className = el.className.replace("placeholder","").trim();
-        img.dataset.photoId = mid;
-        img.onerror   = () => { img.style.display = "none"; };
-        el.replaceWith(img);
-      }
+    if (url && el.tagName === "IMG") {
+      el.src = url;
     }
   });
 }
 
-function avatarHTML(memberId, size = "table") {
-  const url       = photoCache[memberId];
-  const cls       = size === "legend" ? "legend-avatar" : "member-avatar";
-  const clsHolder = size === "legend" ? "legend-avatar-placeholder" : "member-avatar-placeholder";
+// Returns an <img> or <div> that is strictly 28px (table) or 40px (legend)
+function avatarHTML(memberId, size) {
+  const px  = size === "legend" ? 40 : 28;
+  const url = photoCache[memberId] || "";
+  const cls = size === "legend" ? "avatar-lg" : "avatar";
   if (url) {
-    return `<img src="${url}" class="${cls}" data-photo-id="${memberId}" onerror="this.style.display='none'">`;
+    return `<img src="${url}" width="${px}" height="${px}" class="${cls}" data-photo-id="${memberId}" onerror="this.src=''" alt="">`;
   }
-  return `<span class="${clsHolder}" data-photo-id="${memberId}"></span>`;
+  return `<div class="${cls}" style="width:${px}px;height:${px}px" data-photo-id="${memberId}"></div>`;
 }
+
+// ── HOVER POPUP ───────────────────────────────────────────────────────────────
+const popup      = document.getElementById("member-popup");
+const popupAvatar = document.getElementById("popup-avatar");
+const popupName  = document.getElementById("popup-name");
+const popupMeta  = document.getElementById("popup-meta");
+const popupProb  = document.getElementById("popup-prob");
+const popupGossip = document.getElementById("popup-gossip");
+
+let popupTimeout;
+
+function showPopup(e, member, gossip) {
+  clearTimeout(popupTimeout);
+  const url = photoCache[member.id];
+  popupAvatar.src         = url || "";
+  popupAvatar.style.display = url ? "block" : "none";
+  popupName.textContent   = member.name;
+  popupMeta.textContent   = `#${member.rank} · ${member.tier.toUpperCase()} · Age ${member.age || "?"}`;
+  popupProb.textContent   = `${member.pct.toFixed(2)}% probability`;
+  popupGossip.textContent = `"${gossip}"`;
+  popup.classList.add("visible");
+  positionPopup(e);
+}
+
+function positionPopup(e) {
+  const x = e.clientX + 14;
+  const y = e.clientY - 20;
+  const w = popup.offsetWidth  || 220;
+  const h = popup.offsetHeight || 150;
+  popup.style.left = (x + w > window.innerWidth  ? e.clientX - w - 14 : x) + "px";
+  popup.style.top  = (y + h > window.innerHeight ? e.clientY - h + 20 : y) + "px";
+}
+
+function hidePopup() {
+  popupTimeout = setTimeout(() => popup.classList.remove("visible"), 80);
+}
+
+document.addEventListener("mousemove", e => {
+  if (popup.classList.contains("visible")) positionPopup(e);
+});
 
 function updateChart() {
   const top10 = currentData.slice(0,10);
@@ -1077,14 +1143,19 @@ function updateChart() {
   });
 
   // Legend with photos
-  document.getElementById("top-legend").innerHTML = top10.map((m,i) => `
-    <div class="legend-row">
+  document.getElementById("top-legend").innerHTML = top10.map((m,i) => {
+    const gossip = GOSSIP[(m.rank || i) % GOSSIP.length];
+    const mJson  = JSON.stringify({id:m.id,name:m.name,rank:m.rank,tier:m.tier,age:m.age,pct:m.pct}).replace(/"/g,'&quot;');
+    const gJson  = JSON.stringify(gossip).replace(/"/g,'&quot;');
+    return `<div class="legend-row"
+        onmouseenter="showPopup(event, ${mJson}, ${gJson})"
+        onmouseleave="hidePopup()">
       ${avatarHTML(m.id, "legend")}
       <span class="legend-name">${m.name}</span>
       <span class="tier-pill ${tierClass(m.tier)}">${tierText(m.tier)}</span>
       <span class="legend-pct">${m.pct.toFixed(1)}%</span>
-    </div>
-  `).join("");
+    </div>`;
+  }).join("");
 }
 
 // ── GOSSIP ────────────────────────────────────────────────────────────────────
@@ -1344,7 +1415,10 @@ function renderTable() {
       : m.is_silent    ? `<span style="font-size:9px;padding:1px 4px;background:#F9EBEA;color:#C0392B;border-radius:2px;font-family:'IBM Plex Mono',monospace">z:${z.toFixed(1)}</span>`
       : "";
 
-    return `<tr title="${m.succession_notes || ""}">
+    return `<tr
+      onmouseenter="showPopup(event, ${JSON.stringify({id:m.id,name:m.name,rank:m.rank,tier:m.tier,age:m.age,pct:m.pct}).replace(/"/g,'&quot;')}, ${JSON.stringify(gossip).replace(/"/g,'&quot;')})"
+      onmouseleave="hidePopup()"
+      title="">
       <td><span class="rank-num">${m.rank}</span></td>
       <td>
         <div class="name-cell">
@@ -1480,5 +1554,18 @@ async function init() {
 
 init();
 </script>
+<!-- Hover popup -->
+<div class="member-popup" id="member-popup">
+  <div class="popup-header">
+    <img class="popup-avatar" id="popup-avatar" src="" alt="">
+    <div>
+      <div class="popup-name" id="popup-name"></div>
+      <div class="popup-meta" id="popup-meta"></div>
+    </div>
+  </div>
+  <div class="popup-prob" id="popup-prob"></div>
+  <div class="popup-gossip" id="popup-gossip"></div>
+</div>
+
 </body>
 </html>
