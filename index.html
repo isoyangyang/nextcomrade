@@ -15,7 +15,7 @@
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content="https://nextcomrade.com/" />
   <meta property="twitter:title" content="Next Comrade — Xi Jinping Succession Tracker" />
-  <meta property="twitter:description" content="200 CCP members. One throne. Odds reset daily." />
+  <meta property="twitter:description" content="200 CCP members. One throne. Updated daily." />
   <meta property="twitter:image" content="https://nextcomrade.com/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -654,7 +654,7 @@
       <span class="hero-stat-label">Ways This Goes Wrong</span>
     </div>
     <div class="hero-stat">
-      <span class="hero-stat-num" id="last-updated" style="font-size:14px;line-height:1.2">—</span>
+      <span class="hero-stat-num" id="last-updated">—</span>
       <span class="hero-stat-label">Data Updated</span>
     </div>
   </div>
@@ -722,10 +722,22 @@
     <div class="methodology">
       <h3>How the model works</h3>
       <p>
-        Each candidate is assessed using a proprietary weighting system that incorporates their position in the CCP hierarchy, seniority, factional alignment, and proximity to Xi Jinping at official functions. PSC members carry substantially higher prior probability than Politburo members, who in turn outrank the Central Committee. Assessments are recalibrated daily as new intelligence becomes available.
+        Probabilities are produced by a four-layer scoring model, updated daily via automated pipeline. Each layer is scored independently then combined using calibrated weights (career 35%, media 30%, network 35%).
       </p>
       <p style="margin-top: 10px;">
-        Probabilities are normalised to sum to 100% across all 200 tracked candidates. In practice, the top 7 PSC members collectively account for the majority of total probability mass — a reflection of how power is actually concentrated in a Leninist party-state. The remaining probability is distributed across 193 members who are, we are told, honoured to be included.
+        <strong style="color:var(--ink)">Layer 1 — Structural eligibility</strong> applies a hard multiplier based on CCP succession norms: the informal 68-year retirement rule, whether a candidate has held provincial secretary or central pipeline roles, military-only career paths, and CCDI investigation status. This acts as a gate on all downstream scores.
+      </p>
+      <p style="margin-top: 10px;">
+        <strong style="color:var(--ink)">Layer 2 — Career trajectory</strong> scores each candidate's career path against historical Politburo Standing Committee patterns, drawing on political science methodology from Victor Shih (UCSD). Components: peak role quality (40%), provincial secretary breadth (20%), central pipeline experience (15%), career velocity relative to birth cohort (15%), and experience diversity (10%).
+      </p>
+      <p style="margin-top: 10px;">
+        <strong style="color:var(--ink)">Layer 3 — Media signal</strong> blends two sources: GDELT English-language mention counts (60%) and Chinese RSS feeds from People's Daily and Xinhua (40%). Articles mentioning a candidate alongside Xi Jinping receive a 3× co-occurrence boost. Recency is weighted with a 7-day half-life. After 60 days of history, anomaly detection activates — a Z-score comparing the last 14 days against each candidate's personal 90-day baseline triggers <code>SPIKE</code> or <code>SILENT</code> badges.
+      </p>
+      <p style="margin-top: 10px;">
+        <strong style="color:var(--ink)">Layer 4 — Factional network centrality</strong> runs personalised PageRank anchored to Xi Jinping on a directed patronage graph, with patron→protégé edges weighted 3× and shared provincial service edges weighted 1×. Methodology follows Shih, Meyer &amp; Lee (2016), <em>Journal of East Asian Studies</em>.
+      </p>
+      <p style="margin-top: 10px;">
+        Probabilities are normalised to sum to 100% across all tracked candidates. Tier floors are applied proportionally (PSC ≥ 3× Politburo average, Politburo ≥ 2× Central Committee average) to reflect actual power concentration in a Leninist party-state. Model weights are recalibrated weekly via logistic regression on historical congress outcomes.
       </p>
     </div>
   </div>
@@ -749,8 +761,8 @@
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <p>★ <span>nextcomrade.com</span> ★ — Odds reset daily. Results not guaranteed. Xi Jinping not consulted.</p>
-  <p style="margin-top: 6px; font-size: 11px;">Built with Math.random() · Hosted somewhere outside China</p>
+  <p>★ <span>nextcomrade.com</span> ★ — Updated daily. Results not guaranteed. Xi Jinping not consulted.</p>
+  <p style="margin-top: 6px; font-size: 11px;">Four-layer probabilistic model · Hosted in Langley, Virginia</p>
 </footer>
 
 <!-- Chart.js -->
@@ -1324,6 +1336,7 @@ async function init() {
 }
 
 init();
-</script>
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://nextcomrade.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
