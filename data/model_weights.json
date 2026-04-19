@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "description": "Layer combination weights for the succession probability model. Updated weekly by pipeline/04_train_model.py once sufficient media_history data has accumulated (recommended: 60+ days).",
-  "last_trained": "2026-04-12",
-  "training_data_days": 26,
+  "last_trained": "2026-04-19",
+  "training_data_days": 33,
   "note": "Initial weights are hand-tuned from academic literature. Layer 2 (career) is the strongest historical predictor. Layer 4 (network) is high quality but sparse. Layer 3 (media) is noisy but real-time. Weights will be refined by step 4 after sufficient history accumulates.",
   "layer_weights": {
     "layer2_career": 0.5985,
