@@ -1,26 +1,9 @@
 {
   "schema_version": 1,
   "retention_days": 180,
-  "last_updated": "2026-09-15",
+  "last_updated": "2026-09-16",
   "series": {
     "li_qiang": [
-      {
-        "date": "2026-03-19",
-        "mentions": 7,
-        "xi_cooccurrence": 3,
-        "date_breakdown": {
-          "2025-06-04": 3,
-          "2025-06-03": 3,
-          "unknown": 1
-        },
-        "last_seen": "2025-06-04",
-        "sample_titles": [
-          "公布《政务数据共享条例》",
-          "李强会见河野洋平率领的日本国际贸易促进协会访华团",
-          "公布《政务数据共享条例》"
-        ],
-        "feed_item_count": 400
-      },
       {
         "date": "2026-03-20",
         "mentions": 7,
@@ -3066,6 +3049,23 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 7,
+        "xi_cooccurrence": 3,
+        "date_breakdown": {
+          "2025-06-04": 3,
+          "2025-06-03": 3,
+          "unknown": 1
+        },
+        "last_seen": "2025-06-04",
+        "sample_titles": [
+          "公布《政务数据共享条例》",
+          "李强会见河野洋平率领的日本国际贸易促进协会访华团",
+          "公布《政务数据共享条例》"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 7,
         "xi_cooccurrence": 3,
         "date_breakdown": {
@@ -3084,15 +3084,6 @@
     ],
     "zhao_leji": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -4705,6 +4696,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -4715,19 +4715,6 @@
     ],
     "wang_huning": [
       {
-        "date": "2026-03-19",
-        "mentions": 1,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 1
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "第十一次全国台湾同胞代表会议在京召开 王沪宁出席并讲话"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 1,
         "xi_cooccurrence": 0,
@@ -7056,6 +7043,19 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 1
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "第十一次全国台湾同胞代表会议在京召开 王沪宁出席并讲话"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 1,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -7070,20 +7070,6 @@
     ],
     "cai_qi": [
       {
-        "date": "2026-03-19",
-        "mentions": 2,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 2
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "中共中央、国务院在南京举行2022年南京大屠杀死难者国家公祭仪式 蔡奇出席并讲话",
-          "中国国民党革命委员会第十四次全国代表大会在京开幕 蔡奇代表中共中央致贺词"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 2,
         "xi_cooccurrence": 0,
@@ -9591,6 +9577,20 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 2,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 2
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "中共中央、国务院在南京举行2022年南京大屠杀死难者国家公祭仪式 蔡奇出席并讲话",
+          "中国国民党革命委员会第十四次全国代表大会在京开幕 蔡奇代表中共中央致贺词"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 2,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -9606,23 +9606,6 @@
     ],
     "ding_xuexiang": [
       {
-        "date": "2026-03-19",
-        "mentions": 3,
-        "xi_cooccurrence": 3,
-        "date_breakdown": {
-          "2025-06-05": 1,
-          "2025-06-04": 1,
-          "2025-06-03": 1
-        },
-        "last_seen": "2025-06-05",
-        "sample_titles": [
-          "丁薛祥在山西调研时强调 守好公平公正“生命线” 确保实现“平安高考”目标",
-          "丁薛祥集体会见上海合作组织成员国财长和央行行长会议外方参会代表",
-          "丁薛祥集体会见上海合作组织成员国财长和央行行长会议外方参会代表"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 3,
         "xi_cooccurrence": 3,
@@ -12667,6 +12650,23 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 3,
+        "xi_cooccurrence": 3,
+        "date_breakdown": {
+          "2025-06-05": 1,
+          "2025-06-04": 1,
+          "2025-06-03": 1
+        },
+        "last_seen": "2025-06-05",
+        "sample_titles": [
+          "丁薛祥在山西调研时强调 守好公平公正“生命线” 确保实现“平安高考”目标",
+          "丁薛祥集体会见上海合作组织成员国财长和央行行长会议外方参会代表",
+          "丁薛祥集体会见上海合作组织成员国财长和央行行长会议外方参会代表"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 3,
         "xi_cooccurrence": 3,
         "date_breakdown": {
@@ -12685,19 +12685,6 @@
     ],
     "li_xi": [
       {
-        "date": "2026-03-19",
-        "mentions": 1,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 1
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "中国致公党第十六次全国代表大会开幕 李希代表中共中央致贺词"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 1,
         "xi_cooccurrence": 0,
@@ -15026,6 +15013,19 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 1
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "中国致公党第十六次全国代表大会开幕 李希代表中共中央致贺词"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 1,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -15040,22 +15040,6 @@
     ],
     "han_zheng": [
       {
-        "date": "2026-03-19",
-        "mentions": 3,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "2025-06-05": 2,
-          "unknown": 1
-        },
-        "last_seen": "2025-06-05",
-        "sample_titles": [
-          "韩正会见中美高级别二轨对话美方代表团",
-          "韩正将赴法国出席联合国海洋大会并访问西班牙",
-          "韩正出席2022能源电力转型国际论坛并致辞"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 3,
         "xi_cooccurrence": 0,
@@ -17921,6 +17905,22 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 3,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "2025-06-05": 2,
+          "unknown": 1
+        },
+        "last_seen": "2025-06-05",
+        "sample_titles": [
+          "韩正会见中美高级别二轨对话美方代表团",
+          "韩正将赴法国出席联合国海洋大会并访问西班牙",
+          "韩正出席2022能源电力转型国际论坛并致辞"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 3,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -17938,15 +17938,6 @@
     ],
     "chen_wenqing": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -19559,6 +19550,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -19569,19 +19569,6 @@
     ],
     "zhang_youxia": [
       {
-        "date": "2026-03-19",
-        "mentions": 1,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 1
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "张又侠在全军高级干部专题研讨班交流总结时强调 贯彻落实党的二十大精神 开创国防和军队现代化新局面"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 1,
         "xi_cooccurrence": 0,
@@ -21910,6 +21897,19 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 1
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "张又侠在全军高级干部专题研讨班交流总结时强调 贯彻落实党的二十大精神 开创国防和军队现代化新局面"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 1,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -21924,15 +21924,6 @@
     ],
     "he_weidong": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -23545,6 +23536,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -23555,19 +23555,6 @@
     ],
     "liu_guozhong": [
       {
-        "date": "2026-03-19",
-        "mentions": 1,
-        "xi_cooccurrence": 1,
-        "date_breakdown": {
-          "2025-06-05": 1
-        },
-        "last_seen": "2025-06-05",
-        "sample_titles": [
-          "刘国中在安徽调研时强调 全力以赴夺取夏粮丰收 全面打牢秋粮生产基础"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 1,
         "xi_cooccurrence": 1,
@@ -25896,6 +25883,19 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 1,
+        "xi_cooccurrence": 1,
+        "date_breakdown": {
+          "2025-06-05": 1
+        },
+        "last_seen": "2025-06-05",
+        "sample_titles": [
+          "刘国中在安徽调研时强调 全力以赴夺取夏粮丰收 全面打牢秋粮生产基础"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 1,
         "xi_cooccurrence": 1,
         "date_breakdown": {
@@ -25910,15 +25910,6 @@
     ],
     "ma_xingrui": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -27531,6 +27522,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -27541,20 +27541,6 @@
     ],
     "yuan_jiajun": [
       {
-        "date": "2026-03-19",
-        "mentions": 2,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 2
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "重庆市委主要负责同志职务调整 袁家军兼任重庆市委书记",
-          "重庆市委主要负责同志职务调整"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 2,
         "xi_cooccurrence": 0,
@@ -30062,6 +30048,20 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 2,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 2
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "重庆市委主要负责同志职务调整 袁家军兼任重庆市委书记",
+          "重庆市委主要负责同志职务调整"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 2,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -30077,21 +30077,6 @@
     ],
     "wang_yi": [
       {
-        "date": "2026-03-19",
-        "mentions": 2,
-        "xi_cooccurrence": 2,
-        "date_breakdown": {
-          "2025-06-04": 1,
-          "2025-06-03": 1
-        },
-        "last_seen": "2025-06-04",
-        "sample_titles": [
-          "习近平会见白俄罗斯总统卢卡申科",
-          "王毅会见美国新任驻华大使庞德伟"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 2,
         "xi_cooccurrence": 2,
@@ -32778,6 +32763,21 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 2,
+        "xi_cooccurrence": 2,
+        "date_breakdown": {
+          "2025-06-04": 1,
+          "2025-06-03": 1
+        },
+        "last_seen": "2025-06-04",
+        "sample_titles": [
+          "习近平会见白俄罗斯总统卢卡申科",
+          "王毅会见美国新任驻华大使庞德伟"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 2,
         "xi_cooccurrence": 2,
         "date_breakdown": {
@@ -32794,21 +32794,6 @@
     ],
     "chen_miner": [
       {
-        "date": "2026-03-19",
-        "mentions": 4,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 4
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "天津市委主要负责同志职务调整 陈敏尔兼任天津市委书记",
-          "天津市委主要负责同志职务调整",
-          "重庆市委主要负责同志职务调整 袁家军兼任重庆市委书记"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 4,
         "xi_cooccurrence": 0,
@@ -35495,6 +35480,21 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 4,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 4
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "天津市委主要负责同志职务调整 陈敏尔兼任天津市委书记",
+          "天津市委主要负责同志职务调整",
+          "重庆市委主要负责同志职务调整 袁家军兼任重庆市委书记"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 4,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -35511,21 +35511,6 @@
     ],
     "hu_chunhua": [
       {
-        "date": "2026-03-19",
-        "mentions": 3,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 3
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "胡春华会见阿联酋副总理兼总统办公厅主任曼苏尔",
-          "胡春华会见乌兹别克斯坦总理阿里波夫",
-          "胡春华会见吉尔吉斯斯坦总统扎帕罗夫"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 3,
         "xi_cooccurrence": 0,
@@ -38212,6 +38197,21 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 3,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 3
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "胡春华会见阿联酋副总理兼总统办公厅主任曼苏尔",
+          "胡春华会见乌兹别克斯坦总理阿里波夫",
+          "胡春华会见吉尔吉斯斯坦总统扎帕罗夫"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 3,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -38228,15 +38228,6 @@
     ],
     "dong_jun": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -39849,6 +39840,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -39859,15 +39859,6 @@
     ],
     "qin_gang": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -41480,6 +41471,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -41490,15 +41490,6 @@
     ],
     "bai_chunli": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -43111,6 +43102,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -43121,15 +43121,6 @@
     ],
     "cao_chunting": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -44742,6 +44733,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -44752,15 +44752,6 @@
     ],
     "chen_guangguo": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -46373,6 +46364,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -46383,15 +46383,6 @@
     ],
     "chen_jining": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -48004,6 +47995,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -48014,15 +48014,6 @@
     ],
     "chen_xi": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -49635,6 +49626,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -49645,15 +49645,6 @@
     ],
     "fan_changlong": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -51266,6 +51257,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -51276,15 +51276,6 @@
     ],
     "fu_zhenghua": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -52897,6 +52888,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -52907,15 +52907,6 @@
     ],
     "gao_jin": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -54528,6 +54519,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -54538,15 +54538,6 @@
     ],
     "han_changfu": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -56159,6 +56150,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -56169,15 +56169,6 @@
     ],
     "hu_heping": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -57790,6 +57781,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -57800,15 +57800,6 @@
     ],
     "jin_zhuanglong": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -59421,6 +59412,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -59431,15 +59431,6 @@
     ],
     "li_shulei": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -61052,6 +61043,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -61062,15 +61062,6 @@
     ],
     "li_yunze": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -62683,6 +62674,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -62693,15 +62693,6 @@
     ],
     "liu_he": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -64314,6 +64305,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -64324,15 +64324,6 @@
     ],
     "liu_zhenli": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -65945,6 +65936,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -65955,15 +65955,6 @@
     ],
     "luo_huining": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -67576,6 +67567,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -67586,15 +67586,6 @@
     ],
     "ma_wenrui": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -69207,6 +69198,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -69217,15 +69217,6 @@
     ],
     "ni_yuefeng": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -70838,6 +70829,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -70848,15 +70848,6 @@
     ],
     "ning_jizhe": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -72469,6 +72460,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -72479,15 +72479,6 @@
     ],
     "pan_gongshen": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -74100,6 +74091,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -74110,15 +74110,6 @@
     ],
     "shi_taifeng": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -75731,6 +75722,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -75741,20 +75741,6 @@
     ],
     "sun_chunlan": [
       {
-        "date": "2026-03-19",
-        "mentions": 2,
-        "xi_cooccurrence": 1,
-        "date_breakdown": {
-          "unknown": 2
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "孙春兰在北京调研时强调 细化致微落实各项优化措施 确保疫情防控转段平稳有序",
-          "孙春兰强调 扎实推动国际中文教育高质量发展"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 2,
         "xi_cooccurrence": 1,
@@ -78262,6 +78248,20 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 2,
+        "xi_cooccurrence": 1,
+        "date_breakdown": {
+          "unknown": 2
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "孙春兰在北京调研时强调 细化致微落实各项优化措施 确保疫情防控转段平稳有序",
+          "孙春兰强调 扎实推动国际中文教育高质量发展"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 2,
         "xi_cooccurrence": 1,
         "date_breakdown": {
@@ -78277,15 +78277,6 @@
     ],
     "tang_yijun": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -79898,6 +79889,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -79908,15 +79908,6 @@
     ],
     "wang_xiaohong": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -81529,6 +81520,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -81539,19 +81539,6 @@
     ],
     "wei_fenghe": [
       {
-        "date": "2026-03-19",
-        "mentions": 1,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {
-          "unknown": 1
-        },
-        "last_seen": "Unknown",
-        "sample_titles": [
-          "魏凤和在上合组织、独联体成员国国防部长会议上发表视频讲话"
-        ],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 1,
         "xi_cooccurrence": 0,
@@ -83880,6 +83867,19 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {
+          "unknown": 1
+        },
+        "last_seen": "Unknown",
+        "sample_titles": [
+          "魏凤和在上合组织、独联体成员国国防部长会议上发表视频讲话"
+        ],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 1,
         "xi_cooccurrence": 0,
         "date_breakdown": {
@@ -83894,15 +83894,6 @@
     ],
     "xia_baolong": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -85515,6 +85506,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -85525,15 +85525,6 @@
     ],
     "xu_qiliang": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -87146,6 +87137,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -87156,15 +87156,6 @@
     ],
     "yang_xiaodu": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -88777,6 +88768,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -88787,15 +88787,6 @@
     ],
     "zhang_jun": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -90408,6 +90399,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -90418,15 +90418,6 @@
     ],
     "zhao_kezhi": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -92039,6 +92030,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
@@ -92049,15 +92049,6 @@
     ],
     "zhou_qiang": [
       {
-        "date": "2026-03-19",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "date_breakdown": {},
-        "last_seen": "Unknown",
-        "sample_titles": [],
-        "feed_item_count": 400
-      },
-      {
         "date": "2026-03-20",
         "mentions": 0,
         "xi_cooccurrence": 0,
@@ -93670,6 +93661,15 @@
       },
       {
         "date": "2026-09-15",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "date_breakdown": {},
+        "last_seen": "Unknown",
+        "sample_titles": [],
+        "feed_item_count": 400
+      },
+      {
+        "date": "2026-09-16",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "date_breakdown": {},
