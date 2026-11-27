@@ -1,20 +1,9 @@
 {
   "schema_version": 1,
   "retention_days": 180,
-  "last_updated": "2026-11-26",
+  "last_updated": "2026-11-27",
   "series": {
     "li_qiang": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -3223,20 +3212,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "zhao_leji": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "zhao_leji": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -5919,35 +5908,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
       }
     ],
     "wang_huning": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 1,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {
-          "20260523T0": 0,
-          "20260524T0": 0,
-          "20260525T0": 0,
-          "20260526T0": 0,
-          "20260527T0": 0,
-          "20260528T0": 0,
-          "20260529T0": 1,
-          "20260530T0": 0
-        },
-        "daily_xi": {},
-        "last_seen": "20260529T0",
-        "recent_articles": [
-          {
-            "title": "Senior CPC official meets delegation of British MPs - People Daily Online",
-            "url": "https://en.people.cn/n3/2026/0529/c90000-20461807.html",
-            "date": "20260529T0"
-          }
-        ]
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -8420,20 +8394,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "cai_qi": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "cai_qi": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -10973,20 +10947,29 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20261120T0": 0,
+          "20261121T0": 0,
+          "20261122T0": 0,
+          "20261123T0": 0,
+          "20261124T0": 0,
+          "20261125T0": 0,
+          "20261126T0": 1,
+          "20261127T0": 0
+        },
+        "daily_xi": {},
+        "last_seen": "20261126T0",
+        "recent_articles": []
       }
     ],
     "ding_xuexiang": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -13627,20 +13610,35 @@
             "date": "20261124T0"
           }
         ]
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 2,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20261120T0": 0,
+          "20261121T0": 0,
+          "20261122T0": 0,
+          "20261123T0": 0,
+          "20261124T0": 1,
+          "20261125T0": 0,
+          "20261126T0": 1,
+          "20261127T0": 0
+        },
+        "daily_xi": {},
+        "last_seen": "20261126T0",
+        "recent_articles": [
+          {
+            "title": "Chinese vice premier , Singapore senior minister meet on expanding cooperation",
+            "url": "http://en.people.cn/n3/2026/1124/c90000-20522542.html",
+            "date": "20261124T0"
+          }
+        ]
       }
     ],
     "li_xi": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -16742,20 +16740,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "han_zheng": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "han_zheng": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -19061,20 +19059,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "chen_wenqing": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "chen_wenqing": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -21390,20 +21388,38 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 1,
+        "xi_cooccurrence": 1,
+        "daily_mentions": {
+          "20261120T0": 0,
+          "20261121T0": 0,
+          "20261122T0": 0,
+          "20261123T0": 0,
+          "20261124T0": 0,
+          "20261125T0": 0,
+          "20261126T0": 1,
+          "20261127T0": 0
+        },
+        "daily_xi": {
+          "20261120T0": 0,
+          "20261121T0": 0,
+          "20261122T0": 0,
+          "20261123T0": 0,
+          "20261124T0": 0,
+          "20261125T0": 0,
+          "20261126T0": 1,
+          "20261127T0": 0
+        },
+        "last_seen": "20261126T0",
+        "recent_articles": []
       }
     ],
     "zhang_youxia": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -23377,6 +23393,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -23387,17 +23414,6 @@
     ],
     "he_weidong": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -25376,35 +25392,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
       }
     ],
     "liu_guozhong": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 1,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {
-          "20260523T0": 0,
-          "20260524T0": 0,
-          "20260525T0": 0,
-          "20260526T0": 0,
-          "20260527T0": 0,
-          "20260528T0": 0,
-          "20260529T0": 1,
-          "20260530T0": 0
-        },
-        "daily_xi": {},
-        "last_seen": "20260529T0",
-        "recent_articles": [
-          {
-            "title": "China sustained poverty reduction efforts offer global experience",
-            "url": "http://en.people.cn/n3/2026/0529/c90000-20462110.html",
-            "date": "20260529T1"
-          }
-        ]
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -27664,20 +27665,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "ma_xingrui": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "ma_xingrui": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -29651,6 +29652,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -29661,17 +29673,6 @@
     ],
     "yuan_jiajun": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -31650,45 +31651,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
       }
     ],
     "wang_yi": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 3,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {
-          "20260523T0": 0,
-          "20260524T0": 0,
-          "20260525T0": 0,
-          "20260526T0": 0,
-          "20260527T0": 1,
-          "20260528T0": 2,
-          "20260529T0": 0,
-          "20260530T0": 0
-        },
-        "daily_xi": {},
-        "last_seen": "20260528T0",
-        "recent_articles": [
-          {
-            "title": "China - Panama ties should not be disrupted by any third party : Chinese FM",
-            "url": "http://en.people.cn/n3/2026/0528/c90000-20461305.html",
-            "date": "20260528T0"
-          },
-          {
-            "title": "Chinese , Serbian FMs vow to boost bilateral ties - People Daily Online",
-            "url": "http://en.people.cn/n3/2026/0528/c90000-20461282.html",
-            "date": "20260528T0"
-          },
-          {
-            "title": "Chinese FM highlights China contributions to UN cause - People Daily Online",
-            "url": "http://en.people.cn/n3/2026/0527/c90000-20460694.html",
-            "date": "20260527T0"
-          }
-        ]
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -35213,20 +35189,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "chen_miner": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "chen_miner": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -37200,6 +37176,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -37210,17 +37197,6 @@
     ],
     "hu_chunhua": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -39199,20 +39175,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "dong_jun": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "dong_jun": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -41319,20 +41295,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "qin_gang": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "qin_gang": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -43312,20 +43288,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "bai_chunli": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "bai_chunli": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -45335,20 +45311,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "cao_chunting": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "cao_chunting": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -47322,6 +47298,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -47332,17 +47319,6 @@
     ],
     "chen_guangguo": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -49321,20 +49297,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "chen_jining": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "chen_jining": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -51344,20 +51320,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "chen_xi": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "chen_xi": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -53544,20 +53520,29 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 1,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {
+          "20261120T0": 0,
+          "20261121T0": 0,
+          "20261122T0": 0,
+          "20261123T0": 0,
+          "20261124T0": 0,
+          "20261125T0": 0,
+          "20261126T0": 0,
+          "20261127T0": 1
+        },
+        "daily_xi": {},
+        "last_seen": "20261127T0",
+        "recent_articles": []
       }
     ],
     "fan_changlong": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -55531,6 +55516,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -55541,17 +55537,6 @@
     ],
     "fu_zhenghua": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -57524,6 +57509,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -57534,17 +57530,6 @@
     ],
     "gao_jin": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -59517,6 +59502,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -59527,17 +59523,6 @@
     ],
     "han_changfu": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -61510,6 +61495,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -61520,17 +61516,6 @@
     ],
     "hu_heping": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -63503,6 +63488,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -63513,17 +63509,6 @@
     ],
     "jin_zhuanglong": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -65502,20 +65487,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "li_shulei": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "li_shulei": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -67576,20 +67561,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "li_yunze": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "li_yunze": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -69569,20 +69554,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "liu_he": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "liu_he": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -71693,20 +71678,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "liu_zhenli": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "liu_zhenli": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -73680,6 +73665,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -73690,17 +73686,6 @@
     ],
     "luo_huining": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -75673,6 +75658,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -75683,17 +75679,6 @@
     ],
     "ma_wenrui": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -77666,6 +77651,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -77676,17 +77672,6 @@
     ],
     "ni_yuefeng": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -79659,6 +79644,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -79669,17 +79665,6 @@
     ],
     "ning_jizhe": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -81652,6 +81637,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -81662,17 +81658,6 @@
     ],
     "pan_gongshen": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -83645,6 +83630,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -83655,17 +83651,6 @@
     ],
     "shi_taifeng": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -85638,6 +85623,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -85648,17 +85644,6 @@
     ],
     "sun_chunlan": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -87631,6 +87616,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -87641,17 +87637,6 @@
     ],
     "tang_yijun": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -89630,29 +89615,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
       }
     ],
     "wang_xiaohong": [
-      {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 1,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {
-          "20260523T0": 0,
-          "20260524T0": 0,
-          "20260525T0": 0,
-          "20260526T0": 0,
-          "20260527T0": 0,
-          "20260528T0": 1,
-          "20260529T0": 0,
-          "20260530T0": 0
-        },
-        "daily_xi": {},
-        "last_seen": "20260528T0",
-        "recent_articles": []
-      },
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -91722,20 +91698,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "wei_fenghe": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "wei_fenghe": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -93709,6 +93685,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -93719,17 +93706,6 @@
     ],
     "xia_baolong": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -95702,6 +95678,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -95712,17 +95699,6 @@
     ],
     "xu_qiliang": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -97695,6 +97671,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -97705,17 +97692,6 @@
     ],
     "yang_xiaodu": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -99694,20 +99670,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "zhang_jun": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "zhang_jun": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -101766,20 +101742,20 @@
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      }
-    ],
-    "zhao_kezhi": [
+      },
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
         "daily_xi": {},
         "last_seen": "Unknown",
         "recent_articles": []
-      },
+      }
+    ],
+    "zhao_kezhi": [
       {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
@@ -103753,6 +103729,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
@@ -103763,17 +103750,6 @@
     ],
     "zhou_qiang": [
       {
-        "date": "2026-05-30",
-        "window_start": "2026-05-23",
-        "window_end": "2026-05-30",
-        "mentions": 0,
-        "xi_cooccurrence": 0,
-        "daily_mentions": {},
-        "daily_xi": {},
-        "last_seen": "Unknown",
-        "recent_articles": []
-      },
-      {
         "date": "2026-05-31",
         "window_start": "2026-05-24",
         "window_end": "2026-05-31",
@@ -105746,6 +105722,17 @@
         "date": "2026-11-26",
         "window_start": "2026-11-19",
         "window_end": "2026-11-26",
+        "mentions": 0,
+        "xi_cooccurrence": 0,
+        "daily_mentions": {},
+        "daily_xi": {},
+        "last_seen": "Unknown",
+        "recent_articles": []
+      },
+      {
+        "date": "2026-11-27",
+        "window_start": "2026-11-20",
+        "window_end": "2026-11-27",
         "mentions": 0,
         "xi_cooccurrence": 0,
         "daily_mentions": {},
